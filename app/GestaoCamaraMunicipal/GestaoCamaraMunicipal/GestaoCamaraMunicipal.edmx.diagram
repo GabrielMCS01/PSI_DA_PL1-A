@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc8a277e08f34d9cb67aa09afc1447aa" Name="Diagram1" ZoomLevel="30" >
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.TipoDocumento" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.Promotor" Width="1.5" PointX="1.5" PointY="12.125" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.Processo" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.EstadoProcesso" Width="1.5" PointX="1.5" PointY="15.5" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.Documento" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.Projeto" Width="1.5" PointX="3" PointY="7.25" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.TipoProjeto" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.Parecer" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.Funcionario" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.Especialista" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="GestaoCamaraMunicipal.ProjetoAtribuido" Width="1.5" PointX="8.25" PointY="7.75" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.TipoDocumentoDocumento" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.PromotorProcesso" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.EstadoProcessoProcesso" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.TipoProjetoProjeto" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.ProcessoProjeto" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.ProjetoDocumento" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.ProjetoParecer" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.ProjetoProjetoAtribuido" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.FuncionarioParecer" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.FuncionarioEspecialista" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.FuncionarioProjetoAtribuido" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.TipoProjetoEspecialista" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
