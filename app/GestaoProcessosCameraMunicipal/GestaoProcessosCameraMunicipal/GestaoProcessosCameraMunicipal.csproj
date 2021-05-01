@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +48,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Documento.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Especialista.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoProcesso.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funcionario.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoMunicipal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestaoMunicipal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoMunicipal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoMunicipal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestaoMunicipal.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Parecer.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Processo.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Projeto.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjetoAtribuido.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Promotor.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoDocumento.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoProjeto.cs">
+      <DependentUpon>GestaoMunicipal.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +125,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GestaoMunicipal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GestaoMunicipal.Context.cs</LastGenOutput>
+      <DependentUpon>GestaoMunicipal.edmx</DependentUpon>
+    </Content>
+    <Content Include="GestaoMunicipal.edmx.sql" />
+    <Content Include="GestaoMunicipal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GestaoMunicipal.cs</LastGenOutput>
+      <DependentUpon>GestaoMunicipal.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
