@@ -88,6 +88,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GestaoCamaraMunicipal.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GestaoFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoFuncionarios.Designer.cs">
+      <DependentUpon>GestaoFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoPareceres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoPareceres.Designer.cs">
+      <DependentUpon>GestaoPareceres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoProcessos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoProcessos.Designer.cs">
+      <DependentUpon>GestaoProcessos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoProjetos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoProjetos.Designer.cs">
+      <DependentUpon>GestaoProjetos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestaoPromotores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestaoPromotores.Designer.cs">
+      <DependentUpon>GestaoPromotores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parecer.cs">
       <DependentUpon>GestaoCamaraMunicipal.tt</DependentUpon>
     </Compile>
@@ -111,6 +141,24 @@
     <Compile Include="TipoProjeto.cs">
       <DependentUpon>GestaoCamaraMunicipal.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestaoFuncionarios.resx">
+      <DependentUpon>GestaoFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestaoPareceres.resx">
+      <DependentUpon>GestaoPareceres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestaoProcessos.resx">
+      <DependentUpon>GestaoProcessos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestaoProjetos.resx">
+      <DependentUpon>GestaoProjetos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestaoPromotores.resx">
+      <DependentUpon>GestaoPromotores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -19,5 +19,45 @@ namespace GestaoCamaraMunicipal
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
 
         }
+
+        private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestaoPromotores form = new GestaoPromotores();
+            form.Show();
+            this.Hide();
+        }
+
+        private void gestãoDeProcessosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestaoProcessos form = new GestaoProcessos();
+            form.Show();
+            this.Hide();
+        }
+
+        private void gestãoDeProjetosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestaoProjetos form = new GestaoProjetos();
+            form.Show();
+            this.Hide();
+        }
+
+        private void gestãoDePareceresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestaoPareceres form = new GestaoPareceres();
+            form.Show();
+            this.Hide();
+        }
+
+        private void gestãoDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestaoFuncionarios form = new GestaoFuncionarios();
+            form.Show();
+            this.Hide();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
