@@ -57,19 +57,18 @@ namespace GestaoCamaraMunicipal
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Sair() == DialogResult.Yes)
-            {
-                this.Close();
-            }
-            else
-            {
-                return;
-            }
+            this.Close();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Sair() == DialogResult.No)
+            Sair(e);
+        }
+
+        private void Sair(FormClosingEventArgs e)
+        {
+            DialogResult resposta = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.No)
             {
                 e.Cancel = true;
             }
@@ -77,12 +76,6 @@ namespace GestaoCamaraMunicipal
             {
                 return;
             }
-        }
-
-        private DialogResult Sair()
-        {
-            DialogResult resposta = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            return resposta;
         }
     }
 }
