@@ -12,6 +12,7 @@ namespace GestaoCamaraMunicipal
 {
     public partial class GestaoProcessos : Form
     {
+        Form1 formprincipal = new Form1();
         public GestaoProcessos()
         {
             InitializeComponent();
@@ -19,9 +20,13 @@ namespace GestaoCamaraMunicipal
 
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
-            form.Show();
+            formprincipal.Show();
             this.Hide();
+        }
+
+        private void GestaoProcessos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            formprincipal.Sair(e);
         }
     }
 }
