@@ -65,7 +65,7 @@ namespace GestaoCamaraMunicipal
             Sair(e);
         }
 
-        private void Sair(FormClosingEventArgs e)
+        public void Sair(FormClosingEventArgs e)
         {
             DialogResult resposta = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.No)
