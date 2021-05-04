@@ -67,6 +67,7 @@ namespace GestaoCamaraMunicipal
             this.sairToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(50, 20);
+
             this.toolStripMenu.Text = "Menu";
             // 
             // gestãoDePromotoresToolStripMenuItem
