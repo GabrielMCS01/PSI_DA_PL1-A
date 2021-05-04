@@ -74,7 +74,7 @@ namespace GestaoCamaraMunicipal
             }
             else
             {
-                return;
+                Environment.Exit(1);
             }
         }
     }
