@@ -36,13 +36,32 @@ namespace GestaoCamaraMunicipal
         private void LerDados()
         {
             listBoxPromotores.DataSource = camaraMunicipal.PromotorSet.ToList<Promotor>();
+            listBoxPromotores.SelectedIndex = -1;
+            LimparForm();
+        }
+
+        private void LimparForm()
+        {
+            maskedTextBoxNIF.Clear();
+            txtBoxNome.Clear();
+            txtBoxMorada.Clear();
+            txtBoxTelemovel.Clear();
+            maskedTextBoxMail.Clear();
+            txtBoxCodAcesso.Clear();
+            txtBoxPassword.Clear();
         }
 
         private void btnRegistar_Click(object sender, EventArgs e)
         {
-            camaraMunicipal.PromotorSet.Add(new Promotor(Int32.Parse(maskedTextBoxNIF.Text), txtBoxNome.Text, txtBoxMorada.Text, txtBoxTelemovel.Text, maskedTextBoxMail.Text, txtBoxCodAcesso.Text, txtBoxPassword.Text));
-            camaraMunicipal.SaveChanges();
-            LerDados();
+            try
+            {
+                camaraMunicipal.PromotorSet.Add(new Promotor(Int32.Parse(maskedTextBoxNIF.Text), txtBoxNome.Text, txtBoxMorada.Text, txtBoxTelemovel.Text, maskedTextBoxMail.Text, txtBoxCodAcesso.Text, txtBoxPassword.Text));
+                camaraMunicipal.SaveChanges();
+                LerDados();
+            }catch(FormatException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardarAlteracoes_Click(object sender, EventArgs e)
@@ -50,8 +69,9 @@ namespace GestaoCamaraMunicipal
             Promotor promotor = new Promotor();
             try
             {
-                if (listBoxPromotores.SelectedItem != null)
+                if (listBoxPromotores.SelectedIndex != -1)
                 {
+                    int posicao = listBoxPromotores.SelectedIndex;
                     promotor = (Promotor)listBoxPromotores.SelectedItem;
                     promotor.NIF = Int32.Parse(maskedTextBoxNIF.Text);
                     promotor.Nome = txtBoxNome.Text;
@@ -62,11 +82,17 @@ namespace GestaoCamaraMunicipal
                     promotor.Senha = txtBoxPassword.Text;
                     camaraMunicipal.SaveChanges();
                     LerDados();
+                    listBoxPromotores.SelectedIndex = posicao;
+                    MessageBox.Show("Alteração guardada com sucesso!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Selecione primeiro um promotor.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex);
+                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -75,17 +101,21 @@ namespace GestaoCamaraMunicipal
             Promotor promotor = new Promotor();
             try
             {
-                if (listBoxPromotores.SelectedItem != null)
+                if (listBoxPromotores.SelectedIndex != -1)
                 {
                     promotor = (Promotor)listBoxPromotores.SelectedItem;
                     camaraMunicipal.PromotorSet.Remove(promotor);
                     camaraMunicipal.SaveChanges();
                     LerDados();
                 }
+                else
+                {
+                    MessageBox.Show("Selecione primeiro um promotor.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex);
+                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -94,7 +124,8 @@ namespace GestaoCamaraMunicipal
             Promotor promotor = new Promotor();
             try
             {
-                if (listBoxPromotores.SelectedItem != null)
+                if (listBoxPromotores.SelectedIndex != -1)
+
                 {
                     promotor = (Promotor)listBoxPromotores.SelectedItem;
                     maskedTextBoxNIF.Text = promotor.NIF.ToString();
