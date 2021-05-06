@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/01/2021 14:02:32
+-- Date Created: 05/06/2021 11:44:05
 -- Generated from EDMX file: C:\Users\badal\OneDrive\Documentos\GitHub\PSI_DA_PL1-A\app\GestaoCamaraMunicipal\GestaoCamaraMunicipal\GestaoCamaraMunicipal.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,80 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_TipoDocumentoDocumento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentoSet] DROP CONSTRAINT [FK_TipoDocumentoDocumento];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PromotorProcesso]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProcessoSet] DROP CONSTRAINT [FK_PromotorProcesso];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EstadoProcessoProcesso]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProcessoSet] DROP CONSTRAINT [FK_EstadoProcessoProcesso];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TipoProjetoProjeto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjetoSet] DROP CONSTRAINT [FK_TipoProjetoProjeto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProcessoProjeto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjetoSet] DROP CONSTRAINT [FK_ProcessoProjeto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProjetoDocumento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentoSet] DROP CONSTRAINT [FK_ProjetoDocumento];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProjetoParecer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ParecerSet] DROP CONSTRAINT [FK_ProjetoParecer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProjetoProjetoAtribuido]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjetoAtribuidoSet] DROP CONSTRAINT [FK_ProjetoProjetoAtribuido];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FuncionarioParecer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ParecerSet] DROP CONSTRAINT [FK_FuncionarioParecer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FuncionarioEspecialista]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EspecialistaSet] DROP CONSTRAINT [FK_FuncionarioEspecialista];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FuncionarioProjetoAtribuido]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProjetoAtribuidoSet] DROP CONSTRAINT [FK_FuncionarioProjetoAtribuido];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TipoProjetoEspecialista]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EspecialistaSet] DROP CONSTRAINT [FK_TipoProjetoEspecialista];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[TipoDocumentoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TipoDocumentoSet];
+GO
+IF OBJECT_ID(N'[dbo].[PromotorSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PromotorSet];
+GO
+IF OBJECT_ID(N'[dbo].[ProcessoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProcessoSet];
+GO
+IF OBJECT_ID(N'[dbo].[EstadoProcessoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EstadoProcessoSet];
+GO
+IF OBJECT_ID(N'[dbo].[DocumentoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DocumentoSet];
+GO
+IF OBJECT_ID(N'[dbo].[ProjetoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProjetoSet];
+GO
+IF OBJECT_ID(N'[dbo].[TipoProjetoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TipoProjetoSet];
+GO
+IF OBJECT_ID(N'[dbo].[ParecerSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ParecerSet];
+GO
+IF OBJECT_ID(N'[dbo].[FuncionarioSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FuncionarioSet];
+GO
+IF OBJECT_ID(N'[dbo].[EspecialistaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EspecialistaSet];
+GO
+IF OBJECT_ID(N'[dbo].[ProjetoAtribuidoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProjetoAtribuidoSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -36,7 +105,7 @@ GO
 
 -- Creating table 'PromotorSet'
 CREATE TABLE [dbo].[PromotorSet] (
-    [NIF] int IDENTITY(1,1) NOT NULL,
+    [NIF] int  NOT NULL,
     [Nome] nvarchar(max)  NOT NULL,
     [Morada] nvarchar(max)  NOT NULL,
     [Telemovel] nvarchar(max)  NOT NULL,
@@ -106,7 +175,7 @@ GO
 
 -- Creating table 'FuncionarioSet'
 CREATE TABLE [dbo].[FuncionarioSet] (
-    [Numero] int IDENTITY(1,1) NOT NULL,
+    [Numero] int  NOT NULL,
     [Nome] nvarchar(max)  NOT NULL,
     [Extencao] nvarchar(max)  NOT NULL
 );
