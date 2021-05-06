@@ -20,17 +20,6 @@ namespace GestaoCamaraMunicipal
             this.Processo = new HashSet<Processo>();
         }
 
-        public Promotor(int nIF, string nome, string morada, string telemovel, string email, string codigoAcesso, string senha)
-        {
-            NIF = nIF;
-            Nome = nome;
-            Morada = morada;
-            Telemovel = telemovel;
-            Email = email;
-            CodigoAcesso = codigoAcesso;
-            Senha = senha;
-        }
-
         public int NIF { get; set; }
         public string Nome { get; set; }
         public string Morada { get; set; }
@@ -41,10 +30,5 @@ namespace GestaoCamaraMunicipal
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Processo> Processo { get; set; }
-        public override string ToString()
-        {
-            return Nome + "(" + NIF + ")";
-        }
     }
-
 }
