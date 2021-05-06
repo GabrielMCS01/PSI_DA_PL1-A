@@ -33,6 +33,25 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoDePromotoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listBoxPromotores = new System.Windows.Forms.ListBox();
+            this.lblPromotores = new System.Windows.Forms.Label();
+            this.lblNIF = new System.Windows.Forms.Label();
+            this.maskedTextBoxNIF = new System.Windows.Forms.MaskedTextBox();
+            this.lblNome = new System.Windows.Forms.Label();
+            this.txtBoxNome = new System.Windows.Forms.TextBox();
+            this.txtBoxMorada = new System.Windows.Forms.TextBox();
+            this.lblMorada = new System.Windows.Forms.Label();
+            this.txtBoxTelemovel = new System.Windows.Forms.TextBox();
+            this.lblTelemovel = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.maskedTextBoxMail = new System.Windows.Forms.MaskedTextBox();
+            this.lblCodAcesso = new System.Windows.Forms.Label();
+            this.txtBoxCodAcesso = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtBoxPassword = new System.Windows.Forms.TextBox();
+            this.btnRegistar = new System.Windows.Forms.Button();
+            this.btnGuardarAlteracoes = new System.Windows.Forms.Button();
+            this.btnRemover = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,11 +64,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-<<<<<<< Updated upstream
             this.menuStrip1.Size = new System.Drawing.Size(600, 24);
-=======
-            this.menuStrip1.Size = new System.Drawing.Size(725, 24);
->>>>>>> Stashed changes
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -58,18 +73,16 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestãoDePromotoresToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(50, 20);
+            this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
             this.toolStripMenu.Text = "Menu";
             // 
             // gestãoDePromotoresToolStripMenuItem
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
-<<<<<<< Updated upstream
-=======
             // listBoxPromotores
             // 
             this.listBoxPromotores.FormattingEnabled = true;
@@ -83,6 +96,7 @@ namespace GestaoCamaraMunicipal
             // lblPromotores
             // 
             this.lblPromotores.AutoSize = true;
+
             this.lblPromotores.Location = new System.Drawing.Point(22, 34);
             this.lblPromotores.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPromotores.Name = "lblPromotores";
@@ -138,6 +152,7 @@ namespace GestaoCamaraMunicipal
             // lblMorada
             // 
             this.lblMorada.AutoSize = true;
+
             this.lblMorada.Location = new System.Drawing.Point(258, 141);
             this.lblMorada.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMorada.Name = "lblMorada";
@@ -253,15 +268,11 @@ namespace GestaoCamaraMunicipal
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
->>>>>>> Stashed changes
             // GestaoPromotores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< Updated upstream
-            this.ClientSize = new System.Drawing.Size(600, 366);
-=======
-            this.ClientSize = new System.Drawing.Size(725, 396);
+            this.ClientSize = new System.Drawing.Size(967, 488);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnGuardarAlteracoes);
             this.Controls.Add(this.btnRegistar);
@@ -281,11 +292,10 @@ namespace GestaoCamaraMunicipal
             this.Controls.Add(this.lblNIF);
             this.Controls.Add(this.lblPromotores);
             this.Controls.Add(this.listBoxPromotores);
->>>>>>> Stashed changes
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GestaoPromotores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão de Promotores";
@@ -302,5 +312,24 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu;
         private System.Windows.Forms.ToolStripMenuItem gestãoDePromotoresToolStripMenuItem;
+        private System.Windows.Forms.ListBox listBoxPromotores;
+        private System.Windows.Forms.Label lblPromotores;
+        private System.Windows.Forms.Label lblNIF;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxNIF;
+        private System.Windows.Forms.Label lblNome;
+        private System.Windows.Forms.TextBox txtBoxNome;
+        private System.Windows.Forms.TextBox txtBoxMorada;
+        private System.Windows.Forms.Label lblMorada;
+        private System.Windows.Forms.TextBox txtBoxTelemovel;
+        private System.Windows.Forms.Label lblTelemovel;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxMail;
+        private System.Windows.Forms.Label lblCodAcesso;
+        private System.Windows.Forms.TextBox txtBoxCodAcesso;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.TextBox txtBoxPassword;
+        private System.Windows.Forms.Button btnRegistar;
+        private System.Windows.Forms.Button btnGuardarAlteracoes;
+        private System.Windows.Forms.Button btnRemover;
     }
 }

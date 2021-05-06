@@ -13,9 +13,12 @@ namespace GestaoCamaraMunicipal
     public partial class GestaoPromotores : Form
     {
         Form1 formprincipal = new Form1();
+        private GestaoCamaraMunicipalContainer camaraMunicipal;
         public GestaoPromotores()
         {
             InitializeComponent();
+            camaraMunicipal = new GestaoCamaraMunicipalContainer();
+            LerDados();
         }
 
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -26,10 +29,9 @@ namespace GestaoCamaraMunicipal
 
         private void GestaoPromotores_FormClosing(object sender, FormClosingEventArgs e)
         {
+            camaraMunicipal.Dispose();
             formprincipal.Sair(e);
         }
-<<<<<<< Updated upstream
-=======
 
         private void LerDados()
         {
@@ -101,7 +103,6 @@ namespace GestaoCamaraMunicipal
             {
                 if (listBoxPromotores.SelectedIndex != -1)
                 {
-                    
                     promotor = (Promotor)listBoxPromotores.SelectedItem;
                     camaraMunicipal.PromotorSet.Remove(promotor);
                     camaraMunicipal.SaveChanges();
@@ -124,6 +125,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 if (listBoxPromotores.SelectedIndex != -1)
+
                 {
                     promotor = (Promotor)listBoxPromotores.SelectedItem;
                     maskedTextBoxNIF.Text = promotor.NIF.ToString();
@@ -140,6 +142,5 @@ namespace GestaoCamaraMunicipal
                 MessageBox.Show("Ocorreu um erro \n" + ex);
             }
         }
->>>>>>> Stashed changes
     }
 }
