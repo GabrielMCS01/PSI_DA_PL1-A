@@ -53,6 +53,7 @@ namespace GestaoCamaraMunicipal
 
         private void btnRegistar_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 if (maskedTextBoxNIF.Text != "" & txtBoxNome.Text != "" & txtBoxMorada.Text != "" & txtBoxTelemovel.Text != "" & maskedTextBoxMail.Text != "" & txtBoxCodAcesso.Text != "" & txtBoxPassword.Text != "")

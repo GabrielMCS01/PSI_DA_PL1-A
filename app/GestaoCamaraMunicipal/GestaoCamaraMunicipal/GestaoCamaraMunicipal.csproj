@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassFuncionario.cs" />
+    <Compile Include="ClassPromotor.cs" />
     <Compile Include="Documento.cs">
       <DependentUpon>GestaoCamaraMunicipal.tt</DependentUpon>
     </Compile>
