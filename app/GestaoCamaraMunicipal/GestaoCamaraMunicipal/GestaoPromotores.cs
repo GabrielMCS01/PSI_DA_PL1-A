@@ -56,10 +56,18 @@ namespace GestaoCamaraMunicipal
             
             try
             {
-                camaraMunicipal.PromotorSet.Add(new Promotor(Int32.Parse(maskedTextBoxNIF.Text), txtBoxNome.Text, txtBoxMorada.Text, txtBoxTelemovel.Text, maskedTextBoxMail.Text, txtBoxCodAcesso.Text, txtBoxPassword.Text));
-                camaraMunicipal.SaveChanges();
-                LerDados();
-            }catch(FormatException ex)
+                if (maskedTextBoxNIF.Text != "" & txtBoxNome.Text != "" & txtBoxMorada.Text != "" & txtBoxTelemovel.Text != "" & maskedTextBoxMail.Text != "" & txtBoxCodAcesso.Text != "" & txtBoxPassword.Text != "")
+                {
+                    camaraMunicipal.PromotorSet.Add(new Promotor(Int32.Parse(maskedTextBoxNIF.Text), txtBoxNome.Text, txtBoxMorada.Text, txtBoxTelemovel.Text, maskedTextBoxMail.Text, txtBoxCodAcesso.Text, txtBoxPassword.Text));
+                    camaraMunicipal.SaveChanges();
+                    LerDados();
+                }
+                else
+                {
+                    MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch(FormatException ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -72,19 +80,26 @@ namespace GestaoCamaraMunicipal
             {
                 if (listBoxPromotores.SelectedIndex != -1)
                 {
-                    int posicao = listBoxPromotores.SelectedIndex;
-                    promotor = (Promotor)listBoxPromotores.SelectedItem;
-                    promotor.NIF = Int32.Parse(maskedTextBoxNIF.Text);
-                    promotor.Nome = txtBoxNome.Text;
-                    promotor.Morada = txtBoxMorada.Text;
-                    promotor.Telemovel = txtBoxTelemovel.Text;
-                    promotor.Email = maskedTextBoxMail.Text;
-                    promotor.CodigoAcesso = txtBoxCodAcesso.Text;
-                    promotor.Senha = txtBoxPassword.Text;
-                    camaraMunicipal.SaveChanges();
-                    LerDados();
-                    listBoxPromotores.SelectedIndex = posicao;
-                    MessageBox.Show("Alteração guardada com sucesso!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (maskedTextBoxNIF.Text != "" & txtBoxNome.Text != "" & txtBoxMorada.Text != "" & txtBoxTelemovel.Text != "" & maskedTextBoxMail.Text != "" & txtBoxCodAcesso.Text != "" & txtBoxPassword.Text != "")
+                    {
+                        int posicao = listBoxPromotores.SelectedIndex;
+                        promotor = (Promotor)listBoxPromotores.SelectedItem;
+                        promotor.NIF = Int32.Parse(maskedTextBoxNIF.Text);
+                        promotor.Nome = txtBoxNome.Text;
+                        promotor.Morada = txtBoxMorada.Text;
+                        promotor.Telemovel = txtBoxTelemovel.Text;
+                        promotor.Email = maskedTextBoxMail.Text;
+                        promotor.CodigoAcesso = txtBoxCodAcesso.Text;
+                        promotor.Senha = txtBoxPassword.Text;
+                        camaraMunicipal.SaveChanges();
+                        LerDados();
+                        listBoxPromotores.SelectedIndex = posicao;
+                        MessageBox.Show("Alteração guardada com sucesso!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                   
                 }
                 else
                 {
@@ -108,6 +123,7 @@ namespace GestaoCamaraMunicipal
                     camaraMunicipal.PromotorSet.Remove(promotor);
                     camaraMunicipal.SaveChanges();
                     LerDados();
+                    LimparForm();
                 }
                 else
                 {
@@ -140,7 +156,7 @@ namespace GestaoCamaraMunicipal
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex);
+                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
