@@ -96,16 +96,6 @@ namespace GestaoCamaraMunicipal
             this.listBoxPromotores.TabIndex = 2;
             this.listBoxPromotores.SelectedIndexChanged += new System.EventHandler(this.listBoxPromotores_SelectedIndexChanged);
             // 
-           /* // lblPromotores
-            // 
-            this.lblPromotores.AutoSize = true;
-            this.lblPromotores.Location = new System.Drawing.Point(22, 34);
-            this.lblPromotores.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPromotores.Name = "lblPromotores";
-            this.lblPromotores.Size = new System.Drawing.Size(63, 13);
-            this.lblPromotores.TabIndex = 3;
-            this.lblPromotores.Text = "Promotores:";*/
-            // 
             // lblNIF
             // 
             this.lblNIF.AutoSize = true;
