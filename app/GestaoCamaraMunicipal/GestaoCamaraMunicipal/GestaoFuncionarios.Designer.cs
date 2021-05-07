@@ -41,6 +41,7 @@ namespace GestaoCamaraMunicipal
             this.btregistar = new System.Windows.Forms.Button();
             this.btguardarAlteracoes = new System.Windows.Forms.Button();
             this.btremover = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@ namespace GestaoCamaraMunicipal
             // listBoxFuncionarios
             // 
             this.listBoxFuncionarios.FormattingEnabled = true;
-            this.listBoxFuncionarios.Location = new System.Drawing.Point(13, 38);
+            this.listBoxFuncionarios.Location = new System.Drawing.Point(13, 52);
             this.listBoxFuncionarios.Name = "listBoxFuncionarios";
             this.listBoxFuncionarios.Size = new System.Drawing.Size(263, 160);
             this.listBoxFuncionarios.TabIndex = 3;
@@ -125,7 +126,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btregistar
             // 
-            this.btregistar.Location = new System.Drawing.Point(304, 157);
+            this.btregistar.Location = new System.Drawing.Point(304, 170);
             this.btregistar.Name = "btregistar";
             this.btregistar.Size = new System.Drawing.Size(75, 42);
             this.btregistar.TabIndex = 8;
@@ -135,7 +136,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btguardarAlteracoes
             // 
-            this.btguardarAlteracoes.Location = new System.Drawing.Point(399, 157);
+            this.btguardarAlteracoes.Location = new System.Drawing.Point(399, 170);
             this.btguardarAlteracoes.Name = "btguardarAlteracoes";
             this.btguardarAlteracoes.Size = new System.Drawing.Size(76, 42);
             this.btguardarAlteracoes.TabIndex = 9;
@@ -145,7 +146,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btremover
             // 
-            this.btremover.Location = new System.Drawing.Point(497, 157);
+            this.btremover.Location = new System.Drawing.Point(497, 170);
             this.btremover.Name = "btremover";
             this.btremover.Size = new System.Drawing.Size(75, 42);
             this.btremover.TabIndex = 10;
@@ -153,11 +154,21 @@ namespace GestaoCamaraMunicipal
             this.btremover.UseVisualStyleBackColor = true;
             this.btremover.Click += new System.EventHandler(this.btremover_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Funcionários:";
+            // 
             // GestaoFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 211);
+            this.ClientSize = new System.Drawing.Size(600, 224);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btremover);
             this.Controls.Add(this.btguardarAlteracoes);
             this.Controls.Add(this.btregistar);
@@ -194,5 +205,6 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.Button btregistar;
         private System.Windows.Forms.Button btguardarAlteracoes;
         private System.Windows.Forms.Button btremover;
+        private System.Windows.Forms.Label label3;
     }
 }
