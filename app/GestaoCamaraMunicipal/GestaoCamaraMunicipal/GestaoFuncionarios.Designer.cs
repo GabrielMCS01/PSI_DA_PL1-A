@@ -41,7 +41,12 @@ namespace GestaoCamaraMunicipal
             this.btregistar = new System.Windows.Forms.Button();
             this.btguardarAlteracoes = new System.Windows.Forms.Button();
             this.btremover = new System.Windows.Forms.Button();
+<<<<<<< Updated upstream
+=======
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+>>>>>>> Stashed changes
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -74,10 +79,15 @@ namespace GestaoCamaraMunicipal
             // 
             // listBoxFuncionarios
             // 
+            this.listBoxFuncionarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxFuncionarios.FormattingEnabled = true;
+<<<<<<< Updated upstream
             this.listBoxFuncionarios.Location = new System.Drawing.Point(13, 38);
+=======
+            this.listBoxFuncionarios.Location = new System.Drawing.Point(3, 16);
+>>>>>>> Stashed changes
             this.listBoxFuncionarios.Name = "listBoxFuncionarios";
-            this.listBoxFuncionarios.Size = new System.Drawing.Size(263, 160);
+            this.listBoxFuncionarios.Size = new System.Drawing.Size(258, 127);
             this.listBoxFuncionarios.TabIndex = 3;
             this.listBoxFuncionarios.SelectedIndexChanged += new System.EventHandler(this.listBoxFuncionarios_SelectedIndexChanged);
             // 
@@ -125,7 +135,11 @@ namespace GestaoCamaraMunicipal
             // 
             // btregistar
             // 
+<<<<<<< Updated upstream
             this.btregistar.Location = new System.Drawing.Point(304, 157);
+=======
+            this.btregistar.Location = new System.Drawing.Point(304, 142);
+>>>>>>> Stashed changes
             this.btregistar.Name = "btregistar";
             this.btregistar.Size = new System.Drawing.Size(75, 42);
             this.btregistar.TabIndex = 8;
@@ -135,7 +149,11 @@ namespace GestaoCamaraMunicipal
             // 
             // btguardarAlteracoes
             // 
+<<<<<<< Updated upstream
             this.btguardarAlteracoes.Location = new System.Drawing.Point(399, 157);
+=======
+            this.btguardarAlteracoes.Location = new System.Drawing.Point(399, 142);
+>>>>>>> Stashed changes
             this.btguardarAlteracoes.Name = "btguardarAlteracoes";
             this.btguardarAlteracoes.Size = new System.Drawing.Size(76, 42);
             this.btguardarAlteracoes.TabIndex = 9;
@@ -145,7 +163,11 @@ namespace GestaoCamaraMunicipal
             // 
             // btremover
             // 
+<<<<<<< Updated upstream
             this.btremover.Location = new System.Drawing.Point(497, 157);
+=======
+            this.btremover.Location = new System.Drawing.Point(497, 142);
+>>>>>>> Stashed changes
             this.btremover.Name = "btremover";
             this.btremover.Size = new System.Drawing.Size(75, 42);
             this.btremover.TabIndex = 10;
@@ -153,11 +175,29 @@ namespace GestaoCamaraMunicipal
             this.btremover.UseVisualStyleBackColor = true;
             this.btremover.Click += new System.EventHandler(this.btremover_Click);
             // 
+<<<<<<< Updated upstream
+=======
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.listBoxFuncionarios);
+            this.groupBox1.Location = new System.Drawing.Point(12, 38);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(264, 146);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Funcionários";
+            // 
+>>>>>>> Stashed changes
             // GestaoFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< Updated upstream
             this.ClientSize = new System.Drawing.Size(600, 211);
+=======
+            this.ClientSize = new System.Drawing.Size(600, 199);
+            this.Controls.Add(this.groupBox1);
+>>>>>>> Stashed changes
             this.Controls.Add(this.btremover);
             this.Controls.Add(this.btguardarAlteracoes);
             this.Controls.Add(this.btregistar);
@@ -165,7 +205,6 @@ namespace GestaoCamaraMunicipal
             this.Controls.Add(this.comboBoxEspecialidade);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNome);
-            this.Controls.Add(this.listBoxFuncionarios);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -176,6 +215,7 @@ namespace GestaoCamaraMunicipal
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoFuncionarios_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +234,9 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.Button btregistar;
         private System.Windows.Forms.Button btguardarAlteracoes;
         private System.Windows.Forms.Button btremover;
+<<<<<<< Updated upstream
+=======
+        private System.Windows.Forms.GroupBox groupBox1;
+>>>>>>> Stashed changes
     }
 }

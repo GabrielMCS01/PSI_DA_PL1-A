@@ -74,6 +74,7 @@ namespace GestaoCamaraMunicipal
             }
             else
             {
+                camaraMunicipal.Dispose();
                 Environment.Exit(1);
             }
         }
