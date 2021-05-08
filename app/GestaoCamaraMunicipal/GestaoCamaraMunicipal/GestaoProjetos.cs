@@ -71,5 +71,11 @@ namespace GestaoCamaraMunicipal
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void gestãoDePromotoresToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            formprincipal.Show();
+            this.Hide();
+        }
     }
 }
