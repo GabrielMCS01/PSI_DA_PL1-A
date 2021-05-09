@@ -77,24 +77,57 @@ namespace GestaoCamaraMunicipal
 
         private void btnRemoverProcesso_Click(object sender, EventArgs e)
         {
-            //Acabar aqui
+            if (listBoxProcessos.SelectedIndex != -1)
+            {
+                Processo processo = new Processo();
+                processo = (Processo)listBoxProcessos.SelectedItem;
+                foreach (EstadoProcesso estadoProcesso in camaraMunicipal.EstadoProcessoSet.ToList<EstadoProcesso>())
+                {
+                    if (processo.EstadoProcessoId == estadoProcesso.Id)
+                    {
+                        camaraMunicipal.EstadoProcessoSet.Remove(estadoProcesso);
+                    }
+                }
+                camaraMunicipal.ProcessoSet.Remove(processo);
+                camaraMunicipal.SaveChanges();
+                listBoxEstadoProcesso.DataSource = null;
+                lerProcessos();
+            }
         }
 
         private void btnAtualizarProcesso_Click(object sender, EventArgs e)
         {
-            if (listBoxProcessos.SelectedIndex != -1 & textBoxEstadoProcesso.Text != "")
+            if (listBoxEstadoProcesso.SelectedIndex != -1 & textBoxEstadoProcesso.Text != "")
             {
-                Processo processo = new Processo();
-                processo = (Processo)listBoxProcessos.SelectedItem;
                 EstadoProcesso estadoProcesso = new EstadoProcesso();
-                estadoProcesso = new EstadoProcesso(textBoxEstadoProcesso.Text);
-                processo.EstadoProcessoId = estadoProcesso.Id;
+                estadoProcesso = (EstadoProcesso)listBoxEstadoProcesso.SelectedItem;
+                estadoProcesso.DescricaoEstado = textBoxEstadoProcesso.Text;
                 camaraMunicipal.SaveChanges();
                 lerProcessos();
+                MessageBox.Show("Alteração guardada com sucesso!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {
                 MessageBox.Show("Tem de Selecionar um Processo e Preencher Todos os Campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void listBoxProcessos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxProcessos.SelectedIndex != -1)
+            {
+                List<EstadoProcesso> estadoProcessos = new List<EstadoProcesso>();
+                Processo processo = new Processo();
+                processo = (Processo)listBoxProcessos.SelectedItem;
+                foreach (EstadoProcesso estadoProcesso in camaraMunicipal.EstadoProcessoSet.ToList<EstadoProcesso>())
+                {
+                    if (processo.EstadoProcessoId == estadoProcesso.Id)
+                    {
+                        estadoProcessos.Add(estadoProcesso);
+                    }
+                }
+                listBoxEstadoProcesso.DataSource = estadoProcessos;
             }
         }
     }

@@ -45,9 +45,12 @@ namespace GestaoCamaraMunicipal
             this.btnRemoverProcesso = new System.Windows.Forms.Button();
             this.btnAtualizarProcesso = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.listBoxEstadoProcesso = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -59,7 +62,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(844, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1262, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -83,10 +86,11 @@ namespace GestaoCamaraMunicipal
             this.listBoxProcessos.FormattingEnabled = true;
             this.listBoxProcessos.ItemHeight = 16;
             this.listBoxProcessos.Location = new System.Drawing.Point(8, 23);
-            this.listBoxProcessos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxProcessos.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxProcessos.Name = "listBoxProcessos";
             this.listBoxProcessos.Size = new System.Drawing.Size(336, 356);
             this.listBoxProcessos.TabIndex = 3;
+            this.listBoxProcessos.SelectedIndexChanged += new System.EventHandler(this.listBoxProcessos_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -190,7 +194,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox2.Controls.Add(this.textBoxEstadoProcesso);
             this.groupBox2.Controls.Add(this.lblPromotor);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(386, 42);
+            this.groupBox2.Location = new System.Drawing.Point(804, 42);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
@@ -199,11 +203,34 @@ namespace GestaoCamaraMunicipal
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gestão de Processos";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.listBoxEstadoProcesso);
+            this.groupBox3.Location = new System.Drawing.Point(396, 42);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(362, 395);
+            this.groupBox3.TabIndex = 24;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Estado dos Processos";
+            // 
+            // listBoxEstadoProcesso
+            // 
+            this.listBoxEstadoProcesso.FormattingEnabled = true;
+            this.listBoxEstadoProcesso.ItemHeight = 16;
+            this.listBoxEstadoProcesso.Location = new System.Drawing.Point(8, 23);
+            this.listBoxEstadoProcesso.Margin = new System.Windows.Forms.Padding(4);
+            this.listBoxEstadoProcesso.Name = "listBoxEstadoProcesso";
+            this.listBoxEstadoProcesso.Size = new System.Drawing.Size(346, 356);
+            this.listBoxEstadoProcesso.TabIndex = 3;
+            // 
             // GestaoProcessos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 450);
+            this.ClientSize = new System.Drawing.Size(1262, 450);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -220,6 +247,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +270,7 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.Button btnRemoverProcesso;
         private System.Windows.Forms.Button btnAtualizarProcesso;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox listBoxEstadoProcesso;
     }
 }
