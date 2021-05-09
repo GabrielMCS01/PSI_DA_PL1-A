@@ -78,7 +78,6 @@ namespace GestaoCamaraMunicipal
             // 
             this.listBoxFuncionarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxFuncionarios.FormattingEnabled = true;
-            this.listBoxFuncionarios.Location = new System.Drawing.Point(13, 38);
             this.listBoxFuncionarios.Location = new System.Drawing.Point(3, 16);
             this.listBoxFuncionarios.Name = "listBoxFuncionarios";
             this.listBoxFuncionarios.Size = new System.Drawing.Size(258, 127);
@@ -129,7 +128,6 @@ namespace GestaoCamaraMunicipal
             // 
             // btregistar
             // 
-            this.btregistar.Location = new System.Drawing.Point(304, 157);
             this.btregistar.Location = new System.Drawing.Point(304, 142);
             this.btregistar.Name = "btregistar";
             this.btregistar.Size = new System.Drawing.Size(75, 42);
@@ -140,7 +138,6 @@ namespace GestaoCamaraMunicipal
             // 
             // btguardarAlteracoes
             // 
-            this.btguardarAlteracoes.Location = new System.Drawing.Point(399, 157);
             this.btguardarAlteracoes.Location = new System.Drawing.Point(399, 142);
             this.btguardarAlteracoes.Name = "btguardarAlteracoes";
             this.btguardarAlteracoes.Size = new System.Drawing.Size(76, 42);
@@ -151,7 +148,6 @@ namespace GestaoCamaraMunicipal
             // 
             // btremover
             // 
-            this.btremover.Location = new System.Drawing.Point(497, 157);
             this.btremover.Location = new System.Drawing.Point(497, 142);
             this.btremover.Name = "btremover";
             this.btremover.Size = new System.Drawing.Size(75, 42);
@@ -174,7 +170,6 @@ namespace GestaoCamaraMunicipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 211);
             this.ClientSize = new System.Drawing.Size(600, 199);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btremover);
@@ -192,6 +187,7 @@ namespace GestaoCamaraMunicipal
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão de Funcionários";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoFuncionarios_FormClosing);
+            this.Load += new System.EventHandler(this.GestaoFuncionarios_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

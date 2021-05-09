@@ -17,6 +17,11 @@ namespace GestaoCamaraMunicipal
         public GestaoFuncionarios()
         {
             InitializeComponent();
+            
+        }
+
+        private void GestaoFuncionarios_Load(object sender, EventArgs e)
+        {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             LerDados();
         }

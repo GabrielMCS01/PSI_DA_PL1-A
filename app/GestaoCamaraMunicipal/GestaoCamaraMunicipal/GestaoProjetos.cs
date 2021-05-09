@@ -19,6 +19,12 @@ namespace GestaoCamaraMunicipal
             InitializeComponent();
         }
 
+        private void GestaoProjetos_Load(object sender, EventArgs e)
+        {
+            camaraMunicipal = new GestaoCamaraMunicipalContainer();
+            comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
+        }
+
         private void LerDados(ListBox listBox, Object lista)
         {
             listBox.DataSource = lista;

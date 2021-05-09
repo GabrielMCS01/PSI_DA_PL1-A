@@ -175,7 +175,7 @@ GO
 
 -- Creating table 'FuncionarioSet'
 CREATE TABLE [dbo].[FuncionarioSet] (
-    [Numero] int  NOT NULL,
+    [Numero] int IDENTITY(1,1) NOT NULL,
     [Nome] nvarchar(max)  NOT NULL,
     [Extencao] nvarchar(max)  NOT NULL
 );
