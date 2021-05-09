@@ -54,11 +54,11 @@ namespace GestaoCamaraMunicipal
         {
             try
             {
-                if (textBoxNumero.Text != "" & textBoxNome.Text != "" & comboBoxEspecialidade.SelectedIndex != -1)
+                if (textBoxNome.Text != "" & comboBoxEspecialidade.SelectedIndex != -1)
                 {
                     try
                     {
-                        camaraMunicipal.FuncionarioSet.Add(new Funcionario(Int32.Parse(textBoxNumero.Text), textBoxNome.Text, comboBoxEspecialidade.Text));
+                        camaraMunicipal.FuncionarioSet.Add(new Funcionario(CalculaNumero(), textBoxNome.Text, comboBoxEspecialidade.Text));
                         camaraMunicipal.SaveChanges();
                         LerDados();
                     }
@@ -76,6 +76,11 @@ namespace GestaoCamaraMunicipal
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private int CalculaNumero()
+        {
+            return listBoxFuncionarios.Items.Count +1;
         }
 
         private void btguardarAlteracoes_Click(object sender, EventArgs e)
@@ -122,7 +127,6 @@ namespace GestaoCamaraMunicipal
                     funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
                     textBoxNome.Text = funcionario.Nome;
                     comboBoxEspecialidade.Text = funcionario.Extencao;
-                    textBoxNumero.Text = funcionario.Numero.ToString();
                 }
             }
             catch (Exception ex)
