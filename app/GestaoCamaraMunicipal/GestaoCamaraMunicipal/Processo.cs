@@ -19,7 +19,14 @@ namespace GestaoCamaraMunicipal
         {
             this.Projeto = new HashSet<Projeto>();
         }
-    
+
+        public Processo(DateTime dataInicio, int promotorNIF, int estadoProcessoId)
+        {
+            DataInicio = dataInicio;
+            PromotorNIF = promotorNIF;
+            EstadoProcessoId = estadoProcessoId;
+        }
+
         public int Id { get; set; }
         public System.DateTime DataInicio { get; set; }
         public int PromotorNIF { get; set; }
@@ -29,5 +36,10 @@ namespace GestaoCamaraMunicipal
         public virtual EstadoProcesso EstadoProcesso { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Projeto> Projeto { get; set; }
+
+        public override string ToString()
+        {
+            return Id + "      " + DataInicio.ToString() + " (" + PromotorNIF + ")";
+        }
     }
 }
