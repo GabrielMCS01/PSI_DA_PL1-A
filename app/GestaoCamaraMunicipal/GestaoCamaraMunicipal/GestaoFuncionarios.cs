@@ -54,11 +54,18 @@ namespace GestaoCamaraMunicipal
         {
             try
             {
-                if (textBoxNome.Text != "" & comboBoxEspecialidade.SelectedIndex != -1)
+                if (textBoxNumero.Text != "" & textBoxNome.Text != "" & comboBoxEspecialidade.SelectedIndex != -1)
                 {
-                    camaraMunicipal.FuncionarioSet.Add(new Funcionario(textBoxNome.Text, comboBoxEspecialidade.Text));
-                    camaraMunicipal.SaveChanges();
-                    LerDados();
+                    try
+                    {
+                        camaraMunicipal.FuncionarioSet.Add(new Funcionario(Int32.Parse(textBoxNumero.Text), textBoxNome.Text, comboBoxEspecialidade.Text));
+                        camaraMunicipal.SaveChanges();
+                        LerDados();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
@@ -82,7 +89,6 @@ namespace GestaoCamaraMunicipal
                     {
                         int posicao = listBoxFuncionarios.SelectedIndex;
                         funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
-                        funcionario.Nome = textBoxNome.Text;
                         funcionario.Nome = textBoxNome.Text;
                         funcionario.Extencao = comboBoxEspecialidade.Text;
                         camaraMunicipal.SaveChanges();
@@ -116,6 +122,7 @@ namespace GestaoCamaraMunicipal
                     funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
                     textBoxNome.Text = funcionario.Nome;
                     comboBoxEspecialidade.Text = funcionario.Extencao;
+                    textBoxNumero.Text = funcionario.Numero.ToString();
                 }
             }
             catch (Exception ex)
