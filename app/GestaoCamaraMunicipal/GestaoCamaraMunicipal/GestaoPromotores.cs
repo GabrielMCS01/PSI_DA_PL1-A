@@ -14,26 +14,30 @@ namespace GestaoCamaraMunicipal
     {
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
+
         public GestaoPromotores()
         {
+            // Inicia os componentes do formulário e lê os dados da Base de Dados e coloca-os na ListBox
             InitializeComponent();
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             LerDados();
         }
 
+        // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             formprincipal.Show();
             this.Hide();
         }
 
+        // Faz quando o formulário fecha
         private void GestaoPromotores_FormClosing(object sender, FormClosingEventArgs e)
         {
             camaraMunicipal.Dispose();
             formprincipal.Sair(e);
         }
 
-        // Lê os dados da listBox e limpa as TextBoxs do formúlário
+        // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDados()
         {
             listBoxPromotores.DataSource = camaraMunicipal.PromotorSet.ToList<Promotor>();
@@ -79,7 +83,7 @@ namespace GestaoCamaraMunicipal
             }
         }
 
-        // Botão para Guardar as alterações feitas
+        // Botão para Guardar as alterações feitas no Promotor
         private void btnGuardarAlteracoes_Click(object sender, EventArgs e)
         {
             Promotor promotor = new Promotor();
@@ -137,6 +141,7 @@ namespace GestaoCamaraMunicipal
             Promotor promotor = new Promotor();
             try
             {
+                // Se estiver algum promotor selecionado faz
                 if (listBoxPromotores.SelectedIndex != -1)
                 {
                     // Varíável que recebe o objeto Promotor selecionado na ListBox
@@ -167,12 +172,13 @@ namespace GestaoCamaraMunicipal
             Promotor promotor = new Promotor();
             try
             {
+                // Se estiver algum promotor selecionado faz
                 if (listBoxPromotores.SelectedIndex != -1)
                 {
                     // Varíável que recebe o objeto Promotor selecionado na ListBox
                     promotor = (Promotor)listBoxPromotores.SelectedItem;
 
-                    // Atribui ao objeto anterior as alterações executadas anteriormente no formulário
+                    // Atribui ás TextBoxs os atributos do objeto selecionado
                     maskedTextBoxNIF.Text = promotor.NIF.ToString();
                     txtBoxNome.Text = promotor.Nome;
                     txtBoxMorada.Text = promotor.Morada;
