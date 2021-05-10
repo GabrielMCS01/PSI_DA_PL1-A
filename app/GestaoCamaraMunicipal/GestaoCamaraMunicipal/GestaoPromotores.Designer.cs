@@ -65,7 +65,6 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(725, 24);
             this.menuStrip1.Size = new System.Drawing.Size(589, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
@@ -99,10 +98,6 @@ namespace GestaoCamaraMunicipal
             // lblNIF
             // 
             this.lblNIF.AutoSize = true;
-            this.lblNIF.Location = new System.Drawing.Point(243, 50);
-            // lblNIF
-            // 
-            this.lblNIF.AutoSize = true;
             this.lblNIF.Location = new System.Drawing.Point(336, 41);
             this.lblNIF.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNIF.Name = "lblNIF";
@@ -112,7 +107,6 @@ namespace GestaoCamaraMunicipal
             // 
             // maskedTextBoxNIF
             // 
-            this.maskedTextBoxNIF.Location = new System.Drawing.Point(245, 63);
             this.maskedTextBoxNIF.Location = new System.Drawing.Point(338, 54);
             this.maskedTextBoxNIF.Margin = new System.Windows.Forms.Padding(2);
             this.maskedTextBoxNIF.Mask = "999999999";
@@ -123,7 +117,6 @@ namespace GestaoCamaraMunicipal
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(243, 84);
             this.lblNome.Location = new System.Drawing.Point(336, 75);
             this.lblNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNome.Name = "lblNome";
@@ -133,7 +126,6 @@ namespace GestaoCamaraMunicipal
             // 
             // txtBoxNome
             // 
-            this.txtBoxNome.Location = new System.Drawing.Point(245, 97);
             this.txtBoxNome.Location = new System.Drawing.Point(338, 88);
             this.txtBoxNome.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxNome.Name = "txtBoxNome";
@@ -142,7 +134,6 @@ namespace GestaoCamaraMunicipal
             // 
             // txtBoxMorada
             // 
-            this.txtBoxMorada.Location = new System.Drawing.Point(245, 133);
             this.txtBoxMorada.Location = new System.Drawing.Point(338, 124);
             this.txtBoxMorada.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxMorada.Name = "txtBoxMorada";
@@ -152,7 +143,6 @@ namespace GestaoCamaraMunicipal
             // lblMorada
             // 
             this.lblMorada.AutoSize = true;
-            this.lblMorada.Location = new System.Drawing.Point(245, 120);
             this.lblMorada.Location = new System.Drawing.Point(338, 111);
             this.lblMorada.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMorada.Name = "lblMorada";
@@ -162,7 +152,6 @@ namespace GestaoCamaraMunicipal
             // 
             // txtBoxTelemovel
             // 
-            this.txtBoxTelemovel.Location = new System.Drawing.Point(245, 168);
             this.txtBoxTelemovel.Location = new System.Drawing.Point(338, 159);
             this.txtBoxTelemovel.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxTelemovel.MaxLength = 9;
@@ -173,7 +162,6 @@ namespace GestaoCamaraMunicipal
             // lblTelemovel
             // 
             this.lblTelemovel.AutoSize = true;
-            this.lblTelemovel.Location = new System.Drawing.Point(246, 155);
             this.lblTelemovel.Location = new System.Drawing.Point(339, 146);
             this.lblTelemovel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTelemovel.Name = "lblTelemovel";
@@ -184,7 +172,6 @@ namespace GestaoCamaraMunicipal
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(247, 193);
             this.lblEmail.Location = new System.Drawing.Point(340, 184);
             this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
@@ -194,7 +181,6 @@ namespace GestaoCamaraMunicipal
             // 
             // maskedTextBoxMail
             // 
-            this.maskedTextBoxMail.Location = new System.Drawing.Point(246, 207);
             this.maskedTextBoxMail.Location = new System.Drawing.Point(339, 198);
             this.maskedTextBoxMail.Margin = new System.Windows.Forms.Padding(2);
             this.maskedTextBoxMail.Mask = "aaaaaaaaaaaaaaaaaa@aaaaaaaaa.aaa";
@@ -205,7 +191,6 @@ namespace GestaoCamaraMunicipal
             // lblCodAcesso
             // 
             this.lblCodAcesso.AutoSize = true;
-            this.lblCodAcesso.Location = new System.Drawing.Point(243, 228);
             this.lblCodAcesso.Location = new System.Drawing.Point(336, 219);
             this.lblCodAcesso.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCodAcesso.Name = "lblCodAcesso";
@@ -215,7 +200,6 @@ namespace GestaoCamaraMunicipal
             // 
             // txtBoxCodAcesso
             // 
-            this.txtBoxCodAcesso.Location = new System.Drawing.Point(245, 242);
             this.txtBoxCodAcesso.Location = new System.Drawing.Point(338, 233);
             this.txtBoxCodAcesso.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxCodAcesso.Name = "txtBoxCodAcesso";
@@ -225,7 +209,6 @@ namespace GestaoCamaraMunicipal
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(243, 264);
             this.lblPassword.Location = new System.Drawing.Point(336, 255);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
@@ -235,7 +218,6 @@ namespace GestaoCamaraMunicipal
             // 
             // txtBoxPassword
             // 
-            this.txtBoxPassword.Location = new System.Drawing.Point(245, 278);
             this.txtBoxPassword.Location = new System.Drawing.Point(338, 269);
             this.txtBoxPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtBoxPassword.Name = "txtBoxPassword";
@@ -245,7 +227,6 @@ namespace GestaoCamaraMunicipal
             // 
             // btnRegistar
             // 
-            this.btnRegistar.Location = new System.Drawing.Point(245, 300);
             this.btnRegistar.Location = new System.Drawing.Point(305, 305);
             this.btnRegistar.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegistar.Name = "btnRegistar";
@@ -257,7 +238,6 @@ namespace GestaoCamaraMunicipal
             // 
             // btnGuardarAlteracoes
             // 
-            this.btnGuardarAlteracoes.Location = new System.Drawing.Point(333, 300);
             this.btnGuardarAlteracoes.Location = new System.Drawing.Point(401, 305);
             this.btnGuardarAlteracoes.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarAlteracoes.Name = "btnGuardarAlteracoes";
@@ -269,7 +249,6 @@ namespace GestaoCamaraMunicipal
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(437, 300);
             this.btnRemover.Location = new System.Drawing.Point(497, 305);
             this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemover.Name = "btnRemover";
@@ -293,7 +272,6 @@ namespace GestaoCamaraMunicipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 396);
             this.ClientSize = new System.Drawing.Size(589, 364);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRemover);
@@ -321,6 +299,7 @@ namespace GestaoCamaraMunicipal
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão de Promotores";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoPromotores_FormClosing);
+            this.Load += new System.EventHandler(this.GestaoPromotores_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

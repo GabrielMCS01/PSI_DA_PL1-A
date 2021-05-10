@@ -19,6 +19,7 @@ namespace GestaoCamaraMunicipal
             InitializeComponent();
         }
 
+        // Faz o carregamento da ComboBox com os dados possiveis para chave estrangeira
         private void GestaoProjetos_Load(object sender, EventArgs e)
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
@@ -82,6 +83,11 @@ namespace GestaoCamaraMunicipal
         {
             formprincipal.Show();
             this.Hide();
+        }
+
+        private void textBoxEstadoProjeto_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

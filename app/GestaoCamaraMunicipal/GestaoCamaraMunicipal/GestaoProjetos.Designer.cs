@@ -306,6 +306,7 @@ namespace GestaoCamaraMunicipal
             this.textBoxEstadoProjeto.Name = "textBoxEstadoProjeto";
             this.textBoxEstadoProjeto.Size = new System.Drawing.Size(251, 20);
             this.textBoxEstadoProjeto.TabIndex = 8;
+            this.textBoxEstadoProjeto.TextChanged += new System.EventHandler(this.textBoxEstadoProjeto_TextChanged);
             // 
             // groupBox4
             // 
@@ -366,7 +367,7 @@ namespace GestaoCamaraMunicipal
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GestaoProjetos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão de Projetos";
