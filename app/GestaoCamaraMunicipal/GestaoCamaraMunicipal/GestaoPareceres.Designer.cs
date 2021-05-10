@@ -34,6 +34,8 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoDePromotoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.comboBoxProjetoProcesso = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.comboBoxProjeto = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.checkBoxDependente = new System.Windows.Forms.CheckBox();
@@ -48,8 +50,6 @@ namespace GestaoCamaraMunicipal
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBoxPareceres = new System.Windows.Forms.ListBox();
-            this.comboBoxProjetoProcesso = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,7 +64,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(600, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(291, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -79,7 +79,7 @@ namespace GestaoCamaraMunicipal
             // gestãoDePromotoresToolStripMenuItem
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
@@ -107,8 +107,29 @@ namespace GestaoCamaraMunicipal
             this.groupBox3.Text = "Parecer";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
+            // comboBoxProjetoProcesso
+            // 
+            this.comboBoxProjetoProcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxProjetoProcesso.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxProjetoProcesso.FormattingEnabled = true;
+            this.comboBoxProjetoProcesso.Location = new System.Drawing.Point(6, 156);
+            this.comboBoxProjetoProcesso.Name = "comboBoxProjetoProcesso";
+            this.comboBoxProjetoProcesso.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxProjetoProcesso.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Projeto Processo";
+            // 
             // comboBoxProjeto
             // 
+            this.comboBoxProjeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxProjeto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxProjeto.FormattingEnabled = true;
             this.comboBoxProjeto.Location = new System.Drawing.Point(6, 116);
             this.comboBoxProjeto.Name = "comboBoxProjeto";
@@ -178,6 +199,7 @@ namespace GestaoCamaraMunicipal
             this.btRegistarProjeto.TabIndex = 11;
             this.btRegistarProjeto.Text = "Registar";
             this.btRegistarProjeto.UseVisualStyleBackColor = true;
+            this.btRegistarProjeto.Click += new System.EventHandler(this.btRegistarProjeto_Click);
             // 
             // label5
             // 
@@ -232,28 +254,11 @@ namespace GestaoCamaraMunicipal
             this.listBoxPareceres.Size = new System.Drawing.Size(261, 172);
             this.listBoxPareceres.TabIndex = 3;
             // 
-            // comboBoxProjetoProcesso
-            // 
-            this.comboBoxProjetoProcesso.FormattingEnabled = true;
-            this.comboBoxProjetoProcesso.Location = new System.Drawing.Point(6, 156);
-            this.comboBoxProjetoProcesso.Name = "comboBoxProjetoProcesso";
-            this.comboBoxProjetoProcesso.Size = new System.Drawing.Size(251, 21);
-            this.comboBoxProjetoProcesso.TabIndex = 20;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Projeto Processo";
-            // 
             // GestaoPareceres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 525);
+            this.ClientSize = new System.Drawing.Size(291, 525);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.menuStrip1);

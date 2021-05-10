@@ -23,28 +23,12 @@ namespace GestaoCamaraMunicipal
         private void GestaoProjetos_Load(object sender, EventArgs e)
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
+            
             comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
-        }
+            comboBoxFuncionario.SelectedIndex = -1;
 
-        private void LerDados(ListBox listBox, Object lista)
-        {
-            listBox.DataSource = lista;
-            listBox.SelectedIndex = -1;
-            LimparForm(true);
-            LimparForm(false);
-        }
-
-        private void LimparForm(Boolean Projeto)
-        {
-            if (Projeto == true)
-            {
-                textBoxEstadoProjeto.Clear();
-                comboBoxFuncionario.SelectedIndex = -1;
-            }
-            else
-            {
-
-            }
+            comboBoxProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
+            comboBoxProcesso.SelectedIndex = -1;
         }
 
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,11 +42,28 @@ namespace GestaoCamaraMunicipal
             formprincipal.Sair(e);
         }
 
+        private void LerDados()
+        {
+            listBoxProjetos.DataSource = camaraMunicipal.ProjetoSet.ToList<Projeto>();
+            listBoxProjetos.SelectedIndex = -1;
+            LimparForm();
+        }
+
+        // Limpa todas as TextBoxs do formulário e tira o index selecionado na ListBox
+        private void LimparForm()
+        {
+            textBoxEstadoProjeto.Clear();
+            comboBoxFuncionario.SelectedIndex = -1;
+            dateTimePickerProjeto.Value = DateTime.Now;
+            comboBoxProcesso.SelectedIndex = -1;
+            checkBoxDependente.Checked = false;
+        }
+
         private void btRegistarProjeto_Click(object sender, EventArgs e)
         {
             try
             {
-                if (textBoxEstadoProjeto.Text != "" & comboBoxFuncionario.SelectedIndex != -1)
+                if (textBoxEstadoProjeto.Text != "" || comboBoxFuncionario.SelectedIndex != -1 || comboBoxProcesso.SelectedIndex != -1)
                 {
                     /*camaraMunicipal.ProjetoSet.Add(new Projeto(textBoxEstadoProjeto.Text, comboBoxFuncionario.Text));
                     camaraMunicipal.SaveChanges();

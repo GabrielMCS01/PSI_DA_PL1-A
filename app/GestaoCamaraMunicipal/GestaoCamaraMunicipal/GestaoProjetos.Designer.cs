@@ -44,7 +44,7 @@ namespace GestaoCamaraMunicipal
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBoxParecer = new System.Windows.Forms.ComboBox();
+            this.comboBoxProcesso = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.checkBoxDependente = new System.Windows.Forms.CheckBox();
             this.dateTimePickerProjeto = new System.Windows.Forms.DateTimePicker();
@@ -150,9 +150,11 @@ namespace GestaoCamaraMunicipal
             // dateTimePickerDocumento
             // 
             this.dateTimePickerDocumento.Location = new System.Drawing.Point(6, 72);
+            this.dateTimePickerDocumento.MinDate = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
             this.dateTimePickerDocumento.Name = "dateTimePickerDocumento";
             this.dateTimePickerDocumento.Size = new System.Drawing.Size(251, 20);
             this.dateTimePickerDocumento.TabIndex = 3;
+            this.dateTimePickerDocumento.Value = new System.DateTime(2021, 5, 10, 17, 40, 15, 0);
             // 
             // textBoxTitulo
             // 
@@ -190,7 +192,7 @@ namespace GestaoCamaraMunicipal
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.comboBoxParecer);
+            this.groupBox3.Controls.Add(this.comboBoxProcesso);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.checkBoxDependente);
             this.groupBox3.Controls.Add(this.dateTimePickerProjeto);
@@ -209,22 +211,24 @@ namespace GestaoCamaraMunicipal
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Projeto";
             // 
-            // comboBoxParecer
+            // comboBoxProcesso
             // 
-            this.comboBoxParecer.FormattingEnabled = true;
-            this.comboBoxParecer.Location = new System.Drawing.Point(9, 151);
-            this.comboBoxParecer.Name = "comboBoxParecer";
-            this.comboBoxParecer.Size = new System.Drawing.Size(251, 21);
-            this.comboBoxParecer.TabIndex = 18;
+            this.comboBoxProcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxProcesso.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxProcesso.FormattingEnabled = true;
+            this.comboBoxProcesso.Location = new System.Drawing.Point(9, 151);
+            this.comboBoxProcesso.Name = "comboBoxProcesso";
+            this.comboBoxProcesso.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxProcesso.TabIndex = 18;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 135);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 13);
+            this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Parecer:";
+            this.label7.Text = "Processo:";
             // 
             // checkBoxDependente
             // 
@@ -239,11 +243,11 @@ namespace GestaoCamaraMunicipal
             // dateTimePickerProjeto
             // 
             this.dateTimePickerProjeto.Location = new System.Drawing.Point(9, 112);
-            this.dateTimePickerProjeto.MinDate = new System.DateTime(2021, 5, 7, 0, 0, 0, 0);
+            this.dateTimePickerProjeto.MinDate = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
             this.dateTimePickerProjeto.Name = "dateTimePickerProjeto";
             this.dateTimePickerProjeto.Size = new System.Drawing.Size(251, 20);
             this.dateTimePickerProjeto.TabIndex = 15;
-            this.dateTimePickerProjeto.Value = new System.DateTime(2021, 5, 7, 10, 33, 35, 0);
+            this.dateTimePickerProjeto.Value = new System.DateTime(2021, 5, 10, 17, 40, 35, 0);
             // 
             // label6
             // 
@@ -293,6 +297,7 @@ namespace GestaoCamaraMunicipal
             // 
             // comboBoxFuncionario
             // 
+            this.comboBoxFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxFuncionario.FormattingEnabled = true;
             this.comboBoxFuncionario.Location = new System.Drawing.Point(9, 72);
@@ -411,7 +416,7 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ListBox listBoxDocumentos;
-        private System.Windows.Forms.ComboBox comboBoxParecer;
+        private System.Windows.Forms.ComboBox comboBoxProcesso;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBoxDependente;
         private System.Windows.Forms.MenuStrip menuStrip1;

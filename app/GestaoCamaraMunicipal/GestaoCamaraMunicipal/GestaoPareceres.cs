@@ -45,6 +45,9 @@ namespace GestaoCamaraMunicipal
 
         }
 
-        
+        private void btRegistarProjeto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
