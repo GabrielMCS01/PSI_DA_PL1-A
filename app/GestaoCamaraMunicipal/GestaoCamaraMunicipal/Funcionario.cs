@@ -25,14 +25,7 @@ namespace GestaoCamaraMunicipal
         public int Numero { get; set; }
         public string Nome { get; set; }
         public string Extencao { get; set; }
-
-        public Funcionario(int numero, string nome, string extencao)
-        {
-            Numero = numero;
-            Nome = nome;
-            Extencao = extencao;
-        }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parecer> Parecer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

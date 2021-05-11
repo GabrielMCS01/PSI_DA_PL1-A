@@ -8,8 +8,9 @@ namespace GestaoCamaraMunicipal
 {
     public partial class Funcionario
     {
-        public Funcionario(string nome, string extensao)
+        public Funcionario(int id, string nome, string extensao)
         {
+            this.Numero = id;
             this.Parecer = new HashSet<Parecer>();
             this.Especialista = new HashSet<Especialista>();
             this.ProjetoAtribuido = new HashSet<ProjetoAtribuido>();

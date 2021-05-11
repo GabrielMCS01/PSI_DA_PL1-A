@@ -19,7 +19,7 @@ namespace GestaoCamaraMunicipal
         {
             this.Processo = new HashSet<Processo>();
         }
-
+    
         public int Id { get; set; }
         public string DescricaoEstado { get; set; }
     

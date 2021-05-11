@@ -99,5 +99,14 @@ namespace GestaoCamaraMunicipal
                 Environment.Exit(1);
             }
         }
+
+        private void gestãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Gestao form = new Gestao();
+            form.Show();
+
+            // Esconde este menu
+            this.Hide();
+        }
     }
 }

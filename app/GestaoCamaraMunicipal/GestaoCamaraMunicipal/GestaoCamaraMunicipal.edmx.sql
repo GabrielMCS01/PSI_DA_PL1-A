@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/06/2021 11:44:05
+-- Date Created: 05/11/2021 18:35:55
 -- Generated from EDMX file: C:\Users\badal\OneDrive\Documentos\GitHub\PSI_DA_PL1-A\app\GestaoCamaraMunicipal\GestaoCamaraMunicipal\GestaoCamaraMunicipal.edmx
 -- --------------------------------------------------
 
@@ -158,7 +158,8 @@ GO
 CREATE TABLE [dbo].[TipoProjetoSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [NrDiasAprovacao] int  NOT NULL,
-    [TipoProjetoId] int  NOT NULL
+    [TipoProjetoId] int  NULL,
+    [Designacao] nvarchar(max)  NOT NULL
 );
 GO
 

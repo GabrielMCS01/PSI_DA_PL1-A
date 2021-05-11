@@ -23,7 +23,8 @@ namespace GestaoCamaraMunicipal
     
         public int Id { get; set; }
         public int NrDiasAprovacao { get; set; }
-        public int TipoProjetoId { get; set; }
+        public Nullable<int> TipoProjetoId { get; set; }
+        public string Designacao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Projeto> Projeto { get; set; }

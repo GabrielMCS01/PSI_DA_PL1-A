@@ -19,7 +19,7 @@ namespace GestaoCamaraMunicipal
         {
             this.Projeto = new HashSet<Projeto>();
         }
-
+    
         public int Id { get; set; }
         public System.DateTime DataInicio { get; set; }
         public int PromotorNIF { get; set; }

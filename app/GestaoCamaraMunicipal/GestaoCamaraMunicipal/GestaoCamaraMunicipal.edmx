@@ -133,7 +133,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NrDiasAprovacao" Type="int" Nullable="false" />
-    <Property Name="TipoProjetoId" Type="int" Nullable="false" />
+    <Property Name="TipoProjetoId" Type="int" Nullable="true" />
+    <Property Name="Designacao" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ParecerSet">
     <Key>
@@ -469,9 +470,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NrDiasAprovacao" Type="Int32" Nullable="false" />
-          <Property Name="TipoProjetoId" Type="Int32" Nullable="false" />
+          <Property Name="TipoProjetoId" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Projeto" Relationship="GestaoCamaraMunicipal.TipoProjetoProjeto" FromRole="TipoProjeto" ToRole="Projeto" />
           <NavigationProperty Name="Especialista" Relationship="GestaoCamaraMunicipal.TipoProjetoEspecialista" FromRole="TipoProjeto" ToRole="Especialista" />
+          <Property Name="Designacao" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Parecer">
           <Key>
@@ -735,6 +737,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="NrDiasAprovacao" ColumnName="NrDiasAprovacao" />
           <ScalarProperty Name="TipoProjetoId" ColumnName="TipoProjetoId" />
+          <ScalarProperty Name="Designacao" ColumnName="Designacao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
