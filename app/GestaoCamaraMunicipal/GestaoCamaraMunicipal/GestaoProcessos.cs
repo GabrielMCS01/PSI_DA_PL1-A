@@ -21,24 +21,14 @@ namespace GestaoCamaraMunicipal
             InitializeComponent();
         }
 
-<<<<<<< Updated upstream
-        // Coloca os dados dos Processos na listBox provenientes da Base de Dados
-        public void lerProcessos()
-=======
         private void lerProcessos()
->>>>>>> Stashed changes
         {
             listBoxProcessos.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
             listBoxProcessos.SelectedIndex = -1;
             LimparDados();
         }
 
-<<<<<<< Updated upstream
-        // Coloca os dados dos Promotores na listBox provenientes da Base de Dados
-        public void lerPromotor()
-=======
         private void lerPromotor()
->>>>>>> Stashed changes
         {
             comboBoxPromotor.DataSource = camaraMunicipal.PromotorSet.ToList<Promotor>();
             comboBoxPromotor.SelectedIndex = -1;
@@ -81,32 +71,16 @@ namespace GestaoCamaraMunicipal
                 // Se todas as TextBoxs tiverem preenchidas Faz
                 if (comboBoxPromotor.SelectedIndex != -1 & textBoxEstadoProcesso.Text != "")
                 {
-<<<<<<< Updated upstream
-                    // Cria um Novo Processo, Estado Processo e um Promotor
-                    EstadoProcesso estadoProcesso = new EstadoProcesso();
-                    Processo processo = new Processo();
-                    Promotor promotor = new Promotor();
-
-                    // Recebe o promotor selecionado na ComboBox
-=======
                     Processo processo = new Processo();
                     Promotor promotor = new Promotor();
                     EstadoProcesso estadoProcesso = new EstadoProcesso();
 
->>>>>>> Stashed changes
                     promotor = (Promotor)comboBoxPromotor.SelectedItem;
 
                     // Cria uma instância do Estado de Processo e o Processo
                     estadoProcesso = new EstadoProcesso(textBoxEstadoProcesso.Text);
-<<<<<<< Updated upstream
-                    processo = new Processo(dateTimePickerInicioProcesso.Value, promotor.NIF, estadoProcesso.Id);
-
-                    // Adiciona o Estado de Processo e o Processo e guarda as alterações na Base de Dados
-                    camaraMunicipal.EstadoProcessoSet.Add(estadoProcesso);
-=======
                     processo = new Processo(dateTimePickerInicioProcesso.Value, promotor.NIF);
                     processo.EstadoProcesso = estadoProcesso;
->>>>>>> Stashed changes
                     camaraMunicipal.ProcessoSet.Add(processo);
                     camaraMunicipal.SaveChanges();
 
@@ -134,33 +108,10 @@ namespace GestaoCamaraMunicipal
                 Processo processo = new Processo();
                 EstadoProcesso estadoProcesso = new EstadoProcesso();
                 processo = (Processo)listBoxProcessos.SelectedItem;
-<<<<<<< Updated upstream
-
-                // Para cada estado de Processo no Processo
-                foreach (EstadoProcesso estadoProcesso in camaraMunicipal.EstadoProcessoSet.ToList<EstadoProcesso>())
-                {
-                    // Se o Processo ID for Igual
-                    if (processo.EstadoProcessoId == estadoProcesso.Id)
-                    {
-                        // Remove o Estado de Processo do Processo
-                        camaraMunicipal.EstadoProcessoSet.Remove(estadoProcesso);
-                    }
-                }
-
-                // Remove o Processo e guarda as alterações na Base de dados
-                camaraMunicipal.ProcessoSet.Remove(processo);
-                camaraMunicipal.SaveChanges();
-
-                // Elimina da ListBox os estados do Projeto
-                listBoxEstadoProcesso.DataSource = null;
-
-                // Recarrega as ListBoxs e limpa o formulário
-=======
                 estadoProcesso = processo.EstadoProcesso;
                 camaraMunicipal.EstadoProcessoSet.Remove(estadoProcesso);
                 camaraMunicipal.ProcessoSet.Remove(processo);
                 camaraMunicipal.SaveChanges();
->>>>>>> Stashed changes
                 lerProcessos();
             }
         }
@@ -168,24 +119,6 @@ namespace GestaoCamaraMunicipal
         // Botão para Guardar as alterações feitas no Funcionário
         private void btnAtualizarProcesso_Click(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            // Se estiver algum Funcionário selecionado e as TextBoxs tiverem preenchidas faz 
-            if (listBoxEstadoProcesso.SelectedIndex != -1 & textBoxEstadoProcesso.Text != "")
-            {
-                // Varíável que recebe o objeto Estado de Processo selecionado na ListBox
-                EstadoProcesso estadoProcesso = new EstadoProcesso();
-                estadoProcesso = (EstadoProcesso)listBoxEstadoProcesso.SelectedItem;
-
-                // Atribui ao objeto anterior as alterações executadas anteriormente no formulário
-                estadoProcesso.DescricaoEstado = textBoxEstadoProcesso.Text;
-
-                // Guarda as alterações do objeto na Base de Dados
-                camaraMunicipal.SaveChanges();
-
-                // Recarrega as ListBox
-                lerProcessos();
-
-=======
             if (listBoxProcessos.SelectedIndex != -1 && textBoxEstadoProcesso.Text != "")
             {
                 int selecionado = -1;
@@ -196,7 +129,6 @@ namespace GestaoCamaraMunicipal
                 selecionado = listBoxProcessos.SelectedIndex;
                 lerProcessos();
                 listBoxProcessos.SelectedIndex = selecionado;
->>>>>>> Stashed changes
                 MessageBox.Show("Alteração guardada com sucesso!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -211,34 +143,11 @@ namespace GestaoCamaraMunicipal
             // Se estiver algum Processo selecionado faz
             if (listBoxProcessos.SelectedIndex != -1)
             {
-<<<<<<< Updated upstream
-                // Variável de lista de Estados de Processos 
-                List<EstadoProcesso> estadoProcessos = new List<EstadoProcesso>();
-
-                // Cria uma instância nova de Processo e recebe o item selecionado na ListBox
-                Processo processo = new Processo();
-                processo = (Processo)listBoxProcessos.SelectedItem;
-
-                // Para cada Estado de Processo do Processo selecionado anteriormente
-                foreach (EstadoProcesso estadoProcesso in camaraMunicipal.EstadoProcessoSet.ToList<EstadoProcesso>())
-                {
-                    // Se o Processo ID for Igual
-                    if (processo.EstadoProcessoId == estadoProcesso.Id)
-                    {
-                        // Adiciona o Estado Processo á Lista
-                        estadoProcessos.Add(estadoProcesso);
-                    }
-                }
-
-                // Carrega na ListBox a lista de Estados de Processos selecionados anteriormente
-                listBoxEstadoProcesso.DataSource = estadoProcessos;
-=======
                 Processo processo = new Processo();
                 processo = (Processo)listBoxProcessos.SelectedItem;
                 textBoxEstadoProcesso.Text = processo.EstadoProcesso.DescricaoEstado;
                 dateTimePickerInicioProcesso.Value = processo.DataInicio;
                 comboBoxPromotor.Text = processo.Promotor.ToString();
->>>>>>> Stashed changes
             }
         }
     }

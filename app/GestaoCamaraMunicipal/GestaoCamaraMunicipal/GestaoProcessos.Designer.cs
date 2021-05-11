@@ -59,11 +59,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-<<<<<<< Updated upstream
-            this.menuStrip1.Size = new System.Drawing.Size(1261, 28);
-=======
             this.menuStrip1.Size = new System.Drawing.Size(831, 28);
->>>>>>> Stashed changes
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,11 +84,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxProcessos.FormattingEnabled = true;
             this.listBoxProcessos.ItemHeight = 16;
             this.listBoxProcessos.Location = new System.Drawing.Point(4, 19);
-<<<<<<< Updated upstream
-            this.listBoxProcessos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
             this.listBoxProcessos.Margin = new System.Windows.Forms.Padding(4);
->>>>>>> Stashed changes
             this.listBoxProcessos.Name = "listBoxProcessos";
             this.listBoxProcessos.Size = new System.Drawing.Size(344, 372);
             this.listBoxProcessos.TabIndex = 3;
@@ -102,15 +94,9 @@ namespace GestaoCamaraMunicipal
             // 
             this.groupBox1.Controls.Add(this.listBoxProcessos);
             this.groupBox1.Location = new System.Drawing.Point(13, 42);
-<<<<<<< Updated upstream
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
->>>>>>> Stashed changes
             this.groupBox1.Size = new System.Drawing.Size(352, 395);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
@@ -172,11 +158,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btnCriarProcesso
             // 
-<<<<<<< Updated upstream
-            this.btnCriarProcesso.Location = new System.Drawing.Point(21, 274);
-=======
             this.btnCriarProcesso.Location = new System.Drawing.Point(24, 319);
->>>>>>> Stashed changes
             this.btnCriarProcesso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCriarProcesso.Name = "btnCriarProcesso";
             this.btnCriarProcesso.Size = new System.Drawing.Size(119, 43);
@@ -187,11 +169,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btnRemoverProcesso
             // 
-<<<<<<< Updated upstream
-            this.btnRemoverProcesso.Location = new System.Drawing.Point(157, 274);
-=======
             this.btnRemoverProcesso.Location = new System.Drawing.Point(160, 319);
->>>>>>> Stashed changes
             this.btnRemoverProcesso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoverProcesso.Name = "btnRemoverProcesso";
             this.btnRemoverProcesso.Size = new System.Drawing.Size(119, 43);
@@ -202,11 +180,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btnAtualizarProcesso
             // 
-<<<<<<< Updated upstream
-            this.btnAtualizarProcesso.Location = new System.Drawing.Point(295, 274);
-=======
             this.btnAtualizarProcesso.Location = new System.Drawing.Point(298, 319);
->>>>>>> Stashed changes
             this.btnAtualizarProcesso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAtualizarProcesso.Name = "btnAtualizarProcesso";
             this.btnAtualizarProcesso.Size = new System.Drawing.Size(119, 43);
@@ -226,58 +200,20 @@ namespace GestaoCamaraMunicipal
             this.groupBox2.Controls.Add(this.textBoxEstadoProcesso);
             this.groupBox2.Controls.Add(this.lblPromotor);
             this.groupBox2.Controls.Add(this.label1);
-<<<<<<< Updated upstream
-            this.groupBox2.Location = new System.Drawing.Point(804, 42);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-=======
             this.groupBox2.Location = new System.Drawing.Point(373, 42);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
->>>>>>> Stashed changes
             this.groupBox2.Size = new System.Drawing.Size(445, 395);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gestão de Processos";
             // 
-<<<<<<< Updated upstream
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.listBoxEstadoProcesso);
-            this.groupBox3.Location = new System.Drawing.Point(396, 42);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox3.Size = new System.Drawing.Size(363, 395);
-            this.groupBox3.TabIndex = 24;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Estados do Processo";
-            // 
-            // listBoxEstadoProcesso
-            // 
-            this.listBoxEstadoProcesso.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxEstadoProcesso.FormattingEnabled = true;
-            this.listBoxEstadoProcesso.ItemHeight = 16;
-            this.listBoxEstadoProcesso.Location = new System.Drawing.Point(4, 19);
-            this.listBoxEstadoProcesso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.listBoxEstadoProcesso.Name = "listBoxEstadoProcesso";
-            this.listBoxEstadoProcesso.Size = new System.Drawing.Size(355, 372);
-            this.listBoxEstadoProcesso.TabIndex = 3;
-            // 
-=======
->>>>>>> Stashed changes
             // GestaoProcessos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< Updated upstream
-            this.ClientSize = new System.Drawing.Size(1261, 450);
-            this.Controls.Add(this.groupBox3);
-=======
             this.ClientSize = new System.Drawing.Size(831, 450);
->>>>>>> Stashed changes
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
