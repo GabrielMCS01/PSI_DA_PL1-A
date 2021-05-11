@@ -16,6 +16,7 @@ namespace GestaoCamaraMunicipal
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         public GestaoPareceres()
         {
+            // Inicia os componentes do formulário
             InitializeComponent();
         }
 
@@ -29,12 +30,14 @@ namespace GestaoCamaraMunicipal
         // Tem que se selecionar um processo do projeto escolhido
         //comboBoxProjetoProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Projeto>();
 
+        // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             formprincipal.Show();
             this.Hide();
         }
 
+        // Faz quando o formulário fecha
         private void GestaoPareceres_FormClosing(object sender, FormClosingEventArgs e)
         {
             formprincipal.Sair(e);
@@ -45,6 +48,7 @@ namespace GestaoCamaraMunicipal
 
         }
 
+        // Botão para Registar o Parecer
         private void btRegistarProjeto_Click(object sender, EventArgs e)
         {
 

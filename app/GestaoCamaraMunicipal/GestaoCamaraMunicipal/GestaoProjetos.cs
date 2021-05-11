@@ -16,6 +16,7 @@ namespace GestaoCamaraMunicipal
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         public GestaoProjetos()
         {
+            // Inicia os componentes do formulário
             InitializeComponent();
         }
 
@@ -31,17 +32,20 @@ namespace GestaoCamaraMunicipal
             comboBoxProcesso.SelectedIndex = -1;
         }
 
+        // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             formprincipal.Show();
             this.Hide();
         }
 
+        // Faz quando o formulário fecha
         private void GestaoProjetos_FormClosing(object sender, FormClosingEventArgs e)
         {
             formprincipal.Sair(e);
         }
 
+        // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDados()
         {
             listBoxProjetos.DataSource = camaraMunicipal.ProjetoSet.ToList<Projeto>();
@@ -59,14 +63,19 @@ namespace GestaoCamaraMunicipal
             checkBoxDependente.Checked = false;
         }
 
+        // Botão para Registar o Projeto
         private void btRegistarProjeto_Click(object sender, EventArgs e)
         {
             try
             {
+                // Se todas as TextBoxs tiverem preenchidas Faz
                 if (textBoxEstadoProjeto.Text != "" || comboBoxFuncionario.SelectedIndex != -1 || comboBoxProcesso.SelectedIndex != -1)
                 {
+                    // Adiciona o Projeto e guarda as alterações na Base de Dados
                     /*camaraMunicipal.ProjetoSet.Add(new Projeto(textBoxEstadoProjeto.Text, comboBoxFuncionario.Text));
                     camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox e limpa o formulário
                     LerDados();*/
                 }
                 else
@@ -80,6 +89,7 @@ namespace GestaoCamaraMunicipal
             }
         }
 
+        // Volta ao menu principal ?? Já existe um em cima
         private void gestãoDePromotoresToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             formprincipal.Show();
