@@ -58,6 +58,8 @@
     <Compile Include="ClassEstadoProcesso.cs" />
     <Compile Include="ClassFuncionario.cs" />
     <Compile Include="ClassProcesso.cs" />
+    <Compile Include="ClassProjeto.cs" />
+    <Compile Include="ClassProjetoAtribuido.cs" />
     <Compile Include="ClassPromotor.cs" />
     <Compile Include="Documento.cs">
       <DependentUpon>GestaoCamaraMunicipal.tt</DependentUpon>
