@@ -8,12 +8,11 @@ namespace GestaoCamaraMunicipal
 {
     public partial class Processo
     {
-        public Processo(DateTime dataInicio, int promotorNIF, int estadoProcessoId)
+        public Processo(DateTime dataInicio, int promotorNIF)
         {
             this.Projeto = new HashSet<Projeto>();
             this.DataInicio = dataInicio;
             this.PromotorNIF = promotorNIF;
-            this.EstadoProcessoId = estadoProcessoId;
         }
         public override string ToString()
         {
