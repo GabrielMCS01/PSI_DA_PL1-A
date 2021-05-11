@@ -61,6 +61,7 @@
     <Compile Include="ClassProjeto.cs" />
     <Compile Include="ClassProjetoAtribuido.cs" />
     <Compile Include="ClassPromotor.cs" />
+    <Compile Include="ClassTipoProjeto.cs" />
     <Compile Include="Documento.cs">
       <DependentUpon>GestaoCamaraMunicipal.tt</DependentUpon>
     </Compile>

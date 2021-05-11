@@ -95,10 +95,5 @@ namespace GestaoCamaraMunicipal
             formprincipal.Show();
             this.Hide();
         }
-
-        private void textBoxEstadoProjeto_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

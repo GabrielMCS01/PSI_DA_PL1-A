@@ -31,6 +31,7 @@ namespace GestaoCamaraMunicipal
         // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDados()
         {
+            comboBoxEspecialidade.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
             listBoxFuncionarios.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
             listBoxFuncionarios.SelectedIndex = -1;
             LimparForm();
