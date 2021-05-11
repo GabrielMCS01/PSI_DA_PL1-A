@@ -13,7 +13,6 @@ namespace GestaoCamaraMunicipal
             Designacao = designacao;
         }
 
-
         public override string ToString()
         {
             return Designacao;
