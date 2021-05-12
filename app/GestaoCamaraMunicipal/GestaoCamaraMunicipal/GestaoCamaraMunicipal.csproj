@@ -132,6 +132,7 @@
     <Compile Include="GestaoPromotores.Designer.cs">
       <DependentUpon>GestaoPromotores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mensagens.cs" />
     <Compile Include="Parecer.cs">
       <DependentUpon>GestaoCamaraMunicipal.tt</DependentUpon>
     </Compile>

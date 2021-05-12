@@ -14,6 +14,8 @@ namespace GestaoCamaraMunicipal
     {
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
+        Mensagens mensagem = new Mensagens();
+
         public GestaoProjetos()
         {
             // Inicia os componentes do formulário
@@ -80,12 +82,12 @@ namespace GestaoCamaraMunicipal
                 }
                 else
                 {
-                    MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensagem.ErroPreencherCampos();
                 }
             }
             catch (FormatException ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 

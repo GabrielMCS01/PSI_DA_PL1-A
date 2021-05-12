@@ -10,12 +10,13 @@ namespace GestaoCamaraMunicipal
     {
         public TipoDocumento(string designacao)
         {
+            this.Documento = new HashSet<Documento>();
             Designacao = designacao;
         }
 
         public override string ToString()
         {
-            return Designacao;
+            return string.Format("{0}", Designacao);
         }
     }
 }

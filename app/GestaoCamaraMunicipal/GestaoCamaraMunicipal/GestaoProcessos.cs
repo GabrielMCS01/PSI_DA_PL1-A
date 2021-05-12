@@ -14,6 +14,7 @@ namespace GestaoCamaraMunicipal
     {
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Form1 formprincipal = new Form1();
+        Mensagens mensagem = new Mensagens();
 
         public GestaoProcessos()
         {
@@ -89,12 +90,12 @@ namespace GestaoCamaraMunicipal
                 }
                 else
                 {
-                    MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensagem.ErroPreencherCampos();
                 }
             }
             catch( Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 
@@ -114,6 +115,10 @@ namespace GestaoCamaraMunicipal
                 camaraMunicipal.SaveChanges();
                 lerProcessos();
             }
+            else
+            {
+                mensagem.AvisoSelecionarPrimeiro("processo");
+            }
         }
 
         // Botão para Guardar as alterações feitas no Funcionário
@@ -129,12 +134,11 @@ namespace GestaoCamaraMunicipal
                 selecionado = listBoxProcessos.SelectedIndex;
                 lerProcessos();
                 listBoxProcessos.SelectedIndex = selecionado;
-                MessageBox.Show("Alteração guardada com sucesso!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                mensagem.Sucesso();
             }
             else
             {
-                MessageBox.Show("Tem de Selecionar um Processo e Preencher Todos os Campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.AvisoSelecionarPrimeiro("Processo e Preencher Todos os Campos");
             }
         }
 

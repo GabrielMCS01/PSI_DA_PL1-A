@@ -14,5 +14,10 @@ namespace GestaoCamaraMunicipal
             this.Especialista = new HashSet<Especialista>();
             this.NrDiasAprovacao = nDias;
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0} - {1} ({2} dias de aprovação)", this.Projeto, this.Especialista, this.NrDiasAprovacao);
+        }
     }
 }

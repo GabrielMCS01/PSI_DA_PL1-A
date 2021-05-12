@@ -13,6 +13,7 @@ namespace GestaoCamaraMunicipal
     public partial class Form1 : Form
     {
         private GestaoCamaraMunicipalContainer camaraMunicipal;
+        Mensagens mensagem = new Mensagens();
         public Form1()
         {
             // Inicia os componentes do formulário
@@ -85,7 +86,7 @@ namespace GestaoCamaraMunicipal
         public void Sair(FormClosingEventArgs e)
         {
             // Confirma ao utilizador se este quer Sair do programa
-            DialogResult resposta = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resposta = mensagem.Sair();
             
             // Caso a Resposta seja não
             if (resposta == DialogResult.No)

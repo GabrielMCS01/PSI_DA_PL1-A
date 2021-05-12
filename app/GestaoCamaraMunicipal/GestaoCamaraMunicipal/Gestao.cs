@@ -14,6 +14,7 @@ namespace GestaoCamaraMunicipal
     {
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
+        Mensagens mensagem = new Mensagens();
           
         public Gestao()
         {
@@ -45,15 +46,16 @@ namespace GestaoCamaraMunicipal
                     camaraMunicipal.TipoDocumentoSet.Add(new TipoDocumento(textBoxDocumento.Text));
                     camaraMunicipal.SaveChanges();
                     lerDados();
+                    textBoxDocumento.Clear();
                 }
                 else
                 {
-                    MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensagem.ErroPreencherCampos();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 
@@ -68,11 +70,16 @@ namespace GestaoCamaraMunicipal
                     camaraMunicipal.TipoDocumentoSet.Remove(tipoDocumento);
                     camaraMunicipal.SaveChanges();
                     lerDados();
+                    textBoxDocumento.Clear();
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("documento");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 

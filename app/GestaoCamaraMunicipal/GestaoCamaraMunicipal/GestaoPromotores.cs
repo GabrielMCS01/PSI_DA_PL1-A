@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoCamaraMunicipal
@@ -14,11 +8,16 @@ namespace GestaoCamaraMunicipal
     {
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
+        Mensagens mensagem = new Mensagens();
 
         public GestaoPromotores()
         {
             // Inicia os componentes do formulário e lê os dados da Base de Dados e coloca-os na ListBox
             InitializeComponent();
+        }
+
+        private void GestaoPromotores_Load(object sender, EventArgs e)
+        {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             LerDados();
         }
@@ -74,12 +73,12 @@ namespace GestaoCamaraMunicipal
                 }
                 else
                 {
-                    MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensagem.ErroPreencherCampos();
                 }
             }
             catch(FormatException ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 
@@ -118,21 +117,21 @@ namespace GestaoCamaraMunicipal
 
                         // Seleciona o index utilizado anteriormente
                         listBoxPromotores.SelectedIndex = posicao;
-                        MessageBox.Show("Alteração guardada com sucesso!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mensagem.Sucesso();
                     }
                     else
                     {
-                        MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        mensagem.ErroPreencherCampos();
                     }                   
                 }
                 else
                 {
-                    MessageBox.Show("Selecione primeiro um promotor.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mensagem.AvisoSelecionarPrimeiro("promotor");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
         // Botão para Remover um promotor
@@ -157,26 +156,25 @@ namespace GestaoCamaraMunicipal
                 }
                 else
                 {
-                    MessageBox.Show("Selecione primeiro um promotor.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mensagem.AvisoSelecionarPrimeiro("promotor");
                 }
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 
         // Mudança no index selecionado na ListBox
         private void listBoxPromotores_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Promotor promotor = new Promotor();
             try
             {
                 // Se estiver algum promotor selecionado faz
                 if (listBoxPromotores.SelectedIndex != -1)
                 {
                     // Varíável que recebe o objeto Promotor selecionado na ListBox
-                    promotor = (Promotor)listBoxPromotores.SelectedItem;
+                    Promotor promotor = (Promotor)listBoxPromotores.SelectedItem;
 
                     // Atribui ás TextBoxs os atributos do objeto selecionado
                     maskedTextBoxNIF.Text = promotor.NIF.ToString();
@@ -190,13 +188,8 @@ namespace GestaoCamaraMunicipal
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
-        }
-
-        private void GestaoPromotores_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

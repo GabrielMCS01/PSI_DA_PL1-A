@@ -14,6 +14,7 @@ namespace GestaoCamaraMunicipal
     {
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
+        Mensagens mensagem = new Mensagens();
 
         public GestaoFuncionarios()
         {
@@ -76,17 +77,17 @@ namespace GestaoCamaraMunicipal
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        mensagem.Erro(ex);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mensagem.ErroPreencherCampos();
                 }
             }
             catch (FormatException ex)
             {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 
@@ -127,21 +128,21 @@ namespace GestaoCamaraMunicipal
 
                         // Seleciona o index utilizado anteriormente
                         listBoxFuncionarios.SelectedIndex = posicao;
-                        MessageBox.Show("Alteração guardada com sucesso!", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mensagem.Sucesso();
                     }
                     else
                     {
-                        MessageBox.Show("Tem de Preencher todos os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        mensagem.ErroPreencherCampos();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Selecione primeiro um funcionário.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mensagem.AvisoSelecionarPrimeiro("funcionário");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 
@@ -164,21 +165,20 @@ namespace GestaoCamaraMunicipal
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
 
         // Botão para Remover um Funcionário
         private void btremover_Click(object sender, EventArgs e)
         {
-            Funcionario funcionario = new Funcionario();
             try
             {
                 // Se estiver algum Funcionário selecionado faz
                 if (listBoxFuncionarios.SelectedIndex != -1)
                 {
                     // Varíável que recebe o objeto Funcionário selecionado na ListBox
-                    funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
+                    Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
 
                     // Remove o Funcionário e guarda as alterações na Base de dados
                     camaraMunicipal.FuncionarioSet.Remove(funcionario);
@@ -190,12 +190,12 @@ namespace GestaoCamaraMunicipal
                 }
                 else
                 {
-                    MessageBox.Show("Selecione primeiro um promotor.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    mensagem.AvisoSelecionarPrimeiro("funcionários");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mensagem.Erro(ex);
             }
         }
     }
