@@ -80,7 +80,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxFuncionarios.FormattingEnabled = true;
             this.listBoxFuncionarios.ItemHeight = 16;
             this.listBoxFuncionarios.Location = new System.Drawing.Point(4, 19);
-            this.listBoxFuncionarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxFuncionarios.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxFuncionarios.Name = "listBoxFuncionarios";
             this.listBoxFuncionarios.Size = new System.Drawing.Size(344, 334);
             this.listBoxFuncionarios.TabIndex = 3;
@@ -89,7 +89,7 @@ namespace GestaoCamaraMunicipal
             // textBoxNome
             // 
             this.textBoxNome.Location = new System.Drawing.Point(376, 85);
-            this.textBoxNome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxNome.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(403, 22);
             this.textBoxNome.TabIndex = 4;
@@ -112,7 +112,7 @@ namespace GestaoCamaraMunicipal
             this.comboBoxEspecialidade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxEspecialidade.FormattingEnabled = true;
             this.comboBoxEspecialidade.Location = new System.Drawing.Point(376, 146);
-            this.comboBoxEspecialidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxEspecialidade.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxEspecialidade.Name = "comboBoxEspecialidade";
             this.comboBoxEspecialidade.Size = new System.Drawing.Size(403, 24);
             this.comboBoxEspecialidade.Sorted = true;
@@ -131,7 +131,7 @@ namespace GestaoCamaraMunicipal
             // btregistar
             // 
             this.btregistar.Location = new System.Drawing.Point(401, 279);
-            this.btregistar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btregistar.Margin = new System.Windows.Forms.Padding(4);
             this.btregistar.Name = "btregistar";
             this.btregistar.Size = new System.Drawing.Size(100, 52);
             this.btregistar.TabIndex = 8;
@@ -142,7 +142,7 @@ namespace GestaoCamaraMunicipal
             // btguardarAlteracoes
             // 
             this.btguardarAlteracoes.Location = new System.Drawing.Point(528, 279);
-            this.btguardarAlteracoes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btguardarAlteracoes.Margin = new System.Windows.Forms.Padding(4);
             this.btguardarAlteracoes.Name = "btguardarAlteracoes";
             this.btguardarAlteracoes.Size = new System.Drawing.Size(101, 52);
             this.btguardarAlteracoes.TabIndex = 9;
@@ -153,7 +153,7 @@ namespace GestaoCamaraMunicipal
             // btremover
             // 
             this.btremover.Location = new System.Drawing.Point(659, 279);
-            this.btremover.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btremover.Margin = new System.Windows.Forms.Padding(4);
             this.btremover.Name = "btremover";
             this.btremover.Size = new System.Drawing.Size(100, 52);
             this.btremover.TabIndex = 10;
@@ -165,9 +165,9 @@ namespace GestaoCamaraMunicipal
             // 
             this.groupBox1.Controls.Add(this.listBoxFuncionarios);
             this.groupBox1.Location = new System.Drawing.Point(16, 47);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(352, 357);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
