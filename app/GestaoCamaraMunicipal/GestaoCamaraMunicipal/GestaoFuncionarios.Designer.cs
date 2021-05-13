@@ -36,12 +36,12 @@ namespace GestaoCamaraMunicipal
             this.listBoxFuncionarios = new System.Windows.Forms.ListBox();
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxEspecialidade = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btregistar = new System.Windows.Forms.Button();
             this.btguardarAlteracoes = new System.Windows.Forms.Button();
             this.btremover = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxExtensao = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -104,29 +104,15 @@ namespace GestaoCamaraMunicipal
             this.label1.TabIndex = 5;
             this.label1.Text = "Nome:";
             // 
-            // comboBoxEspecialidade
-            // 
-            this.comboBoxEspecialidade.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxEspecialidade.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxEspecialidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEspecialidade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxEspecialidade.FormattingEnabled = true;
-            this.comboBoxEspecialidade.Location = new System.Drawing.Point(376, 146);
-            this.comboBoxEspecialidade.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxEspecialidade.Name = "comboBoxEspecialidade";
-            this.comboBoxEspecialidade.Size = new System.Drawing.Size(403, 24);
-            this.comboBoxEspecialidade.Sorted = true;
-            this.comboBoxEspecialidade.TabIndex = 6;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(372, 127);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 17);
+            this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Especialidade:";
+            this.label2.Text = "Extensão:";
             // 
             // btregistar
             // 
@@ -173,17 +159,24 @@ namespace GestaoCamaraMunicipal
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Funcionários";
             // 
+            // textBoxExtensao
+            // 
+            this.textBoxExtensao.Location = new System.Drawing.Point(376, 148);
+            this.textBoxExtensao.Name = "textBoxExtensao";
+            this.textBoxExtensao.Size = new System.Drawing.Size(403, 22);
+            this.textBoxExtensao.TabIndex = 13;
+            // 
             // GestaoFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 417);
+            this.Controls.Add(this.textBoxExtensao);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btremover);
             this.Controls.Add(this.btguardarAlteracoes);
             this.Controls.Add(this.btregistar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBoxEspecialidade);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNome);
             this.Controls.Add(this.menuStrip1);
@@ -211,11 +204,11 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.ListBox listBoxFuncionarios;
         private System.Windows.Forms.TextBox textBoxNome;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxEspecialidade;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btregistar;
         private System.Windows.Forms.Button btguardarAlteracoes;
         private System.Windows.Forms.Button btremover;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBoxExtensao;
     }
 }

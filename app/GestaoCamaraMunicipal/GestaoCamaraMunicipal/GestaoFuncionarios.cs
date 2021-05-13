@@ -32,7 +32,6 @@ namespace GestaoCamaraMunicipal
         // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDados()
         {
-            comboBoxEspecialidade.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
             listBoxFuncionarios.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
             listBoxFuncionarios.SelectedIndex = -1;
             LimparForm();
@@ -42,7 +41,7 @@ namespace GestaoCamaraMunicipal
         private void LimparForm()
         {
             textBoxNome.Clear();
-            comboBoxEspecialidade.SelectedIndex = -1;
+            textBoxExtensao.Clear();
         }
 
         // Volta ao menu principal
@@ -64,12 +63,12 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se todas as TextBoxs tiverem preenchidas Faz
-                if (textBoxNome.Text != "" & comboBoxEspecialidade.SelectedIndex != -1)
+                if (textBoxNome.Text != "" && textBoxExtensao.Text != "")
                 {
                     try
                     {
                         // Adiciona o Funcionário e guarda as alterações na Base de Dados
-                        camaraMunicipal.FuncionarioSet.Add(new Funcionario(CalculaNumero(), textBoxNome.Text, comboBoxEspecialidade.Text));
+                        camaraMunicipal.FuncionarioSet.Add(new Funcionario(CalculaNumero(), textBoxNome.Text, textBoxExtensao.Text));
                         camaraMunicipal.SaveChanges();
 
                         // Recarrega a ListBox e limpa o formulário
@@ -108,7 +107,7 @@ namespace GestaoCamaraMunicipal
                 if (listBoxFuncionarios.SelectedIndex != -1)
                 {
                     // Se todas as TextBoxs tiverem preenchidas faz
-                    if (textBoxNome.Text != "" & comboBoxEspecialidade.SelectedIndex != -1)
+                    if (textBoxNome.Text != "" && textBoxExtensao.Text != "")
                     {
                         // Variável para receber o index selecionado na ListBox Funcionários
                         int posicao = listBoxFuncionarios.SelectedIndex;
@@ -118,7 +117,7 @@ namespace GestaoCamaraMunicipal
 
                         // Atribui ao objeto anterior as alterações executadas anteriormente no formulário
                         funcionario.Nome = textBoxNome.Text;
-                        funcionario.Extencao = comboBoxEspecialidade.Text;
+                        funcionario.Extencao = textBoxExtensao.Text;
 
                         // Guarda as alterações do objeto na Base de Dados
                         camaraMunicipal.SaveChanges();
@@ -149,18 +148,17 @@ namespace GestaoCamaraMunicipal
         // Mudança no index selecionado na ListBox
         private void listBoxFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Funcionario funcionario = new Funcionario();
             try
             {
                 // Se estiver algum Funcionário selecionado faz
                 if (listBoxFuncionarios.SelectedIndex != -1)
                 {
                     // Varíável que recebe o objeto Funcionário selecionado na ListBox
-                    funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
+                    Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
 
                     // Atribui ás TextBoxs os atributos do objeto selecionado
                     textBoxNome.Text = funcionario.Nome;
-                    comboBoxEspecialidade.Text = funcionario.Extencao;
+                    textBoxExtensao.Text = funcionario.Extencao;
                 }
             }
             catch (Exception ex)
