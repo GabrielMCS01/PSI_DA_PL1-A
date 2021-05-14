@@ -38,7 +38,6 @@ namespace GestaoCamaraMunicipal
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxProjeto = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.checkBoxDependente = new System.Windows.Forms.CheckBox();
             this.dateTimePickerProjeto = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.btRemoverProjetos = new System.Windows.Forms.Button();
@@ -63,8 +62,8 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(291, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(388, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,13 +72,13 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestãoDePromotoresToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(50, 20);
+            this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
             this.toolStripMenu.Text = "Menu";
             // 
             // gestãoDePromotoresToolStripMenuItem
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
@@ -89,7 +88,6 @@ namespace GestaoCamaraMunicipal
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.comboBoxProjeto);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.checkBoxDependente);
             this.groupBox3.Controls.Add(this.dateTimePickerProjeto);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.btRemoverProjetos);
@@ -99,9 +97,11 @@ namespace GestaoCamaraMunicipal
             this.groupBox3.Controls.Add(this.comboBoxFuncionario);
             this.groupBox3.Controls.Add(this.textBoxTextoParecer);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 221);
+            this.groupBox3.Location = new System.Drawing.Point(16, 272);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(267, 294);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Size = new System.Drawing.Size(356, 362);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Parecer";
@@ -112,17 +112,19 @@ namespace GestaoCamaraMunicipal
             this.comboBoxProjetoProcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxProjetoProcesso.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxProjetoProcesso.FormattingEnabled = true;
-            this.comboBoxProjetoProcesso.Location = new System.Drawing.Point(6, 156);
+            this.comboBoxProjetoProcesso.Location = new System.Drawing.Point(8, 192);
+            this.comboBoxProjetoProcesso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxProjetoProcesso.Name = "comboBoxProjetoProcesso";
-            this.comboBoxProjetoProcesso.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxProjetoProcesso.Size = new System.Drawing.Size(333, 24);
             this.comboBoxProjetoProcesso.TabIndex = 20;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 140);
+            this.label1.Location = new System.Drawing.Point(8, 172);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.Size = new System.Drawing.Size(116, 17);
             this.label1.TabIndex = 19;
             this.label1.Text = "Projeto Processo";
             // 
@@ -131,71 +133,69 @@ namespace GestaoCamaraMunicipal
             this.comboBoxProjeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxProjeto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxProjeto.FormattingEnabled = true;
-            this.comboBoxProjeto.Location = new System.Drawing.Point(6, 116);
+            this.comboBoxProjeto.Location = new System.Drawing.Point(8, 143);
+            this.comboBoxProjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxProjeto.Name = "comboBoxProjeto";
-            this.comboBoxProjeto.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxProjeto.Size = new System.Drawing.Size(333, 24);
             this.comboBoxProjeto.TabIndex = 18;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 100);
+            this.label7.Location = new System.Drawing.Point(8, 123);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.Size = new System.Drawing.Size(53, 17);
             this.label7.TabIndex = 17;
             this.label7.Text = "Projeto";
             // 
-            // checkBoxDependente
-            // 
-            this.checkBoxDependente.AutoSize = true;
-            this.checkBoxDependente.Location = new System.Drawing.Point(6, 223);
-            this.checkBoxDependente.Name = "checkBoxDependente";
-            this.checkBoxDependente.Size = new System.Drawing.Size(162, 17);
-            this.checkBoxDependente.TabIndex = 16;
-            this.checkBoxDependente.Text = "Dependente de outro projeto";
-            this.checkBoxDependente.UseVisualStyleBackColor = true;
-            // 
             // dateTimePickerProjeto
             // 
-            this.dateTimePickerProjeto.Location = new System.Drawing.Point(6, 72);
+            this.dateTimePickerProjeto.Location = new System.Drawing.Point(8, 89);
+            this.dateTimePickerProjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePickerProjeto.MinDate = new System.DateTime(2021, 5, 7, 0, 0, 0, 0);
             this.dateTimePickerProjeto.Name = "dateTimePickerProjeto";
-            this.dateTimePickerProjeto.Size = new System.Drawing.Size(251, 20);
+            this.dateTimePickerProjeto.Size = new System.Drawing.Size(333, 22);
             this.dateTimePickerProjeto.TabIndex = 15;
             this.dateTimePickerProjeto.Value = new System.DateTime(2021, 5, 7, 10, 33, 35, 0);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 180);
+            this.label6.Location = new System.Drawing.Point(8, 222);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.Size = new System.Drawing.Size(86, 17);
             this.label6.TabIndex = 14;
             this.label6.Text = "Funcionario:";
             // 
             // btRemoverProjetos
             // 
-            this.btRemoverProjetos.Location = new System.Drawing.Point(185, 246);
+            this.btRemoverProjetos.Location = new System.Drawing.Point(247, 303);
+            this.btRemoverProjetos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btRemoverProjetos.Name = "btRemoverProjetos";
-            this.btRemoverProjetos.Size = new System.Drawing.Size(75, 42);
+            this.btRemoverProjetos.Size = new System.Drawing.Size(100, 52);
             this.btRemoverProjetos.TabIndex = 13;
             this.btRemoverProjetos.Text = "Remover";
             this.btRemoverProjetos.UseVisualStyleBackColor = true;
+            this.btRemoverProjetos.Click += new System.EventHandler(this.btRemoverProjetos_Click);
             // 
             // btGuardarAlteracoesProjetos
             // 
-            this.btGuardarAlteracoesProjetos.Location = new System.Drawing.Point(97, 246);
+            this.btGuardarAlteracoesProjetos.Location = new System.Drawing.Point(129, 303);
+            this.btGuardarAlteracoesProjetos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btGuardarAlteracoesProjetos.Name = "btGuardarAlteracoesProjetos";
-            this.btGuardarAlteracoesProjetos.Size = new System.Drawing.Size(75, 42);
+            this.btGuardarAlteracoesProjetos.Size = new System.Drawing.Size(100, 52);
             this.btGuardarAlteracoesProjetos.TabIndex = 12;
             this.btGuardarAlteracoesProjetos.Text = "Guardar Alterações";
             this.btGuardarAlteracoesProjetos.UseVisualStyleBackColor = true;
             // 
             // btRegistarProjeto
             // 
-            this.btRegistarProjeto.Location = new System.Drawing.Point(9, 246);
+            this.btRegistarProjeto.Location = new System.Drawing.Point(12, 303);
+            this.btRegistarProjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btRegistarProjeto.Name = "btRegistarProjeto";
-            this.btRegistarProjeto.Size = new System.Drawing.Size(75, 42);
+            this.btRegistarProjeto.Size = new System.Drawing.Size(100, 52);
             this.btRegistarProjeto.TabIndex = 11;
             this.btRegistarProjeto.Text = "Registar";
             this.btRegistarProjeto.UseVisualStyleBackColor = true;
@@ -204,9 +204,10 @@ namespace GestaoCamaraMunicipal
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 56);
+            this.label5.Location = new System.Drawing.Point(8, 69);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.Size = new System.Drawing.Size(92, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Data Parecer";
             // 
@@ -214,33 +215,38 @@ namespace GestaoCamaraMunicipal
             // 
             this.comboBoxFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxFuncionario.FormattingEnabled = true;
-            this.comboBoxFuncionario.Location = new System.Drawing.Point(6, 196);
+            this.comboBoxFuncionario.Location = new System.Drawing.Point(8, 241);
+            this.comboBoxFuncionario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFuncionario.Name = "comboBoxFuncionario";
-            this.comboBoxFuncionario.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxFuncionario.Size = new System.Drawing.Size(333, 24);
             this.comboBoxFuncionario.TabIndex = 9;
             // 
             // textBoxTextoParecer
             // 
-            this.textBoxTextoParecer.Location = new System.Drawing.Point(6, 33);
+            this.textBoxTextoParecer.Location = new System.Drawing.Point(8, 41);
+            this.textBoxTextoParecer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxTextoParecer.Name = "textBoxTextoParecer";
-            this.textBoxTextoParecer.Size = new System.Drawing.Size(251, 20);
+            this.textBoxTextoParecer.Size = new System.Drawing.Size(333, 22);
             this.textBoxTextoParecer.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Location = new System.Drawing.Point(8, 20);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.Size = new System.Drawing.Size(97, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "Texto Parecer";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listBoxPareceres);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Location = new System.Drawing.Point(16, 33);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(267, 191);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(356, 235);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pareceres";
@@ -249,22 +255,24 @@ namespace GestaoCamaraMunicipal
             // 
             this.listBoxPareceres.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxPareceres.FormattingEnabled = true;
-            this.listBoxPareceres.Location = new System.Drawing.Point(3, 16);
+            this.listBoxPareceres.ItemHeight = 16;
+            this.listBoxPareceres.Location = new System.Drawing.Point(4, 19);
+            this.listBoxPareceres.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxPareceres.Name = "listBoxPareceres";
-            this.listBoxPareceres.Size = new System.Drawing.Size(261, 172);
+            this.listBoxPareceres.Size = new System.Drawing.Size(348, 212);
             this.listBoxPareceres.TabIndex = 3;
             // 
             // GestaoPareceres
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 525);
+            this.ClientSize = new System.Drawing.Size(388, 646);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GestaoPareceres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão de Pareceres";
@@ -288,7 +296,6 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox comboBoxProjeto;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBoxDependente;
         private System.Windows.Forms.DateTimePicker dateTimePickerProjeto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btRemoverProjetos;

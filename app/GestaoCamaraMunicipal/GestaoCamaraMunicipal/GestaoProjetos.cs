@@ -55,7 +55,7 @@ namespace GestaoCamaraMunicipal
             LimparForm();
         }
 
-        // Limpa todas as TextBoxs do formulário e tira o index selecionado na ListBox
+        // Limpa todas as TextBoxs do formulário e tira o index selecionado nas ComboBoxs
         private void LimparForm()
         {
             textBoxEstadoProjeto.Clear();
@@ -71,7 +71,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se todas as TextBoxs tiverem preenchidas Faz
-                if (textBoxEstadoProjeto.Text != "" || comboBoxFuncionario.SelectedIndex != -1 || comboBoxProcesso.SelectedIndex != -1)
+                if (textBoxEstadoProjeto.Text != "" && comboBoxFuncionario.SelectedIndex != -1 && comboBoxProcesso.SelectedIndex != -1)
                 {
                     // Adiciona o Projeto e guarda as alterações na Base de Dados
                     /*camaraMunicipal.ProjetoSet.Add(new Projeto(textBoxEstadoProjeto.Text, comboBoxFuncionario.Text));

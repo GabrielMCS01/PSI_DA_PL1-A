@@ -22,6 +22,7 @@ namespace GestaoCamaraMunicipal
             InitializeComponent();
         }
 
+        // Preenche a ComboBox com os valores possiveis e tira a seleção
         private void lerProcessos()
         {
             listBoxProcessos.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
@@ -29,6 +30,7 @@ namespace GestaoCamaraMunicipal
             LimparDados();
         }
 
+        // Preenche a ComboBox com os valores possiveis e tira a seleção
         private void lerPromotor()
         {
             comboBoxPromotor.DataSource = camaraMunicipal.PromotorSet.ToList<Promotor>();
@@ -36,6 +38,7 @@ namespace GestaoCamaraMunicipal
             LimparDados();
         }
 
+        // Limpa todas as TextBoxs do formulário e tira o index selecionado nas ComboBoxs
         private void LimparDados()
         {
             dateTimePickerInicioProcesso.Value = DateTime.Now;
