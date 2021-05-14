@@ -87,5 +87,46 @@ namespace GestaoCamaraMunicipal
         {
             formprincipal.Sair(e);
         }
+
+        private void buttonAdicionar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBoxDesignacao.Text != "")
+                {
+                    if(checkBoxDependente.Checked == true)
+                    {
+                        if (listBoxTiposdeProjeto.SelectedIndex != -1)
+                        {
+                            TipoProjeto tipoprojeto = new TipoProjeto();
+                            tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
+                            camaraMunicipal.TipoProjetoSet.Add(new TipoProjeto(textBoxDesignacao.Text, Convert.ToInt32(numericUpDownDiasAprovacao.Value), tipoprojeto.Id));
+                        }
+                        else
+                        {
+                            mensagem.AvisoSelecionarPrimeiro("Tipo de Projeto");
+                        }
+                    }
+                    else
+                    {
+                        camaraMunicipal.TipoProjetoSet.Add(new TipoProjeto(textBoxDesignacao.Text, Convert.ToInt32(numericUpDownDiasAprovacao.Value)));
+                    }
+                   
+                    camaraMunicipal.SaveChanges();
+                    lerDados();
+                    textBoxDesignacao.Clear();
+                    numericUpDownDiasAprovacao.Value = 0;
+                    checkBoxDependente.Checked = false;
+                }
+                else
+                {
+                    mensagem.ErroPreencherCampos();
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
     }
 }

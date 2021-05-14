@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoCamaraMunicipal
@@ -68,7 +62,10 @@ namespace GestaoCamaraMunicipal
                     try
                     {
                         // Adiciona o Funcionário e guarda as alterações na Base de Dados
-                        camaraMunicipal.FuncionarioSet.Add(new Funcionario(CalculaNumero(), textBoxNome.Text, textBoxExtensao.Text));
+                        string nomeFuncionario = textBoxNome.Text;
+                        string extensaoFuncionario = textBoxExtensao.Text;
+                        int idFuncionario = CalculaNumero();
+                        camaraMunicipal.FuncionarioSet.Add(new Funcionario(idFuncionario, nomeFuncionario, extensaoFuncionario));
                         camaraMunicipal.SaveChanges();
 
                         // Recarrega a ListBox e limpa o formulário
@@ -92,9 +89,12 @@ namespace GestaoCamaraMunicipal
 
         // Retorna o número do funcionário a adicionar
         // baseado no número de funcionários existentes e incrementando 1
-        private int CalculaNumero()
-        {
-            return listBoxFuncionarios.Items.Count +1;
+        private int CalculaNumero() {
+            int num = listBoxFuncionarios.Items.Count;
+            listBoxFuncionarios.SelectedIndex = num - 1;
+            Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
+            
+            return funcionario.Numero + 1;
         }
 
         // Botão para Guardar as alterações feitas no Funcionário

@@ -8,11 +8,21 @@ namespace GestaoCamaraMunicipal
 {
     public partial class TipoProjeto
     {
-        public TipoProjeto(int nDias)
+        public TipoProjeto(string designacao, int nDias, int TipoProjetoDependente)
         {
             this.Projeto = new HashSet<Projeto>();
             this.Especialista = new HashSet<Especialista>();
             this.NrDiasAprovacao = nDias;
+            this.Designacao = designacao;
+            this.TipoProjetoId = TipoProjetoDependente;
+        }
+
+        public TipoProjeto(string designacao, int nDias)
+        {
+            this.Projeto = new HashSet<Projeto>();
+            this.Especialista = new HashSet<Especialista>();
+            this.NrDiasAprovacao = nDias;
+            this.Designacao = designacao;
         }
 
         public override string ToString()
