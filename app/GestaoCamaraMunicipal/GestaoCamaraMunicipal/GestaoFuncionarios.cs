@@ -91,7 +91,7 @@ namespace GestaoCamaraMunicipal
         }
 
         // Retorna o número do funcionário a adicionar
-        // baseado no número de funcionários existentes e incrementando 1
+        // Recebe o ultimo ID e incrementa 1
         private int CalculaNumero()
         {
             return listBoxFuncionarios.Items.Count +1;
