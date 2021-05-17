@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoCamaraMunicipal
@@ -27,11 +21,14 @@ namespace GestaoCamaraMunicipal
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             
-            comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
-            comboBoxFuncionario.SelectedIndex = -1;
+            comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
+            comboBoxTiposProjeto.SelectedIndex = -1;
 
             comboBoxProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
             comboBoxProcesso.SelectedIndex = -1;
+
+            comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
+            comboBoxTipoDocumento.SelectedIndex = -1;
         }
 
         // Volta ao menu principal
@@ -59,10 +56,9 @@ namespace GestaoCamaraMunicipal
         private void LimparForm()
         {
             textBoxEstadoProjeto.Clear();
-            comboBoxFuncionario.SelectedIndex = -1;
+            comboBoxTiposProjeto.SelectedIndex = -1;
             dateTimePickerProjeto.Value = DateTime.Now;
             comboBoxProcesso.SelectedIndex = -1;
-            checkBoxDependente.Checked = false;
         }
 
         // Botão para Registar o Projeto
@@ -71,7 +67,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se todas as TextBoxs tiverem preenchidas Faz
-                if (textBoxEstadoProjeto.Text != "" && comboBoxFuncionario.SelectedIndex != -1 && comboBoxProcesso.SelectedIndex != -1)
+                if (textBoxEstadoProjeto.Text != "" && comboBoxTiposProjeto.SelectedIndex != -1 && comboBoxProcesso.SelectedIndex != -1)
                 {
                     // Adiciona o Projeto e guarda as alterações na Base de Dados
                     /*camaraMunicipal.ProjetoSet.Add(new Projeto(textBoxEstadoProjeto.Text, comboBoxFuncionario.Text));
@@ -89,13 +85,6 @@ namespace GestaoCamaraMunicipal
             {
                 mensagem.Erro(ex);
             }
-        }
-
-        // Volta ao menu principal ?? Já existe um em cima
-        private void gestãoDePromotoresToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            formprincipal.Show();
-            this.Hide();
         }
     }
 }

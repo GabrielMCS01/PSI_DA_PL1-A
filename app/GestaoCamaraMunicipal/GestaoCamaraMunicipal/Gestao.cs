@@ -30,6 +30,12 @@ namespace GestaoCamaraMunicipal
         {
             listBoxDocumentos.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
             listBoxTiposdeProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
+            comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
+
+            listBoxDocumentos.ClearSelected();
+            listBoxTiposdeProjeto.ClearSelected();
+            comboBoxFuncionario.SelectedIndex = -1;
+
         }
 
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,7 +111,7 @@ namespace GestaoCamaraMunicipal
                         }
                         else
                         {
-                            mensagem.AvisoSelecionarPrimeiro("Tipo de Projeto");
+                            mensagem.AvisoSelecionarPrimeiro("tipo de projeto");
                         }
                     }
                     else
@@ -122,6 +128,126 @@ namespace GestaoCamaraMunicipal
                 else
                 {
                     mensagem.ErroPreencherCampos();
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        private void listBoxTiposdeProjeto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se estiver algum Tipo de projeto selecionado faz
+                if (listBoxTiposdeProjeto.SelectedIndex != -1)
+                {
+                    // Varíável que recebe o objeto Tipo de projeto selecionado na ListBox
+                    TipoProjeto tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
+
+                    // Atribui ás TextBoxs os atributos do objeto selecionado
+                    textBoxDesignacao.Text = tipoprojeto.Designacao;
+                    numericUpDownDiasAprovacao.Value = tipoprojeto.NrDiasAprovacao;
+                    checkBoxDependente.Checked = (tipoprojeto.TipoProjetoId != null) ? true : false;
+
+                    listBoxEspecialistas.DataSource = tipoprojeto.Especialista.ToList<Especialista>();
+                }
+                else
+                {
+                    textBoxDesignacao.Clear();
+                    numericUpDownDiasAprovacao.Value = 0;
+                    checkBoxDependente.Checked = false;
+                    listBoxEspecialistas.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        private void buttonRemover_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se estiver algum Tipo de projeto selecionado faz
+                if (listBoxTiposdeProjeto.SelectedIndex != -1)
+                {
+                    // Varíável que recebe o objeto Tipo de projeto selecionado na ListBox
+                    TipoProjeto tiposprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
+
+                    // Remove o Tipo de projetos e guarda as alterações na Base de dados
+                    camaraMunicipal.TipoProjetoSet.Remove(tiposprojeto);
+                    camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox e limpa o formulário
+                    lerDados();
+                    textBoxDesignacao.Clear();
+                    numericUpDownDiasAprovacao.Value = 0;
+                    checkBoxDependente.Checked = false;
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("tipo de projeto");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        private void buttonAddFuncionario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (comboBoxFuncionario.SelectedIndex != -1 && listBoxTiposdeProjeto.SelectedIndex != -1)
+                {
+                    TipoProjeto tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
+                    Funcionario funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
+                    Especialista especialista = new Especialista();
+                    especialista.TipoProjetoId = tipoprojeto.Id;
+                    especialista.FuncionarioNumero1 = funcionario.Numero;
+                    camaraMunicipal.EspecialistaSet.Add(especialista);
+                    camaraMunicipal.SaveChanges();
+                    int posicao = listBoxEspecialistas.SelectedIndex;
+                    lerDados();
+                    listBoxEspecialistas.SelectedIndex = posicao;
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("tipo de projeto e um funcionário");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        private void buttonRemoverFuncionario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se estiver algum Tipo de projeto selecionado faz
+                if (listBoxTiposdeProjeto.SelectedIndex != -1 && listBoxEspecialistas.SelectedIndex != -1)
+                {
+                    // Varíável que recebe o objeto Tipo de projeto selecionado na ListBox
+                    Especialista especialista = (Especialista)listBoxEspecialistas.SelectedItem;
+
+                    // Remove o Tipo de projetos e guarda as alterações na Base de dados
+                    camaraMunicipal.EspecialistaSet.Remove(especialista);
+                    camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox
+                    TipoProjeto tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
+                    listBoxEspecialistas.DataSource = tipoprojeto.Especialista.ToList<Especialista>();
+                    listBoxEspecialistas.ClearSelected();
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("tipo de projeto e um especialista");
                 }
             }
             catch (Exception ex)
