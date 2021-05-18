@@ -8,19 +8,13 @@ namespace GestaoCamaraMunicipal
 {
     public partial class Parecer
     {
-        public Parecer()
-        {
-
-        }
-
-        public Parecer(int numero, string textoParecer, DateTime dataParecer, int projetoId, int projetoProcessoId, int funcionarioNumero)
+        public Parecer(int numero, string textoParecer, DateTime dataParecer, Projeto projeto, Funcionario funcionario)
         {
             Numero = numero;
             TextoParecer = textoParecer;
             DataParecer = dataParecer;
-            ProjetoId = projetoId;
-            ProjetoProcessoId = projetoProcessoId;
-            FuncionarioNumero = funcionarioNumero;
+            Projeto = projeto;
+            Funcionario = funcionario;
         }
 
         public override string ToString()

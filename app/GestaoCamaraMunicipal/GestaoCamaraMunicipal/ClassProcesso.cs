@@ -16,7 +16,7 @@ namespace GestaoCamaraMunicipal
         }
         public override string ToString()
         {
-            return string.Format("{0}\t{1} ({2})", this.Id, this.DataInicio.ToString(), this.PromotorNIF);
+            return string.Format("{0}\t {1} ({2})", this.Id, this.DataInicio.ToString(), this.PromotorNIF);
         }
     }
 }

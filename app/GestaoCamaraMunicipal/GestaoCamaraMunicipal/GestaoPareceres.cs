@@ -67,7 +67,6 @@ namespace GestaoCamaraMunicipal
             textBoxTextoParecer.Clear();
             dateTimePickerProjeto.Value = DateTime.Now;
             comboBoxProjeto.SelectedIndex = -1;
-            comboBoxProjetoProcesso.SelectedIndex = -1;
             comboBoxFuncionario.SelectedIndex = -1;
         }
 
@@ -82,7 +81,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se todas as TextBoxs tiverem preenchidas Faz
-                if (textBoxTextoParecer.Text != "" && comboBoxFuncionario.SelectedIndex != -1 && comboBoxProjeto.SelectedIndex != -1 && comboBoxProjetoProcesso.SelectedIndex != -1)
+                if (textBoxTextoParecer.Text != "" && comboBoxFuncionario.SelectedIndex != -1 && comboBoxProjeto.SelectedIndex != -1)
                 {
                     Projeto projeto = new Projeto();
                     EstadoProcesso estadoProcesso = new EstadoProcesso();
@@ -92,12 +91,11 @@ namespace GestaoCamaraMunicipal
                     string texto = textBoxTextoParecer.Text;
                     DateTime date = dateTimePickerProjeto.Value;
                     projeto = (Projeto)comboBoxProjeto.SelectedItem;
-                    estadoProcesso = (EstadoProcesso)comboBoxProjetoProcesso.SelectedItem;
                     funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
                     int idParecer = CalculaNumero();
 
                     // Adiciona o Projeto e guarda as alterações na Base de Dados
-                    Parecer parecer = new Parecer(idParecer, texto, date, projeto.Id, estadoProcesso.Id, funcionario.Numero);
+                    Parecer parecer = new Parecer(idParecer, texto, date, projeto, funcionario);
                     camaraMunicipal.ParecerSet.Add(parecer);
                     camaraMunicipal.SaveChanges();
 
@@ -119,11 +117,18 @@ namespace GestaoCamaraMunicipal
         // baseado no número de funcionários existentes e incrementando 1
         private int CalculaNumero()
         {
-            int num = listBoxPareceres.Items.Count;
-            listBoxPareceres.SelectedIndex = num - 1;
-            Parecer parecer = (Parecer)listBoxPareceres.SelectedItem;
+            if (listBoxPareceres.Items.Count > 0)
+            {
+                int num = listBoxPareceres.Items.Count;
+                listBoxPareceres.SelectedIndex = num - 1;
+                Parecer parecer = (Parecer)listBoxPareceres.SelectedItem;
 
-            return parecer.Numero + 1;
+                return parecer.Numero + 1;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         private void btRemoverProjetos_Click(object sender, EventArgs e)
