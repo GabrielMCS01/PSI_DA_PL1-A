@@ -138,5 +138,17 @@ namespace GestaoCamaraMunicipal
                 mensagem.Erro(ex);
             }
         }
+
+        private void listBoxProjetos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxProjetos.SelectedIndex != -1)
+            {
+                Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+                textBoxEstadoProjeto.Text = projeto.EstadoProjeto;
+                comboBoxTiposProjeto.Text = projeto.TipoProjeto.ToString();
+                dateTimePickerProjeto.Value = projeto.DataAprovacao;
+                comboBoxProcesso.Text = projeto.Processo.ToString();
+            }
+        }
     }
 }

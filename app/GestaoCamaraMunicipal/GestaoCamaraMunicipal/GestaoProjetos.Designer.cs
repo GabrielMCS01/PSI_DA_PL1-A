@@ -76,6 +76,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxProjetos.Name = "listBoxProjetos";
             this.listBoxProjetos.Size = new System.Drawing.Size(348, 212);
             this.listBoxProjetos.TabIndex = 3;
+            this.listBoxProjetos.SelectedIndexChanged += new System.EventHandler(this.listBoxProjetos_SelectedIndexChanged);
             // 
             // groupBox1
             // 
