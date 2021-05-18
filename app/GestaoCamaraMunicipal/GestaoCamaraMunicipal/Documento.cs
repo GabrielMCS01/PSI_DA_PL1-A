@@ -24,5 +24,6 @@ namespace GestaoCamaraMunicipal
     
         public virtual TipoDocumento TipoDocumento { get; set; }
         public virtual Projeto Projeto { get; set; }
+        public virtual Parecer Parecer { get; set; }
     }
 }

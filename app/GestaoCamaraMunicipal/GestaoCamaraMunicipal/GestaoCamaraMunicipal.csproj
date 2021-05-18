@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassDocumento.cs" />
     <Compile Include="ClassEspecialista.cs" />
     <Compile Include="ClassEstadoProcesso.cs" />
     <Compile Include="ClassFuncionario.cs" />

@@ -51,6 +51,9 @@ namespace GestaoCamaraMunicipal
             comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
             comboBoxTipoDocumento.SelectedIndex = -1;
 
+            comboBoxParecer.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
+            comboBoxParecer.SelectedIndex = -1;
+
             LimparForm();
         }
 
@@ -175,6 +178,31 @@ namespace GestaoCamaraMunicipal
                 }
             }
             catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        private void btRegistarDocumentos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se todas as TextBoxs tiverem preenchidas Faz
+                if (textBoxTitulo.Text != "" && comboBoxTipoDocumento.SelectedIndex != -1)
+                {
+                    // Adiciona o Projeto e guarda as alterações na Base de Dados
+                    camaraMunicipal.DocumentoSet.Add(new Documento(textBoxTitulo.Text, dateTimePickerDocumento.Value, (TipoDocumento)comboBoxTipoDocumento.SelectedItem, (Projeto)listBoxProjetos.SelectedItem, (Parecer)comboBoxParecer.SelectedItem));
+                    camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox e limpa o formulário
+                    LerDados();
+                }
+                else
+                {
+                    mensagem.ErroPreencherCampos();
+                }
+            }
+            catch (FormatException ex)
             {
                 mensagem.Erro(ex);
             }

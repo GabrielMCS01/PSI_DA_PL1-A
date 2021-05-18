@@ -89,15 +89,8 @@ namespace GestaoCamaraMunicipal
             // Caso a Resposta seja Sim
             else 
             {
-                try
-                {
-                    camaraMunicipal.Dispose();
-                    Environment.Exit(1);
-                }
-                catch (SystemException ex)
-                {
-                    mensagem.Erro(ex);
-                }
+                camaraMunicipal.Dispose();
+                Environment.Exit(1);
             }
         }
 

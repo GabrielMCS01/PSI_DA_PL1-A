@@ -59,6 +59,8 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoDePromotoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBoxParecer = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -92,6 +94,8 @@ namespace GestaoCamaraMunicipal
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.comboBoxParecer);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.comboBoxTipoDocumento);
             this.groupBox2.Controls.Add(this.btRemover);
             this.groupBox2.Controls.Add(this.btGuardarAlterações);
@@ -149,6 +153,7 @@ namespace GestaoCamaraMunicipal
             this.btRegistarDocumentos.TabIndex = 6;
             this.btRegistarDocumentos.Text = "Registar";
             this.btRegistarDocumentos.UseVisualStyleBackColor = true;
+            this.btRegistarDocumentos.Click += new System.EventHandler(this.btRegistarDocumentos_Click);
             // 
             // label3
             // 
@@ -365,7 +370,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(751, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(751, 30);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -374,7 +379,7 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestãoDePromotoresToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
+            this.toolStripMenu.Size = new System.Drawing.Size(60, 26);
             this.toolStripMenu.Text = "Menu";
             // 
             // gestãoDePromotoresToolStripMenuItem
@@ -384,6 +389,27 @@ namespace GestaoCamaraMunicipal
             this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
+            // 
+            // comboBoxParecer
+            // 
+            this.comboBoxParecer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxParecer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxParecer.FormattingEnabled = true;
+            this.comboBoxParecer.Location = new System.Drawing.Point(8, 186);
+            this.comboBoxParecer.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxParecer.Name = "comboBoxParecer";
+            this.comboBoxParecer.Size = new System.Drawing.Size(333, 24);
+            this.comboBoxParecer.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(5, 166);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(62, 17);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Parecer:";
             // 
             // GestaoProjetos
             // 
@@ -446,5 +472,7 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.ToolStripMenuItem toolStripMenu;
         private System.Windows.Forms.ToolStripMenuItem gestãoDePromotoresToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBoxTipoDocumento;
+        private System.Windows.Forms.ComboBox comboBoxParecer;
+        private System.Windows.Forms.Label label8;
     }
 }

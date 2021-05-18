@@ -14,6 +14,12 @@ namespace GestaoCamaraMunicipal
     
     public partial class Parecer
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Parecer()
+        {
+            this.Documento = new HashSet<Documento>();
+        }
+    
         public int Numero { get; set; }
         public string TextoParecer { get; set; }
         public System.DateTime DataParecer { get; set; }
@@ -23,5 +29,7 @@ namespace GestaoCamaraMunicipal
     
         public virtual Projeto Projeto { get; set; }
         public virtual Funcionario Funcionario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Documento> Documento { get; set; }
     }
 }
