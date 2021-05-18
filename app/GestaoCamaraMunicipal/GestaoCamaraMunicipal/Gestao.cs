@@ -257,5 +257,13 @@ namespace GestaoCamaraMunicipal
                 mensagem.Erro(ex);
             }
         }
+
+        private void textBoxDocumento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnAdicionarDocumento.PerformClick();
+            }
+        }
     }
 }

@@ -150,5 +150,34 @@ namespace GestaoCamaraMunicipal
                 comboBoxProcesso.Text = projeto.Processo.ToString();
             }
         }
+
+        private void btRemoverProjetos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se estiver algum Projeto selecionado faz
+                if (listBoxProjetos.SelectedIndex != -1)
+                {
+                    // Varíável que recebe o objeto Projeto selecionado na ListBox
+                    Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+
+                    // Remove o Projeto e guarda as alterações na Base de dados
+                    camaraMunicipal.ProjetoSet.Remove(projeto);
+                    camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox e limpa o formulário
+                    LerDados();
+                    LimparForm();
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("projeto");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
     }
 }

@@ -280,6 +280,7 @@ namespace GestaoCamaraMunicipal
             this.btRemoverProjetos.TabIndex = 13;
             this.btRemoverProjetos.Text = "Remover";
             this.btRemoverProjetos.UseVisualStyleBackColor = true;
+            this.btRemoverProjetos.Click += new System.EventHandler(this.btRemoverProjetos_Click);
             // 
             // btGuardarAlteracoesProjetos
             // 
