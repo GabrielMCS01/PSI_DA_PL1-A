@@ -69,6 +69,10 @@
       <End Role="TipoProjeto" EntitySet="TipoProjetoSet" />
       <End Role="TipoProjeto1" EntitySet="TipoProjetoSet" />
     </AssociationSet>
+    <AssociationSet Name="DocumentoParecer" Association="GestaoCamaraMunicipal.Store.DocumentoParecer">
+      <End Role="Documento" EntitySet="DocumentoSet" />
+      <End Role="Parecer" EntitySet="ParecerSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="TipoDocumentoSet">
     <Key>
@@ -341,6 +345,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="DocumentoParecer">
+    <End Role="Documento" Type="GestaoCamaraMunicipal.Store.DocumentoSet" Multiplicity="*" />
+    <End Role="Parecer" Type="GestaoCamaraMunicipal.Store.ParecerSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Parecer">
+        <PropertyRef Name="Numero" />
+      </Principal>
+      <Dependent Role="Documento">
+        <PropertyRef Name="ParecerNumero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -409,6 +425,10 @@
             <End Role="TipoProjeto" EntitySet="TipoProjetoSet" />
             <End Role="TipoProjeto1" EntitySet="TipoProjetoSet" />
           </AssociationSet>
+          <AssociationSet Name="DocumentoParecer" Association="GestaoCamaraMunicipal.DocumentoParecer">
+            <End Role="Documento" EntitySet="DocumentoSet" />
+            <End Role="Parecer" EntitySet="ParecerSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TipoDocumento">
           <Key>
@@ -463,9 +483,10 @@
           <Property Name="TipoDocumentoId" Type="Int32" Nullable="false" />
           <Property Name="ProjetoId" Type="Int32" Nullable="false" />
           <Property Name="ProjetoProcessoId" Type="Int32" Nullable="false" />
-          <Property Name="ParecerNumero" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TipoDocumento" Relationship="GestaoCamaraMunicipal.TipoDocumentoDocumento" FromRole="Documento" ToRole="TipoDocumento" />
           <NavigationProperty Name="Projeto" Relationship="GestaoCamaraMunicipal.ProjetoDocumento" FromRole="Documento" ToRole="Projeto" />
+          <NavigationProperty Name="Parecer" Relationship="GestaoCamaraMunicipal.DocumentoParecer" FromRole="Documento" ToRole="Parecer" />
+          <Property Name="ParecerNumero" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Projeto">
           <Key>
@@ -509,6 +530,7 @@
           <Property Name="FuncionarioNumero" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Projeto" Relationship="GestaoCamaraMunicipal.ProjetoParecer" FromRole="Parecer" ToRole="Projeto" />
           <NavigationProperty Name="Funcionario" Relationship="GestaoCamaraMunicipal.FuncionarioParecer" FromRole="Parecer" ToRole="Funcionario" />
+          <NavigationProperty Name="Documento" Relationship="GestaoCamaraMunicipal.DocumentoParecer" FromRole="Parecer" ToRole="Documento" />
         </EntityType>
         <EntityType Name="Funcionario">
           <Key>
@@ -692,6 +714,18 @@
             </Principal>
             <Dependent Role="TipoProjeto1">
               <PropertyRef Name="TipoProjetoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DocumentoParecer">
+          <End Type="GestaoCamaraMunicipal.Documento" Role="Documento" Multiplicity="*" />
+          <End Type="GestaoCamaraMunicipal.Parecer" Role="Parecer" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Parecer">
+              <PropertyRef Name="Numero" />
+            </Principal>
+            <Dependent Role="Documento">
+              <PropertyRef Name="ParecerNumero" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

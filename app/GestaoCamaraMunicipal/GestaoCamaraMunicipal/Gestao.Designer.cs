@@ -351,6 +351,7 @@ namespace GestaoCamaraMunicipal
             this.textBoxDocumento.Name = "textBoxDocumento";
             this.textBoxDocumento.Size = new System.Drawing.Size(225, 22);
             this.textBoxDocumento.TabIndex = 1;
+            this.textBoxDocumento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDocumento_KeyDown);
             // 
             // label1
             // 

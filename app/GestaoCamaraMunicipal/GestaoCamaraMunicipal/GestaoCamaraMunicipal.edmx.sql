@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/18/2021 14:42:43
+-- Date Created: 05/18/2021 17:20:55
 -- Generated from EDMX file: D:\diogo\OneDrive - IPLeiria\Semestre 2\Desenvolvimento de aplicações\PSI_DA_PL1-A\app\GestaoCamaraMunicipal\GestaoCamaraMunicipal\GestaoCamaraMunicipal.edmx
 -- --------------------------------------------------
 
@@ -464,6 +464,21 @@ GO
 CREATE INDEX [IX_FK_TipoProjetoTipoProjeto]
 ON [dbo].[TipoProjetoSet]
     ([TipoProjetoId]);
+GO
+
+-- Creating foreign key on [ParecerNumero] in table 'DocumentoSet'
+ALTER TABLE [dbo].[DocumentoSet]
+ADD CONSTRAINT [FK_DocumentoParecer]
+    FOREIGN KEY ([ParecerNumero])
+    REFERENCES [dbo].[ParecerSet]
+        ([Numero])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DocumentoParecer'
+CREATE INDEX [IX_FK_DocumentoParecer]
+ON [dbo].[DocumentoSet]
+    ([ParecerNumero]);
 GO
 
 -- --------------------------------------------------

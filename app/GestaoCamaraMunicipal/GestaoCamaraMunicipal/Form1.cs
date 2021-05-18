@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoCamaraMunicipal
@@ -96,15 +89,8 @@ namespace GestaoCamaraMunicipal
             // Caso a Resposta seja Sim
             else 
             {
-                try
-                {
-                    camaraMunicipal.Dispose();
-                    Environment.Exit(1);
-                }
-                catch (SystemException ex)
-                {
-                    mensagem.Erro(ex);
-                }
+                camaraMunicipal.Dispose();
+                Environment.Exit(1);
             }
         }
 

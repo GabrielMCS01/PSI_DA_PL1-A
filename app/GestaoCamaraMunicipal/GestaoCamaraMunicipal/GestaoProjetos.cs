@@ -51,6 +51,9 @@ namespace GestaoCamaraMunicipal
             comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
             comboBoxTipoDocumento.SelectedIndex = -1;
 
+            comboBoxParecer.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
+            comboBoxParecer.SelectedIndex = -1;
+
             LimparForm();
         }
 
@@ -148,6 +151,60 @@ namespace GestaoCamaraMunicipal
                 comboBoxTiposProjeto.Text = projeto.TipoProjeto.ToString();
                 dateTimePickerProjeto.Value = projeto.DataAprovacao;
                 comboBoxProcesso.Text = projeto.Processo.ToString();
+            }
+        }
+
+        private void btRemoverProjetos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se estiver algum Projeto selecionado faz
+                if (listBoxProjetos.SelectedIndex != -1)
+                {
+                    // Varíável que recebe o objeto Projeto selecionado na ListBox
+                    Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+
+                    // Remove o Projeto e guarda as alterações na Base de dados
+                    camaraMunicipal.ProjetoSet.Remove(projeto);
+                    camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox e limpa o formulário
+                    LerDados();
+                    LimparForm();
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("projeto");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        private void btRegistarDocumentos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se todas as TextBoxs tiverem preenchidas Faz
+                if (textBoxTitulo.Text != "" && comboBoxTipoDocumento.SelectedIndex != -1)
+                {
+                    // Adiciona o Projeto e guarda as alterações na Base de Dados
+                    camaraMunicipal.DocumentoSet.Add(new Documento(textBoxTitulo.Text, dateTimePickerDocumento.Value, (TipoDocumento)comboBoxTipoDocumento.SelectedItem, (Projeto)listBoxProjetos.SelectedItem, (Parecer)comboBoxParecer.SelectedItem));
+                    camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox e limpa o formulário
+                    LerDados();
+                }
+                else
+                {
+                    mensagem.ErroPreencherCampos();
+                }
+            }
+            catch (FormatException ex)
+            {
+                mensagem.Erro(ex);
             }
         }
     }
