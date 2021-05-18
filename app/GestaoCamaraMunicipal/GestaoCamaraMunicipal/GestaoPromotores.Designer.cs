@@ -64,8 +64,8 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(589, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(785, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,13 +74,14 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestãoDePromotoresToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(50, 20);
+            this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
             this.toolStripMenu.Text = "Menu";
             // 
             // gestãoDePromotoresToolStripMenuItem
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Left)));
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
@@ -88,149 +89,143 @@ namespace GestaoCamaraMunicipal
             // 
             this.listBoxPromotores.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxPromotores.FormattingEnabled = true;
-            this.listBoxPromotores.Location = new System.Drawing.Point(3, 16);
-            this.listBoxPromotores.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxPromotores.ItemHeight = 16;
+            this.listBoxPromotores.Location = new System.Drawing.Point(4, 19);
+            this.listBoxPromotores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxPromotores.Name = "listBoxPromotores";
-            this.listBoxPromotores.Size = new System.Drawing.Size(276, 287);
+            this.listBoxPromotores.Size = new System.Drawing.Size(368, 354);
             this.listBoxPromotores.TabIndex = 2;
             this.listBoxPromotores.SelectedIndexChanged += new System.EventHandler(this.listBoxPromotores_SelectedIndexChanged);
             // 
             // lblNIF
             // 
             this.lblNIF.AutoSize = true;
-            this.lblNIF.Location = new System.Drawing.Point(336, 41);
-            this.lblNIF.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNIF.Location = new System.Drawing.Point(448, 50);
             this.lblNIF.Name = "lblNIF";
-            this.lblNIF.Size = new System.Drawing.Size(27, 13);
+            this.lblNIF.Size = new System.Drawing.Size(33, 17);
             this.lblNIF.TabIndex = 4;
             this.lblNIF.Text = "NIF:";
             // 
             // maskedTextBoxNIF
             // 
-            this.maskedTextBoxNIF.Location = new System.Drawing.Point(338, 54);
-            this.maskedTextBoxNIF.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBoxNIF.Location = new System.Drawing.Point(451, 66);
+            this.maskedTextBoxNIF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maskedTextBoxNIF.Mask = "999999999";
             this.maskedTextBoxNIF.Name = "maskedTextBoxNIF";
-            this.maskedTextBoxNIF.Size = new System.Drawing.Size(206, 20);
+            this.maskedTextBoxNIF.Size = new System.Drawing.Size(273, 22);
             this.maskedTextBoxNIF.TabIndex = 5;
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Location = new System.Drawing.Point(336, 75);
-            this.lblNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNome.Location = new System.Drawing.Point(448, 92);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(38, 13);
+            this.lblNome.Size = new System.Drawing.Size(49, 17);
             this.lblNome.TabIndex = 6;
             this.lblNome.Text = "Nome:";
             // 
             // txtBoxNome
             // 
-            this.txtBoxNome.Location = new System.Drawing.Point(338, 88);
-            this.txtBoxNome.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBoxNome.Location = new System.Drawing.Point(451, 108);
+            this.txtBoxNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxNome.Name = "txtBoxNome";
-            this.txtBoxNome.Size = new System.Drawing.Size(206, 20);
+            this.txtBoxNome.Size = new System.Drawing.Size(273, 22);
             this.txtBoxNome.TabIndex = 7;
             // 
             // txtBoxMorada
             // 
-            this.txtBoxMorada.Location = new System.Drawing.Point(338, 124);
-            this.txtBoxMorada.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBoxMorada.Location = new System.Drawing.Point(451, 153);
+            this.txtBoxMorada.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxMorada.Name = "txtBoxMorada";
-            this.txtBoxMorada.Size = new System.Drawing.Size(206, 20);
+            this.txtBoxMorada.Size = new System.Drawing.Size(273, 22);
             this.txtBoxMorada.TabIndex = 9;
             // 
             // lblMorada
             // 
             this.lblMorada.AutoSize = true;
-            this.lblMorada.Location = new System.Drawing.Point(338, 111);
-            this.lblMorada.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMorada.Location = new System.Drawing.Point(451, 137);
             this.lblMorada.Name = "lblMorada";
-            this.lblMorada.Size = new System.Drawing.Size(46, 13);
+            this.lblMorada.Size = new System.Drawing.Size(60, 17);
             this.lblMorada.TabIndex = 8;
             this.lblMorada.Text = "Morada:";
             // 
             // txtBoxTelemovel
             // 
-            this.txtBoxTelemovel.Location = new System.Drawing.Point(338, 159);
-            this.txtBoxTelemovel.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBoxTelemovel.Location = new System.Drawing.Point(451, 196);
+            this.txtBoxTelemovel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxTelemovel.MaxLength = 9;
             this.txtBoxTelemovel.Name = "txtBoxTelemovel";
-            this.txtBoxTelemovel.Size = new System.Drawing.Size(206, 20);
+            this.txtBoxTelemovel.Size = new System.Drawing.Size(273, 22);
             this.txtBoxTelemovel.TabIndex = 11;
             // 
             // lblTelemovel
             // 
             this.lblTelemovel.AutoSize = true;
-            this.lblTelemovel.Location = new System.Drawing.Point(339, 146);
-            this.lblTelemovel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTelemovel.Location = new System.Drawing.Point(452, 180);
             this.lblTelemovel.Name = "lblTelemovel";
-            this.lblTelemovel.Size = new System.Drawing.Size(59, 13);
+            this.lblTelemovel.Size = new System.Drawing.Size(77, 17);
             this.lblTelemovel.TabIndex = 10;
             this.lblTelemovel.Text = "Telemóvel:";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(340, 184);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEmail.Location = new System.Drawing.Point(453, 226);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(38, 13);
+            this.lblEmail.Size = new System.Drawing.Size(51, 17);
             this.lblEmail.TabIndex = 12;
             this.lblEmail.Text = "E-mail:";
             // 
             // maskedTextBoxMail
             // 
-            this.maskedTextBoxMail.Location = new System.Drawing.Point(339, 198);
-            this.maskedTextBoxMail.Margin = new System.Windows.Forms.Padding(2);
+            this.maskedTextBoxMail.Location = new System.Drawing.Point(452, 244);
+            this.maskedTextBoxMail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maskedTextBoxMail.Mask = "aaaaaaaaaaaaaaaaaa@aaaaaaaaa.aaa";
             this.maskedTextBoxMail.Name = "maskedTextBoxMail";
-            this.maskedTextBoxMail.Size = new System.Drawing.Size(205, 20);
+            this.maskedTextBoxMail.Size = new System.Drawing.Size(272, 22);
             this.maskedTextBoxMail.TabIndex = 13;
             // 
             // lblCodAcesso
             // 
             this.lblCodAcesso.AutoSize = true;
-            this.lblCodAcesso.Location = new System.Drawing.Point(336, 219);
-            this.lblCodAcesso.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCodAcesso.Location = new System.Drawing.Point(448, 270);
             this.lblCodAcesso.Name = "lblCodAcesso";
-            this.lblCodAcesso.Size = new System.Drawing.Size(96, 13);
+            this.lblCodAcesso.Size = new System.Drawing.Size(126, 17);
             this.lblCodAcesso.TabIndex = 14;
             this.lblCodAcesso.Text = "Código de Acesso:";
             // 
             // txtBoxCodAcesso
             // 
-            this.txtBoxCodAcesso.Location = new System.Drawing.Point(338, 233);
-            this.txtBoxCodAcesso.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBoxCodAcesso.Location = new System.Drawing.Point(451, 287);
+            this.txtBoxCodAcesso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxCodAcesso.Name = "txtBoxCodAcesso";
-            this.txtBoxCodAcesso.Size = new System.Drawing.Size(206, 20);
+            this.txtBoxCodAcesso.Size = new System.Drawing.Size(273, 22);
             this.txtBoxCodAcesso.TabIndex = 21;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(336, 255);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPassword.Location = new System.Drawing.Point(448, 314);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(56, 13);
+            this.lblPassword.Size = new System.Drawing.Size(73, 17);
             this.lblPassword.TabIndex = 16;
             this.lblPassword.Text = "Password:";
             // 
             // txtBoxPassword
             // 
-            this.txtBoxPassword.Location = new System.Drawing.Point(338, 269);
-            this.txtBoxPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBoxPassword.Location = new System.Drawing.Point(451, 331);
+            this.txtBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(206, 20);
+            this.txtBoxPassword.Size = new System.Drawing.Size(273, 22);
             this.txtBoxPassword.TabIndex = 17;
             this.txtBoxPassword.UseSystemPasswordChar = true;
             // 
             // btnRegistar
             // 
-            this.btnRegistar.Location = new System.Drawing.Point(305, 305);
-            this.btnRegistar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegistar.Location = new System.Drawing.Point(407, 375);
+            this.btnRegistar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegistar.Name = "btnRegistar";
-            this.btnRegistar.Size = new System.Drawing.Size(76, 42);
+            this.btnRegistar.Size = new System.Drawing.Size(101, 52);
             this.btnRegistar.TabIndex = 18;
             this.btnRegistar.Text = "Registar";
             this.btnRegistar.UseVisualStyleBackColor = true;
@@ -238,10 +233,10 @@ namespace GestaoCamaraMunicipal
             // 
             // btnGuardarAlteracoes
             // 
-            this.btnGuardarAlteracoes.Location = new System.Drawing.Point(401, 305);
-            this.btnGuardarAlteracoes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarAlteracoes.Location = new System.Drawing.Point(535, 375);
+            this.btnGuardarAlteracoes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGuardarAlteracoes.Name = "btnGuardarAlteracoes";
-            this.btnGuardarAlteracoes.Size = new System.Drawing.Size(76, 42);
+            this.btnGuardarAlteracoes.Size = new System.Drawing.Size(101, 52);
             this.btnGuardarAlteracoes.TabIndex = 19;
             this.btnGuardarAlteracoes.Text = "Guardar Alterações";
             this.btnGuardarAlteracoes.UseVisualStyleBackColor = true;
@@ -249,10 +244,10 @@ namespace GestaoCamaraMunicipal
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(497, 305);
-            this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemover.Location = new System.Drawing.Point(663, 375);
+            this.btnRemover.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(76, 42);
+            this.btnRemover.Size = new System.Drawing.Size(101, 52);
             this.btnRemover.TabIndex = 20;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
@@ -261,18 +256,20 @@ namespace GestaoCamaraMunicipal
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.listBoxPromotores);
-            this.groupBox1.Location = new System.Drawing.Point(12, 41);
+            this.groupBox1.Location = new System.Drawing.Point(16, 50);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(282, 306);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(376, 377);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Promotores";
             // 
             // GestaoPromotores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 364);
+            this.ClientSize = new System.Drawing.Size(785, 448);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnGuardarAlteracoes);
@@ -294,7 +291,7 @@ namespace GestaoCamaraMunicipal
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GestaoPromotores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão de Promotores";

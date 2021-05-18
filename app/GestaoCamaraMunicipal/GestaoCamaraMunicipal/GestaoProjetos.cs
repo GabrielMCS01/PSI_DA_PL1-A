@@ -20,15 +20,7 @@ namespace GestaoCamaraMunicipal
         private void GestaoProjetos_Load(object sender, EventArgs e)
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
-            
-            comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
-            comboBoxTiposProjeto.SelectedIndex = -1;
-
-            comboBoxProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
-            comboBoxProcesso.SelectedIndex = -1;
-
-            comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
-            comboBoxTipoDocumento.SelectedIndex = -1;
+            LerDados();
         }
 
         // Volta ao menu principal
@@ -49,6 +41,16 @@ namespace GestaoCamaraMunicipal
         {
             listBoxProjetos.DataSource = camaraMunicipal.ProjetoSet.ToList<Projeto>();
             listBoxProjetos.SelectedIndex = -1;
+
+            comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
+            comboBoxTiposProjeto.SelectedIndex = -1;
+
+            comboBoxProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
+            comboBoxProcesso.SelectedIndex = -1;
+
+            comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
+            comboBoxTipoDocumento.SelectedIndex = -1;
+
             LimparForm();
         }
 
@@ -70,11 +72,13 @@ namespace GestaoCamaraMunicipal
                 if (textBoxEstadoProjeto.Text != "" && comboBoxTiposProjeto.SelectedIndex != -1 && comboBoxProcesso.SelectedIndex != -1)
                 {
                     // Adiciona o Projeto e guarda as alterações na Base de Dados
-                    /*camaraMunicipal.ProjetoSet.Add(new Projeto(textBoxEstadoProjeto.Text, comboBoxFuncionario.Text));
+                    TipoProjeto tipoprojeto = (TipoProjeto)comboBoxTiposProjeto.SelectedItem;
+                    Processo processo = (Processo)comboBoxProcesso.SelectedItem;
+                    camaraMunicipal.ProjetoSet.Add(new Projeto(textBoxEstadoProjeto.Text, tipoprojeto.Id, dateTimePickerProjeto.Value, processo.Id));
                     camaraMunicipal.SaveChanges();
 
                     // Recarrega a ListBox e limpa o formulário
-                    LerDados();*/
+                    LerDados();
                 }
                 else
                 {
@@ -82,6 +86,54 @@ namespace GestaoCamaraMunicipal
                 }
             }
             catch (FormatException ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        private void btGuardarAlteracoesProjetos_Click(object sender, EventArgs e)
+        {
+            Projeto projeto = new Projeto();
+            try
+            {
+                // Se estiver algum Projeto selecionado faz
+                if (listBoxProjetos.SelectedIndex != -1)
+                {
+                    // Se todas as TextBoxs tiverem preenchidas faz
+                    if (textBoxEstadoProjeto.Text != "" && comboBoxTiposProjeto.SelectedIndex != -1 && comboBoxProcesso.SelectedIndex != -1)
+                    {
+                        // Variável para receber o index selecionado na ListBox Projetos
+                        int posicao = listBoxProjetos.SelectedIndex;
+
+                        // Varíável que recebe o objeto Projetos selecionado na ListBox
+                        projeto = (Projeto)listBoxProjetos.SelectedItem;
+
+                        // Atribui ao objeto anterior as alterações executadas anteriormente no formulário
+                        projeto.EstadoProjeto = textBoxEstadoProjeto.Text;
+                        TipoProjeto tipoprojeto = (TipoProjeto)comboBoxTiposProjeto.SelectedItem;
+                        projeto.TipoProjetoId = tipoprojeto.Id;
+
+                        // Guarda as alterações do objeto na Base de Dados
+                        camaraMunicipal.SaveChanges();
+
+                        // Recarrega a ListBox e limpa o formulário
+                        LerDados();
+
+                        // Seleciona o index utilizado anteriormente
+                        listBoxProjetos.SelectedIndex = posicao;
+                        mensagem.Sucesso();
+                    }
+                    else
+                    {
+                        mensagem.ErroPreencherCampos();
+                    }
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("projeto");
+                }
+            }
+            catch (Exception ex)
             {
                 mensagem.Erro(ex);
             }

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc8a277e08f34d9cb67aa09afc1447aa" Name="Diagram1" ZoomLevel="57" >
+      <Diagram DiagramId="bc8a277e08f34d9cb67aa09afc1447aa" Name="Diagram1" ZoomLevel="97" >
         <EntityTypeShape EntityType="GestaoCamaraMunicipal.TipoDocumento" Width="1.5" PointX="3" PointY="4" />
         <EntityTypeShape EntityType="GestaoCamaraMunicipal.Promotor" Width="1.5" PointX="1.5" PointY="12.125" />
         <EntityTypeShape EntityType="GestaoCamaraMunicipal.Processo" Width="1.5" PointX="0.75" PointY="2.625" />
@@ -28,6 +28,7 @@
         <AssociationConnector Association="GestaoCamaraMunicipal.FuncionarioEspecialista" />
         <AssociationConnector Association="GestaoCamaraMunicipal.FuncionarioProjetoAtribuido" />
         <AssociationConnector Association="GestaoCamaraMunicipal.TipoProjetoEspecialista" />
+        <AssociationConnector Association="GestaoCamaraMunicipal.TipoProjetoTipoProjeto" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

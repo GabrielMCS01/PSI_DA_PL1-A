@@ -34,6 +34,7 @@ namespace GestaoCamaraMunicipal
 
             listBoxDocumentos.ClearSelected();
             listBoxTiposdeProjeto.ClearSelected();
+            listBoxEspecialistas.ClearSelected();
             comboBoxFuncionario.SelectedIndex = -1;
 
         }
@@ -152,6 +153,7 @@ namespace GestaoCamaraMunicipal
                     checkBoxDependente.Checked = (tipoprojeto.TipoProjetoId != null) ? true : false;
 
                     listBoxEspecialistas.DataSource = tipoprojeto.Especialista.ToList<Especialista>();
+                    listBoxEspecialistas.ClearSelected();
                 }
                 else
                 {
@@ -211,9 +213,9 @@ namespace GestaoCamaraMunicipal
                     especialista.FuncionarioNumero1 = funcionario.Numero;
                     camaraMunicipal.EspecialistaSet.Add(especialista);
                     camaraMunicipal.SaveChanges();
-                    int posicao = listBoxEspecialistas.SelectedIndex;
+                    int posicao = listBoxTiposdeProjeto.SelectedIndex;
                     lerDados();
-                    listBoxEspecialistas.SelectedIndex = posicao;
+                    listBoxTiposdeProjeto.SelectedIndex = posicao;
                 }
                 else
                 {

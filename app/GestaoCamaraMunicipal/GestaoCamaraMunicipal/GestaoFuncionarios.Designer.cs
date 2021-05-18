@@ -55,7 +55,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,13 +64,14 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestãoDePromotoresToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
+            this.toolStripMenu.Size = new System.Drawing.Size(60, 26);
             this.toolStripMenu.Text = "Menu";
             // 
             // gestãoDePromotoresToolStripMenuItem
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(193, 26);
+            this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Left)));
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 

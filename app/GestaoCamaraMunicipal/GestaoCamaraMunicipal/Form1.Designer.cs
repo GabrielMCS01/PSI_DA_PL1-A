@@ -60,12 +60,12 @@ namespace GestaoCamaraMunicipal
             // toolStripMenu
             // 
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestãoToolStripMenuItem,
             this.gestãoDePromotoresToolStripMenuItem,
+            this.gestãoDeFuncionáriosToolStripMenuItem,
             this.gestãoDeProcessosToolStripMenuItem,
             this.gestãoDeProjetosToolStripMenuItem,
             this.gestãoDePareceresToolStripMenuItem,
-            this.gestãoDeFuncionáriosToolStripMenuItem,
-            this.gestãoToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
@@ -74,48 +74,55 @@ namespace GestaoCamaraMunicipal
             // gestãoDePromotoresToolStripMenuItem
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Gestão de Promotores";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
             // gestãoDeProcessosToolStripMenuItem
             // 
             this.gestãoDeProcessosToolStripMenuItem.Name = "gestãoDeProcessosToolStripMenuItem";
-            this.gestãoDeProcessosToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.gestãoDeProcessosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D4)));
+            this.gestãoDeProcessosToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.gestãoDeProcessosToolStripMenuItem.Text = "Gestão de Processos";
             this.gestãoDeProcessosToolStripMenuItem.Click += new System.EventHandler(this.gestãoDeProcessosToolStripMenuItem_Click);
             // 
             // gestãoDeProjetosToolStripMenuItem
             // 
             this.gestãoDeProjetosToolStripMenuItem.Name = "gestãoDeProjetosToolStripMenuItem";
-            this.gestãoDeProjetosToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.gestãoDeProjetosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D5)));
+            this.gestãoDeProjetosToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.gestãoDeProjetosToolStripMenuItem.Text = "Gestão de Projetos";
             this.gestãoDeProjetosToolStripMenuItem.Click += new System.EventHandler(this.gestãoDeProjetosToolStripMenuItem_Click);
             // 
             // gestãoDePareceresToolStripMenuItem
             // 
             this.gestãoDePareceresToolStripMenuItem.Name = "gestãoDePareceresToolStripMenuItem";
-            this.gestãoDePareceresToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.gestãoDePareceresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D6)));
+            this.gestãoDePareceresToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.gestãoDePareceresToolStripMenuItem.Text = "Gestão de Pareceres";
             this.gestãoDePareceresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePareceresToolStripMenuItem_Click);
             // 
             // gestãoDeFuncionáriosToolStripMenuItem
             // 
             this.gestãoDeFuncionáriosToolStripMenuItem.Name = "gestãoDeFuncionáriosToolStripMenuItem";
-            this.gestãoDeFuncionáriosToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.gestãoDeFuncionáriosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
+            this.gestãoDeFuncionáriosToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.gestãoDeFuncionáriosToolStripMenuItem.Text = "Gestão de Funcionários";
             this.gestãoDeFuncionáriosToolStripMenuItem.Click += new System.EventHandler(this.gestãoDeFuncionáriosToolStripMenuItem_Click);
             // 
             // gestãoToolStripMenuItem
             // 
             this.gestãoToolStripMenuItem.Name = "gestãoToolStripMenuItem";
-            this.gestãoToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
-            this.gestãoToolStripMenuItem.Text = "Gestão";
+            this.gestãoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
+            this.gestãoToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
+            this.gestãoToolStripMenuItem.Text = "Administração";
             this.gestãoToolStripMenuItem.Click += new System.EventHandler(this.gestãoToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);

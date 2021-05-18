@@ -19,7 +19,7 @@ namespace GestaoCamaraMunicipal
         {
             this.Documento = new HashSet<Documento>();
         }
-
+    
         public int Id { get; set; }
         public string Designacao { get; set; }
     

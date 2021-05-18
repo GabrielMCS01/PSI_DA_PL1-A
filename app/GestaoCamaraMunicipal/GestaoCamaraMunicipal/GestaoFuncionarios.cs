@@ -90,11 +90,19 @@ namespace GestaoCamaraMunicipal
         // Retorna o número do funcionário a adicionar
         // baseado no número de funcionários existentes e incrementando 1
         private int CalculaNumero() {
-            int num = listBoxFuncionarios.Items.Count;
-            listBoxFuncionarios.SelectedIndex = num - 1;
-            Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
+            if (listBoxFuncionarios.Items.Count > 0)
+            {
+                int num = listBoxFuncionarios.Items.Count;
+                listBoxFuncionarios.SelectedIndex = num - 1;
+                Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
+
+                return funcionario.Numero + 1;
+            }
+            else
+            {
+                return 1;
+            }
             
-            return funcionario.Numero + 1;
         }
 
         // Botão para Guardar as alterações feitas no Funcionário
