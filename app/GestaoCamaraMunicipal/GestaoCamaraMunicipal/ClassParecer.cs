@@ -8,6 +8,11 @@ namespace GestaoCamaraMunicipal
 {
     public partial class Parecer
     {
+        public Parecer()
+        {
+
+        }
+
         public Parecer(int numero, string textoParecer, DateTime dataParecer, int projetoId, int projetoProcessoId, int funcionarioNumero)
         {
             Numero = numero;
