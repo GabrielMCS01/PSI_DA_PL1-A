@@ -70,11 +70,6 @@ namespace GestaoCamaraMunicipal
             comboBoxFuncionario.SelectedIndex = -1;
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         // Botão para Registar o Parecer
         private void btRegistarProjeto_Click(object sender, EventArgs e)
         {
@@ -113,8 +108,8 @@ namespace GestaoCamaraMunicipal
             }
         }
 
-        // Retorna o número do funcionário a adicionar
-        // baseado no número de funcionários existentes e incrementando 1
+        // Retorna o número de Pareceres a adicionar
+        // baseado no número de pareceres existentes e incrementando 1
         private int CalculaNumero()
         {
             if (listBoxPareceres.Items.Count > 0)
@@ -133,7 +128,104 @@ namespace GestaoCamaraMunicipal
 
         private void btRemoverProjetos_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Se estiver algum Parecer selecionado faz
+                if (listBoxPareceres.SelectedIndex != -1)
+                {
+                    // Varíável que recebe o objeto Parecer selecionado na ListBox
+                    Parecer parecer = (Parecer)listBoxPareceres.SelectedItem;
 
+                    // Remove o Parecer e guarda as alterações na Base de dados
+                    camaraMunicipal.ParecerSet.Remove(parecer);
+                    camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox e limpa o formulário
+                    LerDados();
+                    LimparForm();
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("Pareceres");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        // Botão para Guardar as alterações feitas no Parecer
+        private void btGuardarAlteracoesProjetos_Click(object sender, EventArgs e)
+        {
+            Parecer parecer = new Parecer();
+            try
+            {
+                // Se estiver algum Parecer selecionado faz
+                if (listBoxPareceres.SelectedIndex != -1)
+                {
+                    // Se todas as Caixas tiverem preenchidas faz
+                    if (textBoxTextoParecer.Text != "" && comboBoxProjeto.SelectedIndex != -1 && comboBoxFuncionario.SelectedIndex != -1)
+                    {
+                        // Variável para receber o index selecionado na ListBox Pareceres
+                        int posicao = listBoxPareceres.SelectedIndex;
+
+                        // Varíável que recebe o objeto Parecer selecionado na ListBox
+                        parecer = (Parecer)listBoxPareceres.SelectedItem;
+
+                        // Atribui ao objeto anterior as alterações executadas anteriormente no formulário
+                        parecer.TextoParecer = textBoxTextoParecer.Text;
+                        parecer.DataParecer = dateTimePickerProjeto.Value;
+                        parecer.Projeto = (Projeto)comboBoxProjeto.SelectedItem;
+                        parecer.Funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
+
+                        // Guarda as alterações do objeto na Base de Dados
+                        camaraMunicipal.SaveChanges();
+
+                        // Recarrega a ListBox e limpa o formulário
+                        LerDados();
+
+                        // Seleciona o index utilizado anteriormente
+                        listBoxPareceres.SelectedIndex = posicao;
+                        mensagem.Sucesso();
+                    }
+                    else
+                    {
+                        mensagem.ErroPreencherCampos();
+                    }
+                }
+                else
+                {
+                    mensagem.AvisoSelecionarPrimeiro("funcionário");
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
+        }
+
+        private void listBoxPareceres_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                // Se estiver algum Parecer selecionado faz
+                if (listBoxPareceres.SelectedIndex != -1)
+                {
+                    // Varíável que recebe o objeto Parecer selecionado na ListBox
+                    Parecer parecer = (Parecer)listBoxPareceres.SelectedItem;
+
+                    // Atribui ás TextBoxs os atributos do objeto selecionado
+                    textBoxTextoParecer.Text = parecer.TextoParecer;
+                    dateTimePickerProjeto.Value = parecer.DataParecer;
+                    comboBoxProjeto.SelectedItem = parecer.Projeto;
+                    comboBoxFuncionario.SelectedItem = parecer.Funcionario;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem.Erro(ex);
+            }
         }
     }
 }

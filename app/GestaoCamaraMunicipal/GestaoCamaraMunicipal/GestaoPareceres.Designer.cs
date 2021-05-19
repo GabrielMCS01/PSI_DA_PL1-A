@@ -100,7 +100,6 @@ namespace GestaoCamaraMunicipal
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Parecer";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // comboBoxProjeto
             // 
@@ -157,6 +156,7 @@ namespace GestaoCamaraMunicipal
             this.btGuardarAlteracoesProjetos.TabIndex = 12;
             this.btGuardarAlteracoesProjetos.Text = "Guardar Alterações";
             this.btGuardarAlteracoesProjetos.UseVisualStyleBackColor = true;
+            this.btGuardarAlteracoesProjetos.Click += new System.EventHandler(this.btGuardarAlteracoesProjetos_Click);
             // 
             // btRegistarProjeto
             // 
@@ -221,6 +221,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxPareceres.Name = "listBoxPareceres";
             this.listBoxPareceres.Size = new System.Drawing.Size(261, 172);
             this.listBoxPareceres.TabIndex = 3;
+            this.listBoxPareceres.SelectedIndexChanged += new System.EventHandler(this.listBoxPareceres_SelectedIndexChanged);
             // 
             // GestaoPareceres
             // 
@@ -232,7 +233,7 @@ namespace GestaoCamaraMunicipal
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GestaoPareceres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestão de Pareceres";
