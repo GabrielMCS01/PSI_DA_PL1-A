@@ -33,6 +33,8 @@ namespace GestaoCamaraMunicipal
             this.listBoxProjetos = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxParecer = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.comboBoxTipoDocumento = new System.Windows.Forms.ComboBox();
             this.btRemover = new System.Windows.Forms.Button();
             this.btGuardarAlterações = new System.Windows.Forms.Button();
@@ -59,8 +61,6 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoDePromotoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBoxParecer = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -114,12 +114,33 @@ namespace GestaoCamaraMunicipal
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Documento";
             // 
+            // comboBoxParecer
+            // 
+            this.comboBoxParecer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxParecer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxParecer.FormattingEnabled = true;
+            this.comboBoxParecer.Location = new System.Drawing.Point(8, 186);
+            this.comboBoxParecer.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxParecer.Name = "comboBoxParecer";
+            this.comboBoxParecer.Size = new System.Drawing.Size(333, 24);
+            this.comboBoxParecer.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(5, 166);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(62, 17);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Parecer:";
+            // 
             // comboBoxTipoDocumento
             // 
             this.comboBoxTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTipoDocumento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxTipoDocumento.FormattingEnabled = true;
-            this.comboBoxTipoDocumento.Location = new System.Drawing.Point(7, 140);
+            this.comboBoxTipoDocumento.Location = new System.Drawing.Point(8, 89);
             this.comboBoxTipoDocumento.Name = "comboBoxTipoDocumento";
             this.comboBoxTipoDocumento.Size = new System.Drawing.Size(333, 24);
             this.comboBoxTipoDocumento.TabIndex = 9;
@@ -158,7 +179,7 @@ namespace GestaoCamaraMunicipal
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 118);
+            this.label3.Location = new System.Drawing.Point(4, 69);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 17);
@@ -167,7 +188,7 @@ namespace GestaoCamaraMunicipal
             // 
             // dateTimePickerDocumento
             // 
-            this.dateTimePickerDocumento.Location = new System.Drawing.Point(8, 89);
+            this.dateTimePickerDocumento.Location = new System.Drawing.Point(8, 138);
             this.dateTimePickerDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerDocumento.MinDate = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
             this.dateTimePickerDocumento.Name = "dateTimePickerDocumento";
@@ -186,7 +207,7 @@ namespace GestaoCamaraMunicipal
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 69);
+            this.label2.Location = new System.Drawing.Point(4, 118);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 17);
@@ -360,6 +381,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxDocumentos.Name = "listBoxDocumentos";
             this.listBoxDocumentos.Size = new System.Drawing.Size(347, 211);
             this.listBoxDocumentos.TabIndex = 0;
+            this.listBoxDocumentos.SelectedIndexChanged += new System.EventHandler(this.listBoxDocumentos_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -370,7 +392,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(751, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(751, 28);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -379,7 +401,7 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestãoDePromotoresToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(60, 26);
+            this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
             this.toolStripMenu.Text = "Menu";
             // 
             // gestãoDePromotoresToolStripMenuItem
@@ -389,27 +411,6 @@ namespace GestaoCamaraMunicipal
             this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
-            // 
-            // comboBoxParecer
-            // 
-            this.comboBoxParecer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxParecer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxParecer.FormattingEnabled = true;
-            this.comboBoxParecer.Location = new System.Drawing.Point(8, 186);
-            this.comboBoxParecer.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBoxParecer.Name = "comboBoxParecer";
-            this.comboBoxParecer.Size = new System.Drawing.Size(333, 24);
-            this.comboBoxParecer.TabIndex = 20;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 166);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 17);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Parecer:";
             // 
             // GestaoProjetos
             // 

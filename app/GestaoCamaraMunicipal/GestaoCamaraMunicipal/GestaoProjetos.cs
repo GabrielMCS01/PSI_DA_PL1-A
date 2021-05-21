@@ -39,20 +39,15 @@ namespace GestaoCamaraMunicipal
         // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDados()
         {
+            //Ler dados dos projetos
             listBoxProjetos.DataSource = camaraMunicipal.ProjetoSet.ToList<Projeto>();
-            listBoxProjetos.SelectedIndex = -1;
-
             comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
-            comboBoxTiposProjeto.SelectedIndex = -1;
-
             comboBoxProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
-            comboBoxProcesso.SelectedIndex = -1;
-
+            
+            //Ler dados dos documentos
+            listBoxDocumentos.DataSource = camaraMunicipal.DocumentoSet.ToList<Documento>();
             comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
-            comboBoxTipoDocumento.SelectedIndex = -1;
-
             comboBoxParecer.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
-            comboBoxParecer.SelectedIndex = -1;
 
             LimparForm();
         }
@@ -60,10 +55,19 @@ namespace GestaoCamaraMunicipal
         // Limpa todas as TextBoxs do formulário e tira o index selecionado nas ComboBoxs
         private void LimparForm()
         {
+            //Limpar campos dos projetos
+            listBoxProjetos.ClearSelected();
             textBoxEstadoProjeto.Clear();
             comboBoxTiposProjeto.SelectedIndex = -1;
             dateTimePickerProjeto.Value = DateTime.Now;
             comboBoxProcesso.SelectedIndex = -1;
+
+            //Limpar campos dos documentos
+            listBoxDocumentos.ClearSelected();
+            textBoxTitulo.Clear();
+            comboBoxTipoDocumento.SelectedIndex = -1;
+            dateTimePickerDocumento.Value = DateTime.Now;
+            comboBoxParecer.SelectedIndex = -1;
         }
 
         // Botão para Registar o Projeto
@@ -188,7 +192,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se todas as TextBoxs tiverem preenchidas Faz
-                if (textBoxTitulo.Text != "" && comboBoxTipoDocumento.SelectedIndex != -1 && comboBoxParecer.SelectedIndex != -1)
+                if (listBoxProjetos.SelectedIndex != -1 && textBoxTitulo.Text != "" && comboBoxTipoDocumento.SelectedIndex != -1 && comboBoxParecer.SelectedIndex != -1)
                 {
                     // Adiciona o Projeto e guarda as alterações na Base de Dados
                     camaraMunicipal.DocumentoSet.Add(new Documento(textBoxTitulo.Text, dateTimePickerDocumento.Value, (TipoDocumento)comboBoxTipoDocumento.SelectedItem, (Projeto)listBoxProjetos.SelectedItem, (Parecer)comboBoxParecer.SelectedItem));
@@ -199,12 +203,24 @@ namespace GestaoCamaraMunicipal
                 }
                 else
                 {
-                    mensagem.ErroPreencherCampos();
+                    mensagem.AvisoSelecionarPrimeiro("projeto e preencha todos os campos");
                 }
             }
             catch (FormatException ex)
             {
                 mensagem.Erro(ex);
+            }
+        }
+
+        private void listBoxDocumentos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxDocumentos.SelectedIndex != -1)
+            {
+                Documento documento = (Documento)listBoxDocumentos.SelectedItem;
+                textBoxTitulo.Text = documento.Titulo;
+                comboBoxTipoDocumento.Text = documento.TipoDocumento.ToString();
+                dateTimePickerDocumento.Value = documento.DataEntrega;
+                comboBoxParecer.Text = documento.Parecer.ToString();
             }
         }
     }

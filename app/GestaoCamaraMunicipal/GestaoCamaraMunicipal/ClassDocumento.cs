@@ -8,6 +8,12 @@ namespace GestaoCamaraMunicipal
 {
     public partial class Documento
     {
+
+        public Documento()
+        {
+
+        }
+
         public Documento(string titulo, DateTime dataentrega, TipoDocumento tipodocumento, Projeto projeto, Parecer parecer)
         {
             this.Titulo = titulo;

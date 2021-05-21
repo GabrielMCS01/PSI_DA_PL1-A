@@ -12,7 +12,7 @@ namespace GestaoCamaraMunicipal
         //Mensagem de erro padrão.
         public void Erro(Exception ex)
         {
-            MessageBox.Show("Ocurreu um erro\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Ocorreu um erro\n\n" + ex.InnerException, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         //Mensagem de erro por não preencher todos os campos do formulário ao adicionar.
