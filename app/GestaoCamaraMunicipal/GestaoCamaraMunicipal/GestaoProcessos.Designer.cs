@@ -223,7 +223,7 @@ namespace GestaoCamaraMunicipal
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GestaoProcessos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestão de Processos";
+            this.Text = "DPM - Gestão de Processos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoProcessos_FormClosing);
             this.Load += new System.EventHandler(this.GestaoProcessos_Load);
             this.menuStrip1.ResumeLayout(false);

@@ -55,7 +55,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,7 +64,7 @@ namespace GestaoCamaraMunicipal
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestãoDePromotoresToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(60, 26);
+            this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
             this.toolStripMenu.Text = "Menu";
             // 
             // gestãoDePromotoresToolStripMenuItem
@@ -186,7 +186,7 @@ namespace GestaoCamaraMunicipal
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GestaoFuncionarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestão de Funcionários";
+            this.Text = "DPM - Gestão de Funcionários";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoFuncionarios_FormClosing);
             this.Load += new System.EventHandler(this.GestaoFuncionarios_Load);
             this.menuStrip1.ResumeLayout(false);

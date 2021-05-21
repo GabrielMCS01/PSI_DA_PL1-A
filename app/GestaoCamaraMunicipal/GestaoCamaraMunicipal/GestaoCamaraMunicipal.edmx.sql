@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/18/2021 17:20:55
--- Generated from EDMX file: D:\diogo\OneDrive - IPLeiria\Semestre 2\Desenvolvimento de aplicações\PSI_DA_PL1-A\app\GestaoCamaraMunicipal\GestaoCamaraMunicipal\GestaoCamaraMunicipal.edmx
+-- Date Created: 05/21/2021 11:30:09
+-- Generated from EDMX file: C:\Users\badal\OneDrive\Documentos\GitHub\PSI_DA_PL1-A\app\GestaoCamaraMunicipal\GestaoCamaraMunicipal\GestaoCamaraMunicipal.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -55,6 +55,9 @@ IF OBJECT_ID(N'[dbo].[FK_TipoProjetoEspecialista]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_TipoProjetoTipoProjeto]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TipoProjetoSet] DROP CONSTRAINT [FK_TipoProjetoTipoProjeto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DocumentoParecer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DocumentoSet] DROP CONSTRAINT [FK_DocumentoParecer];
 GO
 
 -- --------------------------------------------------
@@ -195,11 +198,9 @@ GO
 -- Creating table 'ProjetoAtribuidoSet'
 CREATE TABLE [dbo].[ProjetoAtribuidoSet] (
     [Data] datetime  NOT NULL,
-    [ProjetoId] int  NOT NULL,
-    [ProjetoProcessoId] int  NOT NULL,
     [FuncionarioNumero] int  NOT NULL,
-    [Projeto_Id] int  NOT NULL,
-    [Projeto_ProcessoId] int  NOT NULL
+    [ProjetoId] int  NOT NULL,
+    [ProjetoProcessoId] int  NOT NULL
 );
 GO
 
@@ -267,10 +268,10 @@ ADD CONSTRAINT [PK_EspecialistaSet]
     PRIMARY KEY CLUSTERED ([TipoProjetoId], [FuncionarioNumero1] ASC);
 GO
 
--- Creating primary key on [ProjetoId], [ProjetoProcessoId] in table 'ProjetoAtribuidoSet'
+-- Creating primary key on [FuncionarioNumero], [ProjetoId], [ProjetoProcessoId] in table 'ProjetoAtribuidoSet'
 ALTER TABLE [dbo].[ProjetoAtribuidoSet]
 ADD CONSTRAINT [PK_ProjetoAtribuidoSet]
-    PRIMARY KEY CLUSTERED ([ProjetoId], [ProjetoProcessoId] ASC);
+    PRIMARY KEY CLUSTERED ([FuncionarioNumero], [ProjetoId], [ProjetoProcessoId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -382,21 +383,6 @@ ON [dbo].[ParecerSet]
     ([ProjetoId], [ProjetoProcessoId]);
 GO
 
--- Creating foreign key on [Projeto_Id], [Projeto_ProcessoId] in table 'ProjetoAtribuidoSet'
-ALTER TABLE [dbo].[ProjetoAtribuidoSet]
-ADD CONSTRAINT [FK_ProjetoProjetoAtribuido]
-    FOREIGN KEY ([Projeto_Id], [Projeto_ProcessoId])
-    REFERENCES [dbo].[ProjetoSet]
-        ([Id], [ProcessoId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ProjetoProjetoAtribuido'
-CREATE INDEX [IX_FK_ProjetoProjetoAtribuido]
-ON [dbo].[ProjetoAtribuidoSet]
-    ([Projeto_Id], [Projeto_ProcessoId]);
-GO
-
 -- Creating foreign key on [FuncionarioNumero] in table 'ParecerSet'
 ALTER TABLE [dbo].[ParecerSet]
 ADD CONSTRAINT [FK_FuncionarioParecer]
@@ -425,21 +411,6 @@ GO
 CREATE INDEX [IX_FK_FuncionarioEspecialista]
 ON [dbo].[EspecialistaSet]
     ([FuncionarioNumero1]);
-GO
-
--- Creating foreign key on [FuncionarioNumero] in table 'ProjetoAtribuidoSet'
-ALTER TABLE [dbo].[ProjetoAtribuidoSet]
-ADD CONSTRAINT [FK_FuncionarioProjetoAtribuido]
-    FOREIGN KEY ([FuncionarioNumero])
-    REFERENCES [dbo].[FuncionarioSet]
-        ([Numero])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_FuncionarioProjetoAtribuido'
-CREATE INDEX [IX_FK_FuncionarioProjetoAtribuido]
-ON [dbo].[ProjetoAtribuidoSet]
-    ([FuncionarioNumero]);
 GO
 
 -- Creating foreign key on [TipoProjetoId] in table 'EspecialistaSet'
@@ -479,6 +450,30 @@ GO
 CREATE INDEX [IX_FK_DocumentoParecer]
 ON [dbo].[DocumentoSet]
     ([ParecerNumero]);
+GO
+
+-- Creating foreign key on [FuncionarioNumero] in table 'ProjetoAtribuidoSet'
+ALTER TABLE [dbo].[ProjetoAtribuidoSet]
+ADD CONSTRAINT [FK_FuncionarioProjetoAtribuido]
+    FOREIGN KEY ([FuncionarioNumero])
+    REFERENCES [dbo].[FuncionarioSet]
+        ([Numero])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [ProjetoId], [ProjetoProcessoId] in table 'ProjetoAtribuidoSet'
+ALTER TABLE [dbo].[ProjetoAtribuidoSet]
+ADD CONSTRAINT [FK_ProjetoProjetoAtribuido]
+    FOREIGN KEY ([ProjetoId], [ProjetoProcessoId])
+    REFERENCES [dbo].[ProjetoSet]
+        ([Id], [ProcessoId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProjetoProjetoAtribuido'
+CREATE INDEX [IX_FK_ProjetoProjetoAtribuido]
+ON [dbo].[ProjetoAtribuidoSet]
+    ([ProjetoId], [ProjetoProcessoId]);
 GO
 
 -- --------------------------------------------------

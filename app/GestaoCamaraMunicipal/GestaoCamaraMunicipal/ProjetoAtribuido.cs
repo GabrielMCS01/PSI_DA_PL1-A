@@ -15,11 +15,11 @@ namespace GestaoCamaraMunicipal
     public partial class ProjetoAtribuido
     {
         public System.DateTime Data { get; set; }
+        public int FuncionarioNumero { get; set; }
         public int ProjetoId { get; set; }
         public int ProjetoProcessoId { get; set; }
-        public int FuncionarioNumero { get; set; }
     
-        public virtual Projeto Projeto { get; set; }
         public virtual Funcionario Funcionario { get; set; }
+        public virtual Projeto Projeto { get; set; }
     }
 }

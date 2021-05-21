@@ -383,7 +383,7 @@ namespace GestaoCamaraMunicipal
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Gestao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Administração";
+            this.Text = "DPM - Administração";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Gestao_FormClosing);
             this.Load += new System.EventHandler(this.Gestao_Load);
             this.menuStrip1.ResumeLayout(false);

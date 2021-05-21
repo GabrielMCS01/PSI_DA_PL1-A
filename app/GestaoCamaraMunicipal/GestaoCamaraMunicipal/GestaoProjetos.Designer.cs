@@ -61,11 +61,22 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoDePromotoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.listBoxProjetoAtribuido = new System.Windows.Forms.ListBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.comboBoxFuncionario = new System.Windows.Forms.ComboBox();
+            this.btnRemoverAtribuicao = new System.Windows.Forms.Button();
+            this.btnRegistarAtribuicao = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateTimePickerAtribuicao = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBoxProjetos
@@ -392,7 +403,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(751, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1111, 28);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -412,11 +423,115 @@ namespace GestaoCamaraMunicipal
             this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.listBoxProjetoAtribuido);
+            this.groupBox5.Location = new System.Drawing.Point(742, 41);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(355, 234);
+            this.groupBox5.TabIndex = 11;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Projetos Atribuidos";
+            // 
+            // listBoxProjetoAtribuido
+            // 
+            this.listBoxProjetoAtribuido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxProjetoAtribuido.FormattingEnabled = true;
+            this.listBoxProjetoAtribuido.ItemHeight = 16;
+            this.listBoxProjetoAtribuido.Location = new System.Drawing.Point(4, 19);
+            this.listBoxProjetoAtribuido.Margin = new System.Windows.Forms.Padding(4);
+            this.listBoxProjetoAtribuido.Name = "listBoxProjetoAtribuido";
+            this.listBoxProjetoAtribuido.Size = new System.Drawing.Size(347, 211);
+            this.listBoxProjetoAtribuido.TabIndex = 0;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.comboBoxFuncionario);
+            this.groupBox6.Controls.Add(this.btnRemoverAtribuicao);
+            this.groupBox6.Controls.Add(this.btnRegistarAtribuicao);
+            this.groupBox6.Controls.Add(this.label10);
+            this.groupBox6.Controls.Add(this.dateTimePickerAtribuicao);
+            this.groupBox6.Controls.Add(this.label11);
+            this.groupBox6.Location = new System.Drawing.Point(744, 283);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(349, 302);
+            this.groupBox6.TabIndex = 12;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Atribuição de Projetos";
+            // 
+            // comboBoxFuncionario
+            // 
+            this.comboBoxFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBoxFuncionario.FormattingEnabled = true;
+            this.comboBoxFuncionario.Location = new System.Drawing.Point(12, 38);
+            this.comboBoxFuncionario.Name = "comboBoxFuncionario";
+            this.comboBoxFuncionario.Size = new System.Drawing.Size(333, 24);
+            this.comboBoxFuncionario.TabIndex = 9;
+            // 
+            // btnRemoverAtribuicao
+            // 
+            this.btnRemoverAtribuicao.Location = new System.Drawing.Point(195, 242);
+            this.btnRemoverAtribuicao.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemoverAtribuicao.Name = "btnRemoverAtribuicao";
+            this.btnRemoverAtribuicao.Size = new System.Drawing.Size(100, 52);
+            this.btnRemoverAtribuicao.TabIndex = 8;
+            this.btnRemoverAtribuicao.Text = "Remover";
+            this.btnRemoverAtribuicao.UseVisualStyleBackColor = true;
+            this.btnRemoverAtribuicao.Click += new System.EventHandler(this.btnRemoverAtribuicao_Click);
+            // 
+            // btnRegistarAtribuicao
+            // 
+            this.btnRegistarAtribuicao.Location = new System.Drawing.Point(65, 242);
+            this.btnRegistarAtribuicao.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRegistarAtribuicao.Name = "btnRegistarAtribuicao";
+            this.btnRegistarAtribuicao.Size = new System.Drawing.Size(100, 52);
+            this.btnRegistarAtribuicao.TabIndex = 6;
+            this.btnRegistarAtribuicao.Text = "Registar";
+            this.btnRegistarAtribuicao.UseVisualStyleBackColor = true;
+            this.btnRegistarAtribuicao.Click += new System.EventHandler(this.btnRegistarAtribuicao_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 18);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 17);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Funcionário:";
+            // 
+            // dateTimePickerAtribuicao
+            // 
+            this.dateTimePickerAtribuicao.Location = new System.Drawing.Point(12, 87);
+            this.dateTimePickerAtribuicao.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerAtribuicao.MinDate = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
+            this.dateTimePickerAtribuicao.Name = "dateTimePickerAtribuicao";
+            this.dateTimePickerAtribuicao.Size = new System.Drawing.Size(333, 22);
+            this.dateTimePickerAtribuicao.TabIndex = 3;
+            this.dateTimePickerAtribuicao.Value = new System.DateTime(2021, 5, 10, 17, 40, 15, 0);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 67);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 17);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Data de Atribuição:";
+            // 
             // GestaoProjetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 596);
+            this.ClientSize = new System.Drawing.Size(1111, 596);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -427,7 +542,7 @@ namespace GestaoCamaraMunicipal
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GestaoProjetos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestão de Projetos";
+            this.Text = "DPM - Gestão de Projetos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoProjetos_FormClosing);
             this.Load += new System.EventHandler(this.GestaoProjetos_Load);
             this.groupBox1.ResumeLayout(false);
@@ -438,6 +553,9 @@ namespace GestaoCamaraMunicipal
             this.groupBox4.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,5 +593,14 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.ComboBox comboBoxTipoDocumento;
         private System.Windows.Forms.ComboBox comboBoxParecer;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ListBox listBoxProjetoAtribuido;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ComboBox comboBoxFuncionario;
+        private System.Windows.Forms.Button btnRemoverAtribuicao;
+        private System.Windows.Forms.Button btnRegistarAtribuicao;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAtribuicao;
+        private System.Windows.Forms.Label label11;
     }
 }

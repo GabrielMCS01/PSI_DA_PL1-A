@@ -257,9 +257,9 @@ namespace GestaoCamaraMunicipal
             // 
             this.groupBox1.Controls.Add(this.listBoxPromotores);
             this.groupBox1.Location = new System.Drawing.Point(16, 50);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(376, 377);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
@@ -294,7 +294,7 @@ namespace GestaoCamaraMunicipal
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GestaoPromotores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestão de Promotores";
+            this.Text = "DPM - Gestão de Promotores";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoPromotores_FormClosing);
             this.Load += new System.EventHandler(this.GestaoPromotores_Load);
             this.menuStrip1.ResumeLayout(false);

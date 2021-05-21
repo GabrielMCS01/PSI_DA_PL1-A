@@ -45,10 +45,6 @@
       <End Role="Projeto" EntitySet="ProjetoSet" />
       <End Role="Parecer" EntitySet="ParecerSet" />
     </AssociationSet>
-    <AssociationSet Name="ProjetoProjetoAtribuido" Association="GestaoCamaraMunicipal.Store.ProjetoProjetoAtribuido">
-      <End Role="Projeto" EntitySet="ProjetoSet" />
-      <End Role="ProjetoAtribuido" EntitySet="ProjetoAtribuidoSet" />
-    </AssociationSet>
     <AssociationSet Name="FuncionarioParecer" Association="GestaoCamaraMunicipal.Store.FuncionarioParecer">
       <End Role="Funcionario" EntitySet="FuncionarioSet" />
       <End Role="Parecer" EntitySet="ParecerSet" />
@@ -56,10 +52,6 @@
     <AssociationSet Name="FuncionarioEspecialista" Association="GestaoCamaraMunicipal.Store.FuncionarioEspecialista">
       <End Role="Funcionario" EntitySet="FuncionarioSet" />
       <End Role="Especialista" EntitySet="EspecialistaSet" />
-    </AssociationSet>
-    <AssociationSet Name="FuncionarioProjetoAtribuido" Association="GestaoCamaraMunicipal.Store.FuncionarioProjetoAtribuido">
-      <End Role="Funcionario" EntitySet="FuncionarioSet" />
-      <End Role="ProjetoAtribuido" EntitySet="ProjetoAtribuidoSet" />
     </AssociationSet>
     <AssociationSet Name="TipoProjetoEspecialista" Association="GestaoCamaraMunicipal.Store.TipoProjetoEspecialista">
       <End Role="TipoProjeto" EntitySet="TipoProjetoSet" />
@@ -72,6 +64,14 @@
     <AssociationSet Name="DocumentoParecer" Association="GestaoCamaraMunicipal.Store.DocumentoParecer">
       <End Role="Documento" EntitySet="DocumentoSet" />
       <End Role="Parecer" EntitySet="ParecerSet" />
+    </AssociationSet>
+    <AssociationSet Name="FuncionarioProjetoAtribuido" Association="GestaoCamaraMunicipal.Store.FuncionarioProjetoAtribuido">
+      <End Role="Funcionario" EntitySet="FuncionarioSet" />
+      <End Role="ProjetoAtribuido" EntitySet="ProjetoAtribuidoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProjetoProjetoAtribuido" Association="GestaoCamaraMunicipal.Store.ProjetoProjetoAtribuido">
+      <End Role="Projeto" EntitySet="ProjetoSet" />
+      <End Role="ProjetoAtribuido" EntitySet="ProjetoAtribuidoSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="TipoDocumentoSet">
@@ -173,15 +173,14 @@
   </EntityType>
   <EntityType Name="ProjetoAtribuidoSet">
     <Key>
+      <PropertyRef Name="FuncionarioNumero" />
       <PropertyRef Name="ProjetoId" />
       <PropertyRef Name="ProjetoProcessoId" />
     </Key>
     <Property Name="Data" Type="datetime" Nullable="false" />
+    <Property Name="FuncionarioNumero" Type="int" Nullable="false" />
     <Property Name="ProjetoId" Type="int" Nullable="false" />
     <Property Name="ProjetoProcessoId" Type="int" Nullable="false" />
-    <Property Name="FuncionarioNumero" Type="int" Nullable="false" />
-    <Property Name="Projeto_Id" Type="int" Nullable="false" />
-    <Property Name="Projeto_ProcessoId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="TipoDocumentoDocumento">
     <End Role="TipoDocumento" Type="GestaoCamaraMunicipal.Store.TipoDocumentoSet" Multiplicity="1" />
@@ -271,20 +270,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ProjetoProjetoAtribuido">
-    <End Role="Projeto" Type="GestaoCamaraMunicipal.Store.ProjetoSet" Multiplicity="1" />
-    <End Role="ProjetoAtribuido" Type="GestaoCamaraMunicipal.Store.ProjetoAtribuidoSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Projeto">
-        <PropertyRef Name="Id" />
-        <PropertyRef Name="ProcessoId" />
-      </Principal>
-      <Dependent Role="ProjetoAtribuido">
-        <PropertyRef Name="Projeto_Id" />
-        <PropertyRef Name="Projeto_ProcessoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FuncionarioParecer">
     <End Role="Funcionario" Type="GestaoCamaraMunicipal.Store.FuncionarioSet" Multiplicity="1" />
     <End Role="Parecer" Type="GestaoCamaraMunicipal.Store.ParecerSet" Multiplicity="*" />
@@ -306,18 +291,6 @@
       </Principal>
       <Dependent Role="Especialista">
         <PropertyRef Name="FuncionarioNumero1" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FuncionarioProjetoAtribuido">
-    <End Role="Funcionario" Type="GestaoCamaraMunicipal.Store.FuncionarioSet" Multiplicity="1" />
-    <End Role="ProjetoAtribuido" Type="GestaoCamaraMunicipal.Store.ProjetoAtribuidoSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Funcionario">
-        <PropertyRef Name="Numero" />
-      </Principal>
-      <Dependent Role="ProjetoAtribuido">
-        <PropertyRef Name="FuncionarioNumero" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -354,6 +327,32 @@
       </Principal>
       <Dependent Role="Documento">
         <PropertyRef Name="ParecerNumero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FuncionarioProjetoAtribuido">
+    <End Role="Funcionario" Type="GestaoCamaraMunicipal.Store.FuncionarioSet" Multiplicity="1" />
+    <End Role="ProjetoAtribuido" Type="GestaoCamaraMunicipal.Store.ProjetoAtribuidoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionario">
+        <PropertyRef Name="Numero" />
+      </Principal>
+      <Dependent Role="ProjetoAtribuido">
+        <PropertyRef Name="FuncionarioNumero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjetoProjetoAtribuido">
+    <End Role="Projeto" Type="GestaoCamaraMunicipal.Store.ProjetoSet" Multiplicity="1" />
+    <End Role="ProjetoAtribuido" Type="GestaoCamaraMunicipal.Store.ProjetoAtribuidoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projeto">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="ProcessoId" />
+      </Principal>
+      <Dependent Role="ProjetoAtribuido">
+        <PropertyRef Name="ProjetoId" />
+        <PropertyRef Name="ProjetoProcessoId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -401,10 +400,6 @@
             <End Role="Projeto" EntitySet="ProjetoSet" />
             <End Role="Parecer" EntitySet="ParecerSet" />
           </AssociationSet>
-          <AssociationSet Name="ProjetoProjetoAtribuido" Association="GestaoCamaraMunicipal.ProjetoProjetoAtribuido">
-            <End Role="Projeto" EntitySet="ProjetoSet" />
-            <End Role="ProjetoAtribuido" EntitySet="ProjetoAtribuidoSet" />
-          </AssociationSet>
           <AssociationSet Name="FuncionarioParecer" Association="GestaoCamaraMunicipal.FuncionarioParecer">
             <End Role="Funcionario" EntitySet="FuncionarioSet" />
             <End Role="Parecer" EntitySet="ParecerSet" />
@@ -412,10 +407,6 @@
           <AssociationSet Name="FuncionarioEspecialista" Association="GestaoCamaraMunicipal.FuncionarioEspecialista">
             <End Role="Funcionario" EntitySet="FuncionarioSet" />
             <End Role="Especialista" EntitySet="EspecialistaSet" />
-          </AssociationSet>
-          <AssociationSet Name="FuncionarioProjetoAtribuido" Association="GestaoCamaraMunicipal.FuncionarioProjetoAtribuido">
-            <End Role="Funcionario" EntitySet="FuncionarioSet" />
-            <End Role="ProjetoAtribuido" EntitySet="ProjetoAtribuidoSet" />
           </AssociationSet>
           <AssociationSet Name="TipoProjetoEspecialista" Association="GestaoCamaraMunicipal.TipoProjetoEspecialista">
             <End Role="TipoProjeto" EntitySet="TipoProjetoSet" />
@@ -428,6 +419,14 @@
           <AssociationSet Name="DocumentoParecer" Association="GestaoCamaraMunicipal.DocumentoParecer">
             <End Role="Documento" EntitySet="DocumentoSet" />
             <End Role="Parecer" EntitySet="ParecerSet" />
+          </AssociationSet>
+          <AssociationSet Name="FuncionarioProjetoAtribuido" Association="GestaoCamaraMunicipal.FuncionarioProjetoAtribuido">
+            <End Role="Funcionario" EntitySet="FuncionarioSet" />
+            <End Role="ProjetoAtribuido" EntitySet="ProjetoAtribuidoSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProjetoProjetoAtribuido" Association="GestaoCamaraMunicipal.ProjetoProjetoAtribuido">
+            <End Role="Projeto" EntitySet="ProjetoSet" />
+            <End Role="ProjetoAtribuido" EntitySet="ProjetoAtribuidoSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="TipoDocumento">
@@ -555,15 +554,16 @@
         </EntityType>
         <EntityType Name="ProjetoAtribuido">
           <Key>
+            <PropertyRef Name="FuncionarioNumero" />
             <PropertyRef Name="ProjetoId" />
             <PropertyRef Name="ProjetoProcessoId" />
           </Key>
           <Property Name="Data" Type="DateTime" Nullable="false" />
-          <Property Name="ProjetoId" Type="Int32" Nullable="false" />
-          <Property Name="ProjetoProcessoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Funcionario" Relationship="GestaoCamaraMunicipal.FuncionarioProjetoAtribuido" FromRole="ProjetoAtribuido" ToRole="Funcionario" />
           <Property Name="FuncionarioNumero" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Projeto" Relationship="GestaoCamaraMunicipal.ProjetoProjetoAtribuido" FromRole="ProjetoAtribuido" ToRole="Projeto" />
-          <NavigationProperty Name="Funcionario" Relationship="GestaoCamaraMunicipal.FuncionarioProjetoAtribuido" FromRole="ProjetoAtribuido" ToRole="Funcionario" />
+          <Property Name="ProjetoId" Type="Int32" Nullable="false" />
+          <Property Name="ProjetoProcessoId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="TipoDocumentoDocumento">
           <End Type="GestaoCamaraMunicipal.TipoDocumento" Role="TipoDocumento" Multiplicity="1" />
@@ -653,10 +653,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ProjetoProjetoAtribuido">
-          <End Type="GestaoCamaraMunicipal.Projeto" Role="Projeto" Multiplicity="1" />
-          <End Type="GestaoCamaraMunicipal.ProjetoAtribuido" Role="ProjetoAtribuido" Multiplicity="*" />
-        </Association>
         <Association Name="FuncionarioParecer">
           <End Type="GestaoCamaraMunicipal.Funcionario" Role="Funcionario" Multiplicity="1" />
           <End Type="GestaoCamaraMunicipal.Parecer" Role="Parecer" Multiplicity="*" />
@@ -678,18 +674,6 @@
             </Principal>
             <Dependent Role="Especialista">
               <PropertyRef Name="FuncionarioNumero1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FuncionarioProjetoAtribuido">
-          <End Type="GestaoCamaraMunicipal.Funcionario" Role="Funcionario" Multiplicity="1" />
-          <End Type="GestaoCamaraMunicipal.ProjetoAtribuido" Role="ProjetoAtribuido" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Funcionario">
-              <PropertyRef Name="Numero" />
-            </Principal>
-            <Dependent Role="ProjetoAtribuido">
-              <PropertyRef Name="FuncionarioNumero" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -726,6 +710,32 @@
             </Principal>
             <Dependent Role="Documento">
               <PropertyRef Name="ParecerNumero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FuncionarioProjetoAtribuido">
+          <End Type="GestaoCamaraMunicipal.Funcionario" Role="Funcionario" Multiplicity="1" />
+          <End Type="GestaoCamaraMunicipal.ProjetoAtribuido" Role="ProjetoAtribuido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="Numero" />
+            </Principal>
+            <Dependent Role="ProjetoAtribuido">
+              <PropertyRef Name="FuncionarioNumero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjetoProjetoAtribuido">
+          <End Type="GestaoCamaraMunicipal.Projeto" Role="Projeto" Multiplicity="1" />
+          <End Type="GestaoCamaraMunicipal.ProjetoAtribuido" Role="ProjetoAtribuido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projeto">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="ProcessoId" />
+            </Principal>
+            <Dependent Role="ProjetoAtribuido">
+              <PropertyRef Name="ProjetoId" />
+              <PropertyRef Name="ProjetoProcessoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -841,23 +851,13 @@
     <EntitySetMapping Name="ProjetoAtribuidoSet">
       <EntityTypeMapping TypeName="IsTypeOf(GestaoCamaraMunicipal.ProjetoAtribuido)">
         <MappingFragment StoreEntitySet="ProjetoAtribuidoSet">
+          <ScalarProperty Name="FuncionarioNumero" ColumnName="FuncionarioNumero" />
           <ScalarProperty Name="ProjetoId" ColumnName="ProjetoId" />
           <ScalarProperty Name="ProjetoProcessoId" ColumnName="ProjetoProcessoId" />
           <ScalarProperty Name="Data" ColumnName="Data" />
-          <ScalarProperty Name="FuncionarioNumero" ColumnName="FuncionarioNumero" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ProjetoProjetoAtribuido" TypeName="GestaoCamaraMunicipal.ProjetoProjetoAtribuido" StoreEntitySet="ProjetoAtribuidoSet">
-      <EndProperty Name="Projeto">
-        <ScalarProperty Name="Id" ColumnName="Projeto_Id" />
-        <ScalarProperty Name="ProcessoId" ColumnName="Projeto_ProcessoId" />
-      </EndProperty>
-      <EndProperty Name="ProjetoAtribuido">
-        <ScalarProperty Name="ProjetoId" ColumnName="ProjetoId" />
-        <ScalarProperty Name="ProjetoProcessoId" ColumnName="ProjetoProcessoId" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

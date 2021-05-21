@@ -49,6 +49,10 @@ namespace GestaoCamaraMunicipal
             comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
             comboBoxParecer.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
 
+            //Ler dados dos projetos atribuidos
+            listBoxProjetoAtribuido.DataSource = camaraMunicipal.ProjetoAtribuidoSet.ToList<ProjetoAtribuido>();
+            comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>(); 
+
             LimparForm();
         }
 
@@ -68,6 +72,11 @@ namespace GestaoCamaraMunicipal
             comboBoxTipoDocumento.SelectedIndex = -1;
             dateTimePickerDocumento.Value = DateTime.Now;
             comboBoxParecer.SelectedIndex = -1;
+
+            //Limpar campos dos projetos atribuidos
+            listBoxProjetoAtribuido.ClearSelected();
+            comboBoxFuncionario.SelectedIndex = -1;
+            dateTimePickerAtribuicao.Value = DateTime.Now;
         }
 
         // Botão para Registar o Projeto
@@ -203,7 +212,7 @@ namespace GestaoCamaraMunicipal
                 }
                 else
                 {
-                    mensagem.AvisoSelecionarPrimeiro("projeto e preencha todos os campos");
+                    mensagem.AvisoSelecionarPrimeiro("projeto e preencha todos os campos.");
                 }
             }
             catch (FormatException ex)
@@ -221,6 +230,50 @@ namespace GestaoCamaraMunicipal
                 comboBoxTipoDocumento.Text = documento.TipoDocumento.ToString();
                 dateTimePickerDocumento.Value = documento.DataEntrega;
                 comboBoxParecer.Text = documento.Parecer.ToString();
+            }
+        }
+
+        private void btnRegistarAtribuicao_Click(object sender, EventArgs e)
+        {
+            //Verificar que o utilizador tem projeto e funcionário selecionados
+            if(listBoxProjetos.SelectedIndex != -1 && comboBoxFuncionario.SelectedIndex != -1)
+            {
+                //Buscar o objeto selecionado(Projeto)
+                Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+                //Buscar o objeto selecionado(Funcionario)
+                Funcionario funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
+                //Criação do projeto atribuido na Base de Dados
+                camaraMunicipal.ProjetoAtribuidoSet.Add(new ProjetoAtribuido(dateTimePickerAtribuicao.Value, projeto, funcionario));
+                //Salvar mudanças e guardar o projeto atribuido na base de dados
+                camaraMunicipal.SaveChanges();
+                //Atualizar o formulário
+                LerDados();
+            }
+            else
+            {
+                //mensagem de erro ao verificar que o utilizador não tem projeto e funcionário selecionados
+                mensagem.AvisoSelecionarPrimeiro("projeto e preencha todos os campos.");
+            }
+        }
+
+        private void btnRemoverAtribuicao_Click(object sender, EventArgs e)
+        {
+            //Verificar que o utilizador tem projeto atribuido selecionado
+            if (listBoxProjetoAtribuido.SelectedIndex != -1)
+            {
+                //Buscar o objeto selecionado(Projeto Atribuido)
+                ProjetoAtribuido projetoAtribuido = (ProjetoAtribuido)listBoxProjetoAtribuido.SelectedItem;
+                //Remoção do projeto atribuido na Base de Dados
+                camaraMunicipal.ProjetoAtribuidoSet.Remove(projetoAtribuido);
+                //Salvar mudanças e remover o projeto atribuido na base de dados
+                camaraMunicipal.SaveChanges();
+                //Atualizar o formulário
+                LerDados();
+            }
+            else
+            {
+                //mensagem de erro ao verificar que o utilizador não tem projeto atribuido selecionado
+                mensagem.AvisoSelecionarPrimeiro("projeto atribuído.");
             }
         }
     }
