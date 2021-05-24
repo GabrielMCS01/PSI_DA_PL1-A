@@ -16,6 +16,7 @@ namespace GestaoCamaraMunicipal
             InitializeComponent();
         }
 
+        // Faz o carregamento das listBoxs com os dados existentes na base de dados
         private void GestaoPromotores_Load(object sender, EventArgs e)
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();

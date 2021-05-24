@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoCamaraMunicipal
@@ -79,12 +73,17 @@ namespace GestaoCamaraMunicipal
                     Promotor promotor = new Promotor();
                     EstadoProcesso estadoProcesso = new EstadoProcesso();
 
+                    // Recebe o promotor selecionado na listBox
                     promotor = (Promotor)comboBoxPromotor.SelectedItem;
 
-                    // Cria uma instância do Estado de Processo e o Processo
+                    // Cria uma instância do Estado de Processo e do Processo
                     estadoProcesso = new EstadoProcesso(textBoxEstadoProcesso.Text);
                     processo = new Processo(dateTimePickerInicioProcesso.Value, promotor.NIF);
+
+                    // Atribui o estado de processo ao atributo de estado de processo do processo anterior
                     processo.EstadoProcesso = estadoProcesso;
+
+                    // Adiciona o processo e guarda as alterações na base de dados
                     camaraMunicipal.ProcessoSet.Add(processo);
                     camaraMunicipal.SaveChanges();
 
@@ -111,11 +110,21 @@ namespace GestaoCamaraMunicipal
                 // Varíável que recebe o objeto Processo selecionado na ListBox
                 Processo processo = new Processo();
                 EstadoProcesso estadoProcesso = new EstadoProcesso();
+
+                // Recebe o processo selecionado na listBox
                 processo = (Processo)listBoxProcessos.SelectedItem;
+
+                // Atribui á variável estado de processo, o estado do processo do processo selecionado anteriormente 
                 estadoProcesso = processo.EstadoProcesso;
+
+                // Remove o estado de processo do processo selecionado para poder-se remover o processo
                 camaraMunicipal.EstadoProcessoSet.Remove(estadoProcesso);
+
+                // Remove o processo selecionado anteriormente e guarda as alterações
                 camaraMunicipal.ProcessoSet.Remove(processo);
                 camaraMunicipal.SaveChanges();
+
+                // Recarrega a listBox processos e limpa o formulário
                 lerProcessos();
             }
             else
@@ -130,13 +139,23 @@ namespace GestaoCamaraMunicipal
             if (listBoxProcessos.SelectedIndex != -1 && textBoxEstadoProcesso.Text != "")
             {
                 int selecionado = -1;
+
+                // Recebe o processo selecionado na listBox
                 Processo processo = new Processo();
                 processo = (Processo)listBoxProcessos.SelectedItem;
+
+                // Atualiza a descrição do estado de processo e guarda as alterações na base de dados
                 processo.EstadoProcesso.DescricaoEstado = textBoxEstadoProcesso.Text;
                 camaraMunicipal.SaveChanges();
                 selecionado = listBoxProcessos.SelectedIndex;
+
+                // Recarrega a listBox processos e limpa o formulário
                 lerProcessos();
+
+                // Seleciona o processo que estava selecionado anteriormente
                 listBoxProcessos.SelectedIndex = selecionado;
+
+                // Confirma que o processo foi atualizado com sucesso
                 mensagem.Sucesso();
             }
             else
@@ -150,8 +169,11 @@ namespace GestaoCamaraMunicipal
             // Se estiver algum Processo selecionado faz
             if (listBoxProcessos.SelectedIndex != -1)
             {
+                // Recebe o processo selecionado na ListBox
                 Processo processo = new Processo();
                 processo = (Processo)listBoxProcessos.SelectedItem;
+
+                // Atribui ao formulários os atributos do objeto selecionado para se poder fazer alterações
                 textBoxEstadoProcesso.Text = processo.EstadoProcesso.DescricaoEstado;
                 dateTimePickerInicioProcesso.Value = processo.DataInicio;
                 comboBoxPromotor.Text = processo.Promotor.ToString();

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoCamaraMunicipal
@@ -18,14 +12,18 @@ namespace GestaoCamaraMunicipal
           
         public Gestao()
         {
+            // Inicia os componentes do formulário
             InitializeComponent();
         }
+
+        // Faz o carregamento da ComboBox com os dados possiveis para chave estrangeira
         private void Gestao_Load(object sender, EventArgs e)
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             lerDados();
         }
 
+        // Coloca os dados na listBox provenientes da Base de Dados, retira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void lerDados()
         {
             listBoxDocumentos.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
@@ -36,23 +34,28 @@ namespace GestaoCamaraMunicipal
             listBoxTiposdeProjeto.ClearSelected();
             listBoxEspecialistas.ClearSelected();
             comboBoxFuncionario.SelectedIndex = -1;
-
         }
 
+        // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             formprincipal.Show();
             this.Hide();
         }
 
+        // Botão para Adicionar o Documento
         private void btnAdicionarDocumento_Click(object sender, EventArgs e)
         {
             try
             {
+                // Se todas as TextBoxs tiverem preenchidas Faz
                 if (textBoxDocumento.Text != "")
                 {
+                    // Adiciona o Projeto e guarda as alterações na Base de Dados
                     camaraMunicipal.TipoDocumentoSet.Add(new TipoDocumento(textBoxDocumento.Text));
                     camaraMunicipal.SaveChanges();
+
+                    // Recarrega as ListBox e limpa o formulário
                     lerDados();
                     textBoxDocumento.Clear();
                 }
@@ -71,12 +74,18 @@ namespace GestaoCamaraMunicipal
         {
             try
             {
+                // Se estiver algum Documento selecionado faz
                 if (listBoxDocumentos.SelectedIndex != -1)
                 {
+                    // Varíável que recebe o objeto Documento selecionado na ListBox
                     TipoDocumento tipoDocumento = new TipoDocumento();
                     tipoDocumento = (TipoDocumento)listBoxDocumentos.SelectedItem;
+
+                    // Remove o Documento e guarda as alterações na Base de dados
                     camaraMunicipal.TipoDocumentoSet.Remove(tipoDocumento);
                     camaraMunicipal.SaveChanges();
+
+                    // Recarrega a ListBox e limpa o formulário
                     lerDados();
                     textBoxDocumento.Clear();
                 }
@@ -91,21 +100,27 @@ namespace GestaoCamaraMunicipal
             }
         }
 
+        // Faz quando o formulário fecha
         private void Gestao_FormClosing(object sender, FormClosingEventArgs e)
         {
             formprincipal.Sair(e);
         }
 
+        // Botão que adiciona um Tipo de Projeto
         private void buttonAdicionar_Click(object sender, EventArgs e)
         {
             try
             {
+                // Se todas as TextBoxs tiverem preenchidas Faz
                 if (textBoxDesignacao.Text != "")
                 {
+                    // Se a CheckBox que diz se é dependente de outro projeto estiver selecionada faz
                     if(checkBoxDependente.Checked == true)
                     {
+                        // Se tiver um tipo de projeto selecionado faz
                         if (listBoxTiposdeProjeto.SelectedIndex != -1)
                         {
+                            // Recebe o objeto selecionado e Adiciona o tipo de Projeto
                             TipoProjeto tipoprojeto = new TipoProjeto();
                             tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
                             camaraMunicipal.TipoProjetoSet.Add(new TipoProjeto(textBoxDesignacao.Text, Convert.ToInt32(numericUpDownDiasAprovacao.Value), tipoprojeto.Id));
@@ -115,13 +130,18 @@ namespace GestaoCamaraMunicipal
                             mensagem.AvisoSelecionarPrimeiro("tipo de projeto");
                         }
                     }
+                    // Se não for dependente de outro projeto faz
                     else
                     {
+                        // Adiciona o tipo de Projeto
                         camaraMunicipal.TipoProjetoSet.Add(new TipoProjeto(textBoxDesignacao.Text, Convert.ToInt32(numericUpDownDiasAprovacao.Value)));
                     }
-                   
+
+                    // Guarda as alterações na Base de Dados, lê os dados
                     camaraMunicipal.SaveChanges();
                     lerDados();
+
+                    // Limpa o formulário
                     textBoxDesignacao.Clear();
                     numericUpDownDiasAprovacao.Value = 0;
                     checkBoxDependente.Checked = false;
@@ -152,11 +172,13 @@ namespace GestaoCamaraMunicipal
                     numericUpDownDiasAprovacao.Value = tipoprojeto.NrDiasAprovacao;
                     checkBoxDependente.Checked = (tipoprojeto.TipoProjetoId != null) ? true : false;
 
+                    // Carrega os especialistas do tipo de projeto selecionado para a listBox
                     listBoxEspecialistas.DataSource = tipoprojeto.Especialista.ToList<Especialista>();
                     listBoxEspecialistas.ClearSelected();
                 }
                 else
                 {
+                    // Limpa o formulário
                     textBoxDesignacao.Clear();
                     numericUpDownDiasAprovacao.Value = 0;
                     checkBoxDependente.Checked = false;
@@ -204,17 +226,33 @@ namespace GestaoCamaraMunicipal
         {
             try
             {
+                // Se tiver algum funcionário e tipo de projeto selecionado faz
                 if (comboBoxFuncionario.SelectedIndex != -1 && listBoxTiposdeProjeto.SelectedIndex != -1)
                 {
+                    // Recebe o tipo de projeto selecionado na ListBox
                     TipoProjeto tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
+                   
+                    // Recebe o funcionário selecionado na comboBox
                     Funcionario funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
+
+                    // Cria um novo especialista
                     Especialista especialista = new Especialista();
+
+                    // Atribui o ID de cada objeto selecionado anteriormente aos devidos atributos do especialista
                     especialista.TipoProjetoId = tipoprojeto.Id;
                     especialista.FuncionarioNumero1 = funcionario.Numero;
+
+                    // Adiciona o Especialista e guarda as alterações na Base de Dados
                     camaraMunicipal.EspecialistaSet.Add(especialista);
                     camaraMunicipal.SaveChanges();
+
+                    // Recebe o index da listBox de tipos de projeto que está selecionado
                     int posicao = listBoxTiposdeProjeto.SelectedIndex;
+
+                    // Recarrega as listBoxs
                     lerDados();
+
+                    // Seleciona o tipo de Projeto que estava selecionado anteriormente
                     listBoxTiposdeProjeto.SelectedIndex = posicao;
                 }
                 else

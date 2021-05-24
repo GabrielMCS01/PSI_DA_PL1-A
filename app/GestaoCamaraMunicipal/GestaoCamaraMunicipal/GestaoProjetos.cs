@@ -39,17 +39,17 @@ namespace GestaoCamaraMunicipal
         // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDados()
         {
-            //Ler dados dos projetos
+            // Ler dados dos projetos
             listBoxProjetos.DataSource = camaraMunicipal.ProjetoSet.ToList<Projeto>();
             comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
             comboBoxProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
             
-            //Ler dados dos documentos
+            // Ler dados dos documentos
             listBoxDocumentos.DataSource = camaraMunicipal.DocumentoSet.ToList<Documento>();
             comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
             comboBoxParecer.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
 
-            //Ler dados dos projetos atribuidos
+            // Ler dados dos projetos atribuidos
             listBoxProjetoAtribuido.DataSource = camaraMunicipal.ProjetoAtribuidoSet.ToList<ProjetoAtribuido>();
             comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>(); 
 
@@ -159,7 +159,10 @@ namespace GestaoCamaraMunicipal
         {
             if (listBoxProjetos.SelectedIndex != -1)
             {
+                // Recebe o projeto selecionado na ListBox
                 Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+
+                // Atribui os valores do projeto ás textBoxs para se poder fazer alterações ou visualizar
                 textBoxEstadoProjeto.Text = projeto.EstadoProjeto;
                 comboBoxTiposProjeto.Text = projeto.TipoProjeto.ToString();
                 dateTimePickerProjeto.Value = projeto.DataAprovacao;
@@ -225,7 +228,10 @@ namespace GestaoCamaraMunicipal
         {
             if (listBoxDocumentos.SelectedIndex != -1)
             {
+                // Recebe o documento selecionado na ListBox
                 Documento documento = (Documento)listBoxDocumentos.SelectedItem;
+
+                // Atribui os valores do documento ás textBoxs para se poder fazer alterações ou visualizar
                 textBoxTitulo.Text = documento.Titulo;
                 comboBoxTipoDocumento.Text = documento.TipoDocumento.ToString();
                 dateTimePickerDocumento.Value = documento.DataEntrega;
@@ -235,44 +241,51 @@ namespace GestaoCamaraMunicipal
 
         private void btnRegistarAtribuicao_Click(object sender, EventArgs e)
         {
-            //Verificar que o utilizador tem projeto e funcionário selecionados
+            // Verifica se o utilizador tem um projeto e funcionário selecionados
             if(listBoxProjetos.SelectedIndex != -1 && comboBoxFuncionario.SelectedIndex != -1)
             {
-                //Buscar o objeto selecionado(Projeto)
+                // Recebe o objeto selecionado (Projeto)
                 Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
-                //Buscar o objeto selecionado(Funcionario)
+
+                // Recebe o objeto selecionado (Funcionario)
                 Funcionario funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
-                //Criação do projeto atribuido na Base de Dados
+
+                // Criação do projeto atribuido na Base de Dados
                 camaraMunicipal.ProjetoAtribuidoSet.Add(new ProjetoAtribuido(dateTimePickerAtribuicao.Value, projeto, funcionario));
-                //Salvar mudanças e guardar o projeto atribuido na base de dados
+
+                // Guarda as alterações na base de dados
                 camaraMunicipal.SaveChanges();
-                //Atualizar o formulário
+
+                // Atualiza o formulário
                 LerDados();
             }
             else
             {
-                //mensagem de erro ao verificar que o utilizador não tem projeto e funcionário selecionados
+                // Mensagem de erro ao verificar que o utilizador não tem projeto e funcionário selecionados
                 mensagem.AvisoSelecionarPrimeiro("projeto e preencha todos os campos.");
             }
         }
 
         private void btnRemoverAtribuicao_Click(object sender, EventArgs e)
         {
-            //Verificar que o utilizador tem projeto atribuido selecionado
+            // Verifica se o utilizador tem um projeto atribuido selecionado
             if (listBoxProjetoAtribuido.SelectedIndex != -1)
             {
-                //Buscar o objeto selecionado(Projeto Atribuido)
+                // Recebe o objeto selecionado (Projeto Atribuido)
                 ProjetoAtribuido projetoAtribuido = (ProjetoAtribuido)listBoxProjetoAtribuido.SelectedItem;
-                //Remoção do projeto atribuido na Base de Dados
+
+                // Remoção do projeto atribuido na Base de Dados
                 camaraMunicipal.ProjetoAtribuidoSet.Remove(projetoAtribuido);
-                //Salvar mudanças e remover o projeto atribuido na base de dados
+
+                // Guarda as alterações na base de dados
                 camaraMunicipal.SaveChanges();
-                //Atualizar o formulário
+
+                // Atualiza o formulário
                 LerDados();
             }
             else
             {
-                //mensagem de erro ao verificar que o utilizador não tem projeto atribuido selecionado
+                // Mensagem de erro ao verificar que o utilizador não tem projeto atribuido selecionado
                 mensagem.AvisoSelecionarPrimeiro("projeto atribuído.");
             }
         }

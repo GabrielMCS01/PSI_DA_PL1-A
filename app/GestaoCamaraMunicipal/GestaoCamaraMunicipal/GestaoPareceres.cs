@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestaoCamaraMunicipal
@@ -36,9 +30,6 @@ namespace GestaoCamaraMunicipal
 
             LerDados();
         }
-        
-        // Tem que se selecionar um processo do projeto escolhido
-        //comboBoxProjetoProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Projeto>();
 
         // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,7 +44,7 @@ namespace GestaoCamaraMunicipal
             formprincipal.Sair(e);
         }
 
-        // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
+        // Coloca os dados na listBox provenientes da Base de Dados, retira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDados()
         {
             listBoxPareceres.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
@@ -89,7 +80,7 @@ namespace GestaoCamaraMunicipal
                     funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
                     int idParecer = CalculaNumero();
 
-                    // Adiciona o Projeto e guarda as alterações na Base de Dados
+                    // Adiciona o Parecer e guarda as alterações na Base de Dados
                     Parecer parecer = new Parecer(idParecer, texto, date, projeto, funcionario);
                     camaraMunicipal.ParecerSet.Add(parecer);
                     camaraMunicipal.SaveChanges();
