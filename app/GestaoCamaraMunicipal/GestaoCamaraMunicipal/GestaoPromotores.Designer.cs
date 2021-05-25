@@ -40,10 +40,8 @@ namespace GestaoCamaraMunicipal
             this.txtBoxNome = new System.Windows.Forms.TextBox();
             this.txtBoxMorada = new System.Windows.Forms.TextBox();
             this.lblMorada = new System.Windows.Forms.Label();
-            this.txtBoxTelemovel = new System.Windows.Forms.TextBox();
             this.lblTelemovel = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.maskedTextBoxMail = new System.Windows.Forms.MaskedTextBox();
             this.lblCodAcesso = new System.Windows.Forms.Label();
             this.txtBoxCodAcesso = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -52,6 +50,8 @@ namespace GestaoCamaraMunicipal
             this.btnGuardarAlteracoes = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.maskedTextBoxTelemovel = new System.Windows.Forms.MaskedTextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -149,15 +149,6 @@ namespace GestaoCamaraMunicipal
             this.lblMorada.TabIndex = 8;
             this.lblMorada.Text = "Morada:";
             // 
-            // txtBoxTelemovel
-            // 
-            this.txtBoxTelemovel.Location = new System.Drawing.Point(451, 196);
-            this.txtBoxTelemovel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxTelemovel.MaxLength = 9;
-            this.txtBoxTelemovel.Name = "txtBoxTelemovel";
-            this.txtBoxTelemovel.Size = new System.Drawing.Size(273, 22);
-            this.txtBoxTelemovel.TabIndex = 11;
-            // 
             // lblTelemovel
             // 
             this.lblTelemovel.AutoSize = true;
@@ -175,15 +166,6 @@ namespace GestaoCamaraMunicipal
             this.lblEmail.Size = new System.Drawing.Size(51, 17);
             this.lblEmail.TabIndex = 12;
             this.lblEmail.Text = "E-mail:";
-            // 
-            // maskedTextBoxMail
-            // 
-            this.maskedTextBoxMail.Location = new System.Drawing.Point(452, 244);
-            this.maskedTextBoxMail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.maskedTextBoxMail.Mask = "aaaaaaaaaaaaaaaaaa@aaaaaaaaa.aaa";
-            this.maskedTextBoxMail.Name = "maskedTextBoxMail";
-            this.maskedTextBoxMail.Size = new System.Drawing.Size(272, 22);
-            this.maskedTextBoxMail.TabIndex = 13;
             // 
             // lblCodAcesso
             // 
@@ -265,11 +247,30 @@ namespace GestaoCamaraMunicipal
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Promotores";
             // 
+            // maskedTextBoxTelemovel
+            // 
+            this.maskedTextBoxTelemovel.Location = new System.Drawing.Point(451, 199);
+            this.maskedTextBoxTelemovel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.maskedTextBoxTelemovel.Mask = "999999999";
+            this.maskedTextBoxTelemovel.Name = "maskedTextBoxTelemovel";
+            this.maskedTextBoxTelemovel.Size = new System.Drawing.Size(273, 22);
+            this.maskedTextBoxTelemovel.TabIndex = 23;
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.Location = new System.Drawing.Point(451, 245);
+            this.tbEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(273, 22);
+            this.tbEmail.TabIndex = 24;
+            // 
             // GestaoPromotores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 448);
+            this.Controls.Add(this.tbEmail);
+            this.Controls.Add(this.maskedTextBoxTelemovel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnGuardarAlteracoes);
@@ -278,9 +279,7 @@ namespace GestaoCamaraMunicipal
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtBoxCodAcesso);
             this.Controls.Add(this.lblCodAcesso);
-            this.Controls.Add(this.maskedTextBoxMail);
             this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.txtBoxTelemovel);
             this.Controls.Add(this.lblTelemovel);
             this.Controls.Add(this.txtBoxMorada);
             this.Controls.Add(this.lblMorada);
@@ -317,10 +316,8 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.TextBox txtBoxNome;
         private System.Windows.Forms.TextBox txtBoxMorada;
         private System.Windows.Forms.Label lblMorada;
-        private System.Windows.Forms.TextBox txtBoxTelemovel;
         private System.Windows.Forms.Label lblTelemovel;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxMail;
         private System.Windows.Forms.Label lblCodAcesso;
         private System.Windows.Forms.TextBox txtBoxCodAcesso;
         private System.Windows.Forms.Label lblPassword;
@@ -329,5 +326,7 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.Button btnGuardarAlteracoes;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxTelemovel;
+        private System.Windows.Forms.TextBox tbEmail;
     }
 }

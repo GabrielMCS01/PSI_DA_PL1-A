@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GestaoCamaraMunicipal
@@ -51,8 +53,8 @@ namespace GestaoCamaraMunicipal
             maskedTextBoxNIF.Clear();
             txtBoxNome.Clear();
             txtBoxMorada.Clear();
-            txtBoxTelemovel.Clear();
-            maskedTextBoxMail.Clear();
+            maskedTextBoxTelemovel.Clear();
+            tbEmail.Clear();
             txtBoxCodAcesso.Clear();
             txtBoxPassword.Clear();
         }
@@ -63,11 +65,71 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se todas as TextBoxs tiverem preenchidas Faz
-                if (maskedTextBoxNIF.Text != "" & txtBoxNome.Text != "" & txtBoxMorada.Text != "" & txtBoxTelemovel.Text != "" & maskedTextBoxMail.Text != "" & txtBoxCodAcesso.Text != "" & txtBoxPassword.Text != "")
+                if (maskedTextBoxNIF.Text != "" & txtBoxNome.Text != "" & txtBoxMorada.Text != "" & maskedTextBoxTelemovel.Text != "" & tbEmail.Text != "" & txtBoxCodAcesso.Text != "" & txtBoxPassword.Text != "")
                 {
-                    // Adiciona o promotor e guarda as alterações na Base de Dados
-                    camaraMunicipal.PromotorSet.Add(new Promotor(Int32.Parse(maskedTextBoxNIF.Text), txtBoxNome.Text, txtBoxMorada.Text, txtBoxTelemovel.Text, maskedTextBoxMail.Text, txtBoxCodAcesso.Text, txtBoxPassword.Text));
-                    camaraMunicipal.SaveChanges();
+                    string Email = "";
+                    Promotor promotor;
+
+                    // Se o NIF tiver 9 carateres faz
+                    if (maskedTextBoxNIF.Text.Length == 9 && maskedTextBoxTelemovel.Text.Length == 9)
+                    {
+                        // Recebe as variáveis do formulário
+                        int NIF = int.Parse(maskedTextBoxNIF.Text);
+                        string Nome = txtBoxNome.Text;
+                        string Morada = txtBoxMorada.Text;
+                        string Telemovel = maskedTextBoxTelemovel.Text;
+
+                        // Codigo de acesso tem de ser diferente?
+                        string CodAcesso = txtBoxCodAcesso.Text;
+
+                        // Colocar strRegex para a Password?
+                        string Password = txtBoxPassword.Text;
+
+                        bool EmailValidacao = false;
+
+                        try
+                        {
+                            // Cadeia de verificação de caracteres (Regular expression)
+                            string strRegex = @"^([a-zA-Z0-9_-.]+)@(([[0-9]{1,3}" +
+                                  @".[0-9]{1,3}.[0-9]{1,3}.)|(([a-zA-Z0-9-]+" +
+                                  @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(]?)$";
+                            Regex re = new Regex(strRegex);
+
+                            if (re.IsMatch(tbEmail.Text))
+                            {
+                                EmailValidacao = true;
+                            }
+                        }
+                        catch (ArgumentException)
+                        {
+                            mensagem.ErroPreencherCampo("Email");
+                        }
+                       
+                        if (EmailValidacao == true)
+                        {
+                            Email = tbEmail.Text;
+                        }
+
+                        promotor = new Promotor(NIF, Nome, Morada, Telemovel, Email, CodAcesso, Password);
+
+                        // Adiciona o promotor e guarda as alterações na Base de Dados
+                        try
+                        {
+                            camaraMunicipal.PromotorSet.Add(promotor);
+                            camaraMunicipal.SaveChanges();
+                        }
+                        // Se o mesmo NIF já existir na Base de Dados
+                        catch (DbUpdateException)
+                        {
+                            mensagem.ObjetoDuplicado("NIF ao promotor, devido a este NIF já estar registado na Base de Dados");
+                            camaraMunicipal.PromotorSet.Remove(promotor);
+                        }
+                    }
+                    else
+                    {
+                        mensagem.PreenchaCorretamente("o promotor devido ao campo NIF ou Telemóvel não terem ambos 9 carateres");
+                        return;
+                    }
 
                     // Recarrega a ListBox e limpa o formulário
                     LerDados();
@@ -77,7 +139,7 @@ namespace GestaoCamaraMunicipal
                     mensagem.ErroPreencherCampos();
                 }
             }
-            catch(FormatException ex)
+            catch (FormatException ex)
             {
                 mensagem.Erro(ex);
             }
@@ -93,7 +155,7 @@ namespace GestaoCamaraMunicipal
                 if (listBoxPromotores.SelectedIndex != -1)
                 {
                     // Se todas as TextBoxs tiverem preenchidas Faz
-                    if (maskedTextBoxNIF.Text != "" & txtBoxNome.Text != "" & txtBoxMorada.Text != "" & txtBoxTelemovel.Text != "" & maskedTextBoxMail.Text != "" & txtBoxCodAcesso.Text != "" & txtBoxPassword.Text != "")
+                    if (maskedTextBoxNIF.Text != "" & txtBoxNome.Text != "" & txtBoxMorada.Text != "" & maskedTextBoxTelemovel.Text != "" & tbEmail.Text != "" & txtBoxCodAcesso.Text != "" & txtBoxPassword.Text != "")
                     {
                         // Variável para receber o index selecionado na ListBox promotores
                         int posicao = listBoxPromotores.SelectedIndex;
@@ -105,8 +167,8 @@ namespace GestaoCamaraMunicipal
                         promotor.NIF = Int32.Parse(maskedTextBoxNIF.Text);
                         promotor.Nome = txtBoxNome.Text;
                         promotor.Morada = txtBoxMorada.Text;
-                        promotor.Telemovel = txtBoxTelemovel.Text;
-                        promotor.Email = maskedTextBoxMail.Text;
+                        promotor.Telemovel = maskedTextBoxTelemovel.Text;
+                        promotor.Email = tbEmail.Text;
                         promotor.CodigoAcesso = txtBoxCodAcesso.Text;
                         promotor.Senha = txtBoxPassword.Text;
 
@@ -123,7 +185,7 @@ namespace GestaoCamaraMunicipal
                     else
                     {
                         mensagem.ErroPreencherCampos();
-                    }                   
+                    }
                 }
                 else
                 {
@@ -160,7 +222,7 @@ namespace GestaoCamaraMunicipal
                     mensagem.AvisoSelecionarPrimeiro("promotor");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 mensagem.Erro(ex);
             }
@@ -181,8 +243,8 @@ namespace GestaoCamaraMunicipal
                     maskedTextBoxNIF.Text = promotor.NIF.ToString();
                     txtBoxNome.Text = promotor.Nome;
                     txtBoxMorada.Text = promotor.Morada;
-                    txtBoxTelemovel.Text = promotor.Telemovel;
-                    maskedTextBoxMail.Text = promotor.Email;
+                    maskedTextBoxTelemovel.Text = promotor.Telemovel;
+                    tbEmail.Text = promotor.Email;
                     txtBoxCodAcesso.Text = promotor.CodigoAcesso;
                     txtBoxPassword.Text = promotor.Senha;
                 }
