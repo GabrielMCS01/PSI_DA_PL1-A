@@ -23,7 +23,7 @@ namespace GestaoCamaraMunicipal
         
         public override string ToString()
         {
-            return string.Format("{0} \t{1} ({2} dias de aprovação) \t{3}", this.Id, this.Designacao, this.NrDiasAprovacao, (this.TipoProjetoId!=null)?"Dependente de: "+this.TipoProjeto2.Designacao+" ("+this.TipoProjeto2.Id+")":"");
+            return string.Format("{0} ({1} dias de aprovação) \t{2}", this.Designacao, this.NrDiasAprovacao, (this.TipoProjetoId!=null)?"Dependente de: "+this.TipoProjeto2.Designacao+" ("+this.TipoProjeto2.Id+")":"");
         }
     }
 }

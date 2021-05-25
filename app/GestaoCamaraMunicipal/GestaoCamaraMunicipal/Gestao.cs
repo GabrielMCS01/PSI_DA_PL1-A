@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -243,8 +245,16 @@ namespace GestaoCamaraMunicipal
                     especialista.FuncionarioNumero1 = funcionario.Numero;
 
                     // Adiciona o Especialista e guarda as alterações na Base de Dados
-                    camaraMunicipal.EspecialistaSet.Add(especialista);
-                    camaraMunicipal.SaveChanges();
+                    try
+                    {
+                        camaraMunicipal.EspecialistaSet.Add(especialista);
+                        camaraMunicipal.SaveChanges();
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        mensagem.ObjetoDuplicado("funcionário ao tipo de projeto, devido a este funcionário já estar adicionado a este");
+                        camaraMunicipal.EspecialistaSet.Remove(especialista);
+                    }
 
                     // Recebe o index da listBox de tipos de projeto que está selecionado
                     int posicao = listBoxTiposdeProjeto.SelectedIndex;
