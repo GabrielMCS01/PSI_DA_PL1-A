@@ -11,7 +11,8 @@ namespace GestaoCamaraMunicipal
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Mensagens mensagem = new Mensagens();
-          
+        int index = -1; 
+
         public Gestao()
         {
             // Inicia os componentes do formulário
@@ -23,6 +24,23 @@ namespace GestaoCamaraMunicipal
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             lerDados();
+        }
+
+        public void MudarBotoes()
+        {
+            // Caso não tenha nenhum item selecionado na ListBox
+            if (index != -1)
+            {
+                // Gere os butões conforme a necessidade
+                btnAdicionarDocumento.Enabled = true;
+                btnRemoverDocumento.Enabled = false;
+            }
+            else
+            {
+                // Gere os butões conforme a necessidade
+                btnAdicionarDocumento.Enabled = false;
+                btnRemoverDocumento.Enabled = true;
+            }
         }
 
         // Coloca os dados na listBox provenientes da Base de Dados, retira a Seleção da ListBox e limpa as TextBoxs do formúlário
