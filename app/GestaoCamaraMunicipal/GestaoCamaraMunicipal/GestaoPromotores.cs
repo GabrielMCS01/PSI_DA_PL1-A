@@ -29,14 +29,17 @@ namespace GestaoCamaraMunicipal
 
         public void MudarBotoes()
         {
+            // Caso não tenha nenhum item selecionado na ListBox
             if (index != -1)
             {
+                // Gere os butões conforme a necessidade
                 btnRegistar.Enabled = true;
                 btnGuardarAlteracoes.Enabled = false;
                 btnRemover.Enabled = false;
             }
             else 
             {
+                // Gere os butões conforme a necessidade
                 btnRegistar.Enabled = false;
                 btnGuardarAlteracoes.Enabled = true;
                 btnRemover.Enabled = true;
