@@ -252,6 +252,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxEspecialistas.Name = "listBoxEspecialistas";
             this.listBoxEspecialistas.Size = new System.Drawing.Size(224, 180);
             this.listBoxEspecialistas.TabIndex = 7;
+            this.listBoxEspecialistas.SelectedIndexChanged += new System.EventHandler(this.listBoxEspecialistas_SelectedIndexChanged);
             // 
             // buttonAddFuncionario
             // 
@@ -366,6 +367,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxDocumentos.Name = "listBoxDocumentos";
             this.listBoxDocumentos.Size = new System.Drawing.Size(515, 340);
             this.listBoxDocumentos.TabIndex = 2;
+            this.listBoxDocumentos.SelectedIndexChanged += new System.EventHandler(this.listBoxDocumentos_SelectedIndexChanged);
             // 
             // textBoxDocumento
             // 

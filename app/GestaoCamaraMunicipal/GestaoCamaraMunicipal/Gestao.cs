@@ -11,7 +11,9 @@ namespace GestaoCamaraMunicipal
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Mensagens mensagem = new Mensagens();
-        int index = -1; 
+        int index = -1;
+        int indexTipo = -1;
+        int indexEspecialista = -1;
 
         public Gestao()
         {
@@ -24,12 +26,59 @@ namespace GestaoCamaraMunicipal
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             lerDados();
+            btnAdicionarDocumento.Enabled = true;
+            btnRemoverDocumento.Enabled = false;
+            MudarBotoesTipos();
         }
 
-        public void MudarBotoes()
+        public void MudarBotoesTipos()
         {
-            // Caso não tenha nenhum item selecionado na ListBox
-            if (index != -1)
+            // Caso não tenha nenhum item selecionado na ListBox Tipos de Projetos
+            if (indexTipo == -1)
+            {
+                // Gere os butões conforme a necessidade
+                buttonAdicionar.Enabled = true;
+                buttonRemover.Enabled = false;
+                buttonAddFuncionario.Enabled = false;
+                buttonRemoverFuncionario.Enabled = false;
+            }
+            else
+            {
+                // Gere os butões conforme a necessidade
+                buttonAdicionar.Enabled = false;
+                buttonRemover.Enabled = true;
+                buttonAddFuncionario.Enabled = true;
+            }
+        }
+
+        public void MudarBotoesEspecialistas()
+        {
+            // Caso não tenha nenhum item selecionado na ListBox Especialistas e Tipos de Projetos
+            if (indexEspecialista == -1 && indexTipo == -1)
+            {
+                // Gere os butões conforme a necessidade
+                buttonAddFuncionario.Enabled = false;
+                buttonRemoverFuncionario.Enabled = false;
+            }
+            // Caso tenha um item selecionado na ListBox Especialistas e Tipos de Projetos
+            else if (indexEspecialista != -1 && indexTipo != -1)
+            {
+                // Gere os butões conforme a necessidade
+                buttonAddFuncionario.Enabled = false;
+                buttonRemoverFuncionario.Enabled = true;
+            }
+            else if (indexEspecialista == -1 && indexTipo != -1)
+            {
+                // Gere os butões conforme a necessidade
+                buttonAddFuncionario.Enabled = true;
+                buttonRemoverFuncionario.Enabled = false;
+            }
+        }
+
+        public void MudarBotoesDOC()
+        {
+            // Caso não tenha nenhum item selecionado na ListBox Documentos
+            if (index == -1)
             {
                 // Gere os butões conforme a necessidade
                 btnAdicionarDocumento.Enabled = true;
@@ -51,9 +100,17 @@ namespace GestaoCamaraMunicipal
             comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
 
             listBoxDocumentos.ClearSelected();
-            listBoxTiposdeProjeto.ClearSelected();
             listBoxEspecialistas.ClearSelected();
+            listBoxTiposdeProjeto.ClearSelected();
+            LimparForm();
+        }
+
+        private void LimparForm()
+        {
             comboBoxFuncionario.SelectedIndex = -1;
+            textBoxDesignacao.Clear();
+            numericUpDownDiasAprovacao.Value = 0;
+            checkBoxDependente.Checked = false;
         }
 
         // Volta ao menu principal
@@ -162,9 +219,7 @@ namespace GestaoCamaraMunicipal
                     lerDados();
 
                     // Limpa o formulário
-                    textBoxDesignacao.Clear();
-                    numericUpDownDiasAprovacao.Value = 0;
-                    checkBoxDependente.Checked = false;
+                    LimparForm();
                 }
                 else
                 {
@@ -182,7 +237,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se estiver algum Tipo de projeto selecionado faz
-                if (listBoxTiposdeProjeto.SelectedIndex != -1)
+                if (listBoxTiposdeProjeto.SelectedIndex != -1 && indexTipo != listBoxTiposdeProjeto.SelectedIndex)
                 {
                     // Varíável que recebe o objeto Tipo de projeto selecionado na ListBox
                     TipoProjeto tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
@@ -195,14 +250,24 @@ namespace GestaoCamaraMunicipal
                     // Carrega os especialistas do tipo de projeto selecionado para a listBox
                     listBoxEspecialistas.DataSource = tipoprojeto.Especialista.ToList<Especialista>();
                     listBoxEspecialistas.ClearSelected();
+
+                    // colocar o index selecionado na variável e trocar os butões caso necessário
+                    indexEspecialista = -1;
+                    indexTipo = listBoxTiposdeProjeto.SelectedIndex;
+                    MudarBotoesTipos();
                 }
-                else
+                else if (listBoxTiposdeProjeto.SelectedIndex != -1 && indexTipo == listBoxTiposdeProjeto.SelectedIndex)
                 {
                     // Limpa o formulário
-                    textBoxDesignacao.Clear();
-                    numericUpDownDiasAprovacao.Value = 0;
-                    checkBoxDependente.Checked = false;
+                    LimparForm();
+                    listBoxEspecialistas.SelectedIndex = -1;
                     listBoxEspecialistas.DataSource = null;
+
+                    // Tirar a seleção da listBox
+                    listBoxTiposdeProjeto.SelectedIndex = -1;
+                    indexEspecialista = -1;
+                    indexTipo = -1;
+                    MudarBotoesTipos();
                 }
             }
             catch (Exception ex)
@@ -227,9 +292,12 @@ namespace GestaoCamaraMunicipal
 
                     // Recarrega a ListBox e limpa o formulário
                     lerDados();
-                    textBoxDesignacao.Clear();
-                    numericUpDownDiasAprovacao.Value = 0;
-                    checkBoxDependente.Checked = false;
+                    LimparForm();
+                    indexEspecialista = -1;
+                    indexTipo = -1;
+                    listBoxTiposdeProjeto.SelectedIndex = -1;
+                    listBoxEspecialistas.SelectedIndex = -1;
+                    MudarBotoesTipos();
                 }
                 else
                 {
@@ -329,6 +397,36 @@ namespace GestaoCamaraMunicipal
             if (e.KeyCode == Keys.Enter)
             {
                 btnAdicionarDocumento.PerformClick();
+            }
+        }
+
+        private void listBoxDocumentos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxDocumentos.SelectedIndex != -1 && index != listBoxDocumentos.SelectedIndex)
+            {
+                index = listBoxDocumentos.SelectedIndex;
+                MudarBotoesDOC();
+            }
+            else if (listBoxDocumentos.SelectedIndex != -1 && index == listBoxDocumentos.SelectedIndex)
+            {
+                listBoxDocumentos.SelectedIndex = -1;
+                index = -1;
+                MudarBotoesDOC();
+            }
+        }
+
+        private void listBoxEspecialistas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxEspecialistas.SelectedIndex != -1 && indexEspecialista != listBoxEspecialistas.SelectedIndex)
+            {
+                indexEspecialista = listBoxEspecialistas.SelectedIndex;
+                MudarBotoesEspecialistas();
+            }
+            else if (listBoxEspecialistas.SelectedIndex != -1 && indexEspecialista == listBoxEspecialistas.SelectedIndex)
+            {
+                listBoxEspecialistas.SelectedIndex = -1;
+                indexEspecialista = -1;
+                MudarBotoesEspecialistas();
             }
         }
     }

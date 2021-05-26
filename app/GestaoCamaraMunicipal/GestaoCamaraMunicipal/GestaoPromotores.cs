@@ -30,7 +30,7 @@ namespace GestaoCamaraMunicipal
         public void MudarBotoes()
         {
             // Caso não tenha nenhum item selecionado na ListBox
-            if (index != -1)
+            if (index == -1)
             {
                 // Gere os butões conforme a necessidade
                 btnRegistar.Enabled = true;
@@ -197,8 +197,6 @@ namespace GestaoCamaraMunicipal
                         promotor.Email = Email;
                         promotor.CodigoAcesso = txtBoxCodAcesso.Text;
                         promotor.Senha = txtBoxPassword.Text;
-
-                        
 
                         // Verifica se o Email está válido
                         bool EmailValidacao = VerificarEmail(Email);
