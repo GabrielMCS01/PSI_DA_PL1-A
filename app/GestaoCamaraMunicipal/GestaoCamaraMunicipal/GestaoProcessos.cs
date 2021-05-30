@@ -22,6 +22,7 @@ namespace GestaoCamaraMunicipal
         {
             listBoxProcessos.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
             listBoxProcessos.SelectedIndex = -1;
+            index = -1;
             LimparDados();
         }
 
@@ -47,6 +48,7 @@ namespace GestaoCamaraMunicipal
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             lerProcessos();
             lerPromotor();
+            MudarBotoes();
         }
 
         public void MudarBotoes()
@@ -78,6 +80,7 @@ namespace GestaoCamaraMunicipal
         // Faz quando o formulário fecha
         private void GestaoProcessos_FormClosing(object sender, FormClosingEventArgs e)
         {
+            camaraMunicipal.Dispose();
             formprincipal.Sair(e);
         }
 
@@ -165,7 +168,11 @@ namespace GestaoCamaraMunicipal
                 processo = (Processo)listBoxProcessos.SelectedItem;
 
                 // Atualiza a descrição do estado de processo e guarda as alterações na base de dados
+                processo.DataInicio = dateTimePickerInicioProcesso.Value;
+                processo.Promotor = (Promotor)comboBoxPromotor.SelectedItem;
                 processo.EstadoProcesso.DescricaoEstado = textBoxEstadoProcesso.Text;
+
+
                 camaraMunicipal.SaveChanges();
                 selecionado = listBoxProcessos.SelectedIndex;
 
@@ -187,7 +194,7 @@ namespace GestaoCamaraMunicipal
         private void listBoxProcessos_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Se estiver algum Processo selecionado faz
-            if (listBoxProcessos.SelectedIndex != -1)
+            if (listBoxProcessos.SelectedIndex != -1 && index != listBoxProcessos.SelectedIndex)
             {
                 // Recebe o processo selecionado na ListBox
                 Processo processo = new Processo();
@@ -197,6 +204,18 @@ namespace GestaoCamaraMunicipal
                 textBoxEstadoProcesso.Text = processo.EstadoProcesso.DescricaoEstado;
                 dateTimePickerInicioProcesso.Value = processo.DataInicio;
                 comboBoxPromotor.Text = processo.Promotor.ToString();
+
+                // Alterar os botões caso necessários
+                index = listBoxProcessos.SelectedIndex;
+                MudarBotoes();
+            }
+            else if (listBoxProcessos.SelectedIndex != -1 && index == listBoxProcessos.SelectedIndex)
+            {
+                listBoxProcessos.SelectedIndex = -1;
+                index = -1;
+                MudarBotoes();
+
+                LimparDados();
             }
         }
     }
