@@ -65,6 +65,7 @@ namespace GestaoCamaraMunicipal
         {
             listBoxPromotores.DataSource = camaraMunicipal.PromotorSet.ToList<Promotor>();
             listBoxPromotores.SelectedIndex = -1;
+            index = -1;
             LimparForm();
         }
 
@@ -287,7 +288,10 @@ namespace GestaoCamaraMunicipal
                     txtBoxCodAcesso.Text = promotor.CodigoAcesso;
                     txtBoxPassword.Text = promotor.Senha;
 
+                    // Bloquear a textBox NIF
                     maskedTextBoxNIF.ReadOnly = true;
+
+                    // Alterar os botões caso necessários
                     index = listBoxPromotores.SelectedIndex;
                     MudarBotoes();
                 }

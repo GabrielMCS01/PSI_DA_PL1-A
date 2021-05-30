@@ -45,7 +45,7 @@ namespace GestaoCamaraMunicipal
             else
             {
                 // Gere os butões conforme a necessidade
-                buttonAdicionar.Enabled = false;
+                buttonAdicionar.Enabled = true;
                 buttonRemover.Enabled = true;
                 buttonAddFuncionario.Enabled = true;
             }

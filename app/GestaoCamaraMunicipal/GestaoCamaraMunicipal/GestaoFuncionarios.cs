@@ -9,6 +9,7 @@ namespace GestaoCamaraMunicipal
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Mensagens mensagem = new Mensagens();
+        int index = -1;
 
         public GestaoFuncionarios()
         {
@@ -21,6 +22,7 @@ namespace GestaoCamaraMunicipal
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             LerDados();
+            MudarBotoes();
         }
 
         // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
@@ -28,7 +30,27 @@ namespace GestaoCamaraMunicipal
         {
             listBoxFuncionarios.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
             listBoxFuncionarios.SelectedIndex = -1;
+            index = -1;
             LimparForm();
+        }
+
+        public void MudarBotoes()
+        {
+            // Caso não tenha nenhum item selecionado na ListBox
+            if (index == -1)
+            {
+                // Gere os butões conforme a necessidade
+                btregistar.Enabled = true;
+                btguardarAlteracoes.Enabled = false;
+                btremover.Enabled = false;
+            }
+            else
+            {
+                // Gere os butões conforme a necessidade
+                btregistar.Enabled = false;
+                btguardarAlteracoes.Enabled = true;
+                btremover.Enabled = true;
+            }
         }
 
         // Limpa todas as TextBoxs do formulário e tira o index selecionado na ListBox
@@ -159,7 +181,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se estiver algum Funcionário selecionado faz
-                if (listBoxFuncionarios.SelectedIndex != -1)
+                if (listBoxFuncionarios.SelectedIndex != -1 && index != listBoxFuncionarios.SelectedIndex)
                 {
                     // Varíável que recebe o objeto Funcionário selecionado na ListBox
                     Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
@@ -167,6 +189,18 @@ namespace GestaoCamaraMunicipal
                     // Atribui ás TextBoxs os atributos do objeto selecionado
                     textBoxNome.Text = funcionario.Nome;
                     textBoxExtensao.Text = funcionario.Extencao;
+
+                    // Alterar os botões caso necessários
+                    index = listBoxFuncionarios.SelectedIndex;
+                    MudarBotoes();
+                }
+                else if (listBoxFuncionarios.SelectedIndex != -1 && index == listBoxFuncionarios.SelectedIndex)
+                {
+                    listBoxFuncionarios.SelectedIndex = -1;
+                    index = -1;
+                    MudarBotoes();
+
+                    LimparForm();
                 }
             }
             catch (Exception ex)

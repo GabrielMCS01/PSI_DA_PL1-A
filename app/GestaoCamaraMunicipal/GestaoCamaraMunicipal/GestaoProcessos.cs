@@ -9,6 +9,7 @@ namespace GestaoCamaraMunicipal
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Form1 formprincipal = new Form1();
         Mensagens mensagem = new Mensagens();
+        int index = -1;
 
         public GestaoProcessos()
         {
@@ -46,6 +47,25 @@ namespace GestaoCamaraMunicipal
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             lerProcessos();
             lerPromotor();
+        }
+
+        public void MudarBotoes()
+        {
+            // Caso não tenha nenhum item selecionado na ListBox
+            if (index == -1)
+            {
+                // Gere os butões conforme a necessidade
+                btnCriarProcesso.Enabled = true;
+                btnAtualizarProcesso.Enabled = false;
+                btnRemoverProcesso.Enabled = false;
+            }
+            else
+            {
+                // Gere os butões conforme a necessidade
+                btnCriarProcesso.Enabled = false;
+                btnAtualizarProcesso.Enabled = true;
+                btnRemoverProcesso.Enabled = true;
+            }
         }
 
         // Volta ao menu principal

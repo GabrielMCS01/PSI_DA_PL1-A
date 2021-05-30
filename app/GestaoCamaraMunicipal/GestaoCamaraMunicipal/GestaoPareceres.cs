@@ -9,6 +9,8 @@ namespace GestaoCamaraMunicipal
         Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Mensagens mensagem = new Mensagens();
+        int index = -1;
+
         public GestaoPareceres()
         {
             // Inicia os componentes do formulário
@@ -29,6 +31,26 @@ namespace GestaoCamaraMunicipal
             comboBoxFuncionario.SelectedIndex = -1;
 
             LerDados();
+            MudarBotoes();
+        }
+
+        public void MudarBotoes()
+        {
+            // Caso não tenha nenhum item selecionado na ListBox
+            if (index == -1)
+            {
+                // Gere os butões conforme a necessidade
+                btnRegistar.Enabled = true;
+                btnGuardarAlteracoes.Enabled = false;
+                btnRemover.Enabled = false;
+            }
+            else
+            {
+                // Gere os butões conforme a necessidade
+                btnRegistar.Enabled = false;
+                btnGuardarAlteracoes.Enabled = true;
+                btnRemover.Enabled = true;
+            }
         }
 
         // Volta ao menu principal
@@ -41,6 +63,7 @@ namespace GestaoCamaraMunicipal
         // Faz quando o formulário fecha
         private void GestaoPareceres_FormClosing(object sender, FormClosingEventArgs e)
         {
+            camaraMunicipal.Dispose();
             formprincipal.Sair(e);
         }
 
@@ -49,6 +72,7 @@ namespace GestaoCamaraMunicipal
         {
             listBoxPareceres.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
             listBoxPareceres.SelectedIndex = -1;
+            index = -1;
             LimparForm();
         }
 
@@ -201,7 +225,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se estiver algum Parecer selecionado faz
-                if (listBoxPareceres.SelectedIndex != -1)
+                if (listBoxPareceres.SelectedIndex != -1 && index != listBoxPareceres.SelectedIndex)
                 {
                     // Varíável que recebe o objeto Parecer selecionado na ListBox
                     Parecer parecer = (Parecer)listBoxPareceres.SelectedItem;
@@ -211,6 +235,18 @@ namespace GestaoCamaraMunicipal
                     dateTimePickerProjeto.Value = parecer.DataParecer;
                     comboBoxProjeto.SelectedItem = parecer.Projeto;
                     comboBoxFuncionario.SelectedItem = parecer.Funcionario;
+
+                    // Alterar os botões caso necessários
+                    index = listBoxPareceres.SelectedIndex;
+                    MudarBotoes();
+                }
+                else if (listBoxPareceres.SelectedIndex != -1 && index == listBoxPareceres.SelectedIndex)
+                {
+                    listBoxPareceres.SelectedIndex = -1;
+                    index = -1;
+                    MudarBotoes();
+
+                    LimparForm();
                 }
             }
             catch (Exception ex)
