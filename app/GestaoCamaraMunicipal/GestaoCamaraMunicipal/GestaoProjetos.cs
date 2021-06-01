@@ -452,7 +452,6 @@ namespace GestaoCamaraMunicipal
 
                 try
                 {
-
                     // Remoção do projeto atribuido na Base de Dados
                     camaraMunicipal.ProjetoAtribuidoSet.Remove(projetoAtribuido);
 
