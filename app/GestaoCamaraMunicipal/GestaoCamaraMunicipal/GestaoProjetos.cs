@@ -50,14 +50,14 @@ namespace GestaoCamaraMunicipal
             // Caso não tenha nenhum item selecionado na ListBox
             if (indexProcesso == -1)
             {
-                // Gere os butões para quando não existe nenhum processo selecionado
+                // Gere os botões para quando não existe nenhum processo selecionado
                 btRegistarProjeto.Enabled = false;
                 btGuardarAlteracoesProjetos.Enabled = false;
                 btRemoverProjetos.Enabled = false;
             }
             else
             {
-                // Gere os butões para quando existe um processo selecionado
+                // Gere os botões para quando existe um processo selecionado
                 btRegistarProjeto.Enabled = true;
                 btGuardarAlteracoesProjetos.Enabled = false;
                 btRemoverProjetos.Enabled = false;
@@ -66,16 +66,16 @@ namespace GestaoCamaraMunicipal
 
         public void MudarBotoesProjetos()
         {
-            if (indexProjeto == -1)
+            if (listBoxProjetos.SelectedIndex == -1)
             {
-                // Gere os butões para quando não existe um processo selecionado
+                // Gere os botões para quando não existe um processo selecionado
                 btRegistarProjeto.Enabled = true;
                 btGuardarAlteracoesProjetos.Enabled = false;
                 btRemoverProjetos.Enabled = false;
             }
             else
             {
-                // Gere os butões para quando existe um processo selecionado
+                // Gere os botões para quando existe um processo selecionado
                 btRegistarProjeto.Enabled = false;
                 btGuardarAlteracoesProjetos.Enabled = true;
                 btRemoverProjetos.Enabled = true;
@@ -86,14 +86,14 @@ namespace GestaoCamaraMunicipal
         {
             if (indexDOC == -1)
             {
-                // Gere os butões para quando não existe um Documento selecionado
+                // Gere os botões para quando não existe um Documento selecionado
                 btRegistarDocumento.Enabled = true;
                 btGuardarAlteraçõesDocumento.Enabled = false;
                 btRemoverDocumento.Enabled = false;
             }
             else
             {
-                // Gere os butões para quando existe um Documento selecionado
+                // Gere os botões para quando existe um Documento selecionado
                 btRegistarDocumento.Enabled = false;
                 btGuardarAlteraçõesDocumento.Enabled = true;
                 btRemoverDocumento.Enabled = true;
@@ -104,13 +104,13 @@ namespace GestaoCamaraMunicipal
         {
             if (indexFuncionarios == -1)
             {
-                // Gere os butões para quando não existe um Funcionario selecionado
+                // Gere os botões para quando não existe um Funcionario selecionado
                 btnRegistarAtribuicao.Enabled = true;
                 btnRemoverAtribuicao.Enabled = false;
             }
             else
             {
-                // Gere os butões para quando existe um Funcionario selecionado
+                // Gere os botões para quando existe um Funcionario selecionado
                 btnRegistarAtribuicao.Enabled = false;
                 btnRemoverAtribuicao.Enabled = true;
             }
@@ -191,7 +191,7 @@ namespace GestaoCamaraMunicipal
             // Limpar campos dos projetos
             listBoxProjetos.SelectedIndex = -1;
             indexProjeto = -1;
-            MudarBotoesPareceres();
+            MudarBotoesProjetos();
             textBoxEstadoProjeto.Clear();
             comboBoxTiposProjeto.SelectedIndex = -1;
             dateTimePickerProjeto.Value = DateTime.Now;
@@ -317,7 +317,7 @@ namespace GestaoCamaraMunicipal
                 LerDadosFuncionarios(projeto);
 
                 // Altera a seleção dos botões caso não tenha tido nenhum projeto selecionado anteriormente
-                MudarBotoesPareceres();
+                MudarBotoesProjetos();
                 indexProjeto = listBoxProjetos.SelectedIndex;
             }
             else if (listBoxProjetos.SelectedIndex != -1 && indexProjeto == listBoxProjetos.SelectedIndex)
@@ -327,9 +327,9 @@ namespace GestaoCamaraMunicipal
                 LimparFormFuncionarios();
                 LimparFormProjetos();
 
-                MudarBotoesPareceres();
+                MudarBotoesProjetos();
 
-                
+
             }
         }
 
@@ -484,7 +484,7 @@ namespace GestaoCamaraMunicipal
             if(comboBoxProcesso.SelectedIndex != -1)
             {
                 LerDadosProjetos();
-                MudarBotoesPareceres();
+                MudarBotoesProjetos();
             }
         }
 
