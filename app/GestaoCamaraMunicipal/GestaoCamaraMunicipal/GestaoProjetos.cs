@@ -426,7 +426,7 @@ namespace GestaoCamaraMunicipal
                 }
                 catch (Exception ex)
                 {
-                    mensagem.ObjetoDuplicado("Funcionário");
+
                 }
 
                 // Atualiza o formulário
