@@ -326,10 +326,13 @@ namespace GestaoCamaraMunicipal
                 LimparFormDocumentos();
                 LimparFormFuncionarios();
                 LimparFormProjetos();
-
                 MudarBotoesProjetos();
-
-
+            }
+            else
+            {
+                //Limpar as listbox's quando não está nenhum projeto selecionado
+                listBoxProjetoAtribuido.DataSource = null;
+                listBoxDocumentos.DataSource = null;
             }
         }
 
