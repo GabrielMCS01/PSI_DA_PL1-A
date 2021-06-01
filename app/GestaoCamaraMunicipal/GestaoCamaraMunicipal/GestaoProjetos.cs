@@ -415,11 +415,19 @@ namespace GestaoCamaraMunicipal
                 // Recebe o objeto selecionado (Especialista)
                 Especialista especialista = (Especialista)comboBoxFuncionario.SelectedItem;
 
-                // Criação do projeto atribuido na Base de Dados
-                camaraMunicipal.ProjetoAtribuidoSet.Add(new ProjetoAtribuido(dateTimePickerAtribuicao.Value, projeto, especialista.Funcionario));
+                try
+                {
+                    // Criação do projeto atribuido na Base de Dados
+                    camaraMunicipal.ProjetoAtribuidoSet.Add(new ProjetoAtribuido(dateTimePickerAtribuicao.Value, projeto, especialista.Funcionario));
 
-                 // Guarda as alterações na base de dados
-                camaraMunicipal.SaveChanges();
+                    // Guarda as alterações na base de dados
+                    camaraMunicipal.SaveChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    mensagem.ObjetoDuplicado("Funcionário");
+                }
 
                 // Atualiza o formulário
                 LerDadosFuncionarios(projeto);
@@ -442,11 +450,19 @@ namespace GestaoCamaraMunicipal
                 // Recebe o objeto selecionado (Projeto Atribuido)
                 ProjetoAtribuido projetoAtribuido = (ProjetoAtribuido)listBoxProjetoAtribuido.SelectedItem;
 
-                // Remoção do projeto atribuido na Base de Dados
-                camaraMunicipal.ProjetoAtribuidoSet.Remove(projetoAtribuido);
+                try
+                {
 
-                // Guarda as alterações na base de dados
-                camaraMunicipal.SaveChanges();
+                    // Remoção do projeto atribuido na Base de Dados
+                    camaraMunicipal.ProjetoAtribuidoSet.Remove(projetoAtribuido);
+
+                    // Guarda as alterações na base de dados
+                    camaraMunicipal.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                }
 
                 // Recebe o objeto selecionado (Projeto)
                 Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
