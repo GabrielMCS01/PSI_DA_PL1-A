@@ -137,6 +137,10 @@ namespace GestaoCamaraMunicipal
                 listBoxProjetoAtribuido.DataSource = null;
                 indexFuncionarios = -1;
             }
+            else
+            {
+                comboBoxFuncionario.DataSource = null;
+            }
             LimparFormProjetos();
         }
 
@@ -154,7 +158,10 @@ namespace GestaoCamaraMunicipal
 
             // Limpar listbox dos funcionários com projeto atribuido
             listBoxProjetoAtribuido.DataSource = null;
-            
+
+            // Limpar combobox dos funcionários
+            comboBoxFuncionario.DataSource = null;
+
         }
 
         private void LerDadosDocumentos(Projeto projeto)
@@ -320,12 +327,14 @@ namespace GestaoCamaraMunicipal
                 LimparFormFuncionarios();
                 LimparFormProjetos();
                 MudarBotoesProjetos();
+                comboBoxFuncionario.DataSource = null;
             }
             else
             {
                 //Limpar as listbox's quando não está nenhum projeto selecionado
                 listBoxProjetoAtribuido.DataSource = null;
                 listBoxDocumentos.DataSource = null;
+                comboBoxFuncionario.DataSource = null;
             }
         }
 
