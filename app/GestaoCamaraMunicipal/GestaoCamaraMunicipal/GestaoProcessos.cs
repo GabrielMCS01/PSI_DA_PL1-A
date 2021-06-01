@@ -73,14 +73,7 @@ namespace GestaoCamaraMunicipal
         // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-        }
-
-        // Faz quando o formulário fecha
-        private void GestaoProcessos_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            camaraMunicipal.Dispose();
-            formprincipal.Sair(e);
+            this.Close();
         }
 
         // Botão para Registar o Processo

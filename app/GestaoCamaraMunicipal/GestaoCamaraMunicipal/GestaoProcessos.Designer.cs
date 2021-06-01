@@ -75,7 +75,7 @@ namespace GestaoCamaraMunicipal
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
             this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Fechar";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
@@ -85,7 +85,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxProcessos.FormattingEnabled = true;
             this.listBoxProcessos.ItemHeight = 16;
             this.listBoxProcessos.Location = new System.Drawing.Point(4, 19);
-            this.listBoxProcessos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxProcessos.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxProcessos.Name = "listBoxProcessos";
             this.listBoxProcessos.Size = new System.Drawing.Size(344, 372);
             this.listBoxProcessos.TabIndex = 3;
@@ -95,9 +95,9 @@ namespace GestaoCamaraMunicipal
             // 
             this.groupBox1.Controls.Add(this.listBoxProcessos);
             this.groupBox1.Location = new System.Drawing.Point(13, 42);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(352, 395);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
@@ -202,9 +202,9 @@ namespace GestaoCamaraMunicipal
             this.groupBox2.Controls.Add(this.lblPromotor);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(373, 42);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(445, 395);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
@@ -224,7 +224,6 @@ namespace GestaoCamaraMunicipal
             this.Name = "GestaoProcessos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DPM - Gestão de Processos";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoProcessos_FormClosing);
             this.Load += new System.EventHandler(this.GestaoProcessos_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

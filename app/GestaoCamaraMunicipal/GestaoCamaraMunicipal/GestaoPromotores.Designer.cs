@@ -82,7 +82,7 @@ namespace GestaoCamaraMunicipal
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
             this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Fechar";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
@@ -305,7 +305,6 @@ namespace GestaoCamaraMunicipal
             this.Name = "GestaoPromotores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DPM - Gestão de Promotores";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoPromotores_FormClosing);
             this.Load += new System.EventHandler(this.GestaoPromotores_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

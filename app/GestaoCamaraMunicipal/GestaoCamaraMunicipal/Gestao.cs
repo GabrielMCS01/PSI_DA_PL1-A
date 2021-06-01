@@ -116,7 +116,7 @@ namespace GestaoCamaraMunicipal
         // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         // Botão para Adicionar o Documento
@@ -174,12 +174,6 @@ namespace GestaoCamaraMunicipal
             {
                 mensagem.Erro(ex);
             }
-        }
-
-        // Faz quando o formulário fecha
-        private void Gestao_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            formprincipal.Sair(e);
         }
 
         // Botão que adiciona um Tipo de Projeto

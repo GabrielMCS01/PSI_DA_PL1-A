@@ -254,7 +254,6 @@ namespace GestaoCamaraMunicipal
             this.Name = "GestaoPareceres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DPM - Gestão de Pareceres";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GestaoPareceres_FormClosing);
             this.Load += new System.EventHandler(this.GestaoPareceres_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

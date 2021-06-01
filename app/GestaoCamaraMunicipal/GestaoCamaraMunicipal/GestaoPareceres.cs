@@ -56,14 +56,7 @@ namespace GestaoCamaraMunicipal
         // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-        }
-
-        // Faz quando o formulário fecha
-        private void GestaoPareceres_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            camaraMunicipal.Dispose();
-            formprincipal.Sair(e);
+            this.Close();
         }
 
         // Coloca os dados na listBox provenientes da Base de Dados, retira a Seleção da ListBox e limpa as TextBoxs do formúlário

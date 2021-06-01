@@ -411,7 +411,6 @@ namespace GestaoCamaraMunicipal
             this.Name = "Gestao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DPM - Administração";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Gestao_FormClosing);
             this.Load += new System.EventHandler(this.Gestao_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
