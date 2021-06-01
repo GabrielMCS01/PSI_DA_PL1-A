@@ -19,9 +19,6 @@ namespace GestaoCamaraMunicipal
         {
             GestaoPromotores form = new GestaoPromotores();
             form.Show();
-
-            // Esconde este menu
-            this.Hide();
         }
 
         // Opção do menu que carrega o formulário de Gestão de Processos
@@ -29,9 +26,6 @@ namespace GestaoCamaraMunicipal
         {
             GestaoProcessos form = new GestaoProcessos();
             form.Show();
-
-            // Esconde este menu
-            this.Hide();
         }
 
         // Opção do menu que carrega o formulário de Gestão de Projetos
@@ -39,9 +33,6 @@ namespace GestaoCamaraMunicipal
         {
             GestaoProjetos form = new GestaoProjetos();
             form.Show();
-
-            // Esconde este menu
-            this.Hide();
         }
 
         // Opção do menu que carrega o formulário de Gestão de Pareceres
@@ -49,9 +40,6 @@ namespace GestaoCamaraMunicipal
         {
             GestaoPareceres form = new GestaoPareceres();
             form.Show();
-
-            // Esconde este menu
-            this.Hide();
         }
 
         // Opção do menu que carrega o formulário de Gestão de Funcionários
@@ -59,9 +47,6 @@ namespace GestaoCamaraMunicipal
         {
             GestaoFuncionarios form = new GestaoFuncionarios();
             form.Show();
-
-            // Esconde este menu
-            this.Hide();
         }
 
         // Opção do menu que permite Terminar o programa
@@ -98,9 +83,6 @@ namespace GestaoCamaraMunicipal
         {
             Gestao form = new Gestao();
             form.Show();
-
-            // Esconde este menu
-            this.Hide();
         }
     }
 }

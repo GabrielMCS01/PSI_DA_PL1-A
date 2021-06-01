@@ -81,9 +81,9 @@ namespace GestaoCamaraMunicipal
             // gestãoDePromotoresToolStripMenuItem
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
-            this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Left)));
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
-            this.gestãoDePromotoresToolStripMenuItem.Text = "Voltar ao Menu";
+            this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gestãoDePromotoresToolStripMenuItem.Text = "Fechar";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
             // listBoxPromotores

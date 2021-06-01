@@ -49,7 +49,6 @@ namespace GestaoCamaraMunicipal
         // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formprincipal.Show();
             this.Hide();
         }
 

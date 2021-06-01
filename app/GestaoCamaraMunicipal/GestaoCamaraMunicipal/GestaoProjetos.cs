@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -26,14 +27,27 @@ namespace GestaoCamaraMunicipal
         private void GestaoProjetos_Load(object sender, EventArgs e)
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
-            // Talvez Pareceres se fizer-se isso
-            LerDadosProjetos();
+            LerDadosProcessos();
+            // Ler todos os tipos de documentos
+            LerTiposDocumentos();
+        }
+
+        private void LerTiposDocumentos()
+        {
+            // Ler todos os tipos de documentos
+            comboBoxTipoDocumento.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
+
+            // Ler pareceres
+            comboBoxParecer.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
+
+            // Colocar no index -1 das combobox
+            comboBoxTipoDocumento.SelectedIndex = -1;
+            comboBoxParecer.SelectedIndex = -1;
         }
 
         // Volta ao menu principal
         private void gestãoDePromotoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formprincipal.Show();
             this.Hide();
         }
 
@@ -47,34 +61,53 @@ namespace GestaoCamaraMunicipal
         // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDadosProjetos()
         {
-            // Ler dados dos projetos
-            listBoxProjetos.DataSource = camaraMunicipal.ProjetoSet.ToList<Projeto>();
-            comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
-            comboBoxProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
-     
+            if(comboBoxProcesso.SelectedIndex != -1)
+            {
+                //Criar um objeto processo para guardar o processo selecionado na combobox processo
+                Processo processo = (Processo)comboBoxProcesso.SelectedItem;
+                // Ler dados dos projetos
+                listBoxProjetos.DataSource = processo.Projeto.ToList<Projeto>();
+                comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
+                listBoxDocumentos.DataSource = null;
+                listBoxProjetoAtribuido.DataSource = null;
+            }
             LimparFormProjetos();
+        }
+
+        private void LerDadosProcessos()
+        {
+            // Ler dados dos processos
+            comboBoxProcesso.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
+
+            // Limpar o index da combobox
+            comboBoxProcesso.SelectedIndex = -1;
+
+            // Limpar listbox projetos e documentos
+            listBoxProjetos.DataSource = null;
+
+            // Limpar listbox dos funcionários com projeto atribuido
+            listBoxProjetoAtribuido.DataSource = null;
         }
 
         private void LerDadosDocumentos(Projeto projeto)
         {
-            // Ler dados dos documentos
-            // List documento = (Documento)projeto.Documento.ToList<Documento>();
-
-            // Apresentar lista de documento do projeto
+            // Apresentar lista de documentos do projeto
             listBoxDocumentos.DataSource = projeto.Documento.ToList<Documento>();
-           // comboBoxTipoDocumento.DataSource = projeto.ToList<TipoDocumento>();
-            comboBoxParecer.DataSource = camaraMunicipal.ParecerSet.ToList<Parecer>();
-
             LimparFormDocumentos();        
         }
 
-        private void LerDadosFuncionarios()
+        private void LerDadosFuncionarios(Projeto projeto)
         {
-            // Ler dados dos projetos atribuidos
-            listBoxProjetoAtribuido.DataSource = camaraMunicipal.ProjetoAtribuidoSet.ToList<ProjetoAtribuido>();
-            comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
-
+            // Ler funcionários registados
+            TipoProjeto tipoProjeto = projeto.TipoProjeto;
+            comboBoxFuncionario.DataSource = tipoProjeto.Especialista.ToList<Especialista>();
             LimparFormFuncionarios();
+        }
+
+        private void LerDadosFuncionariosAtribuidos(Projeto projeto)
+        {
+            // Ler funcionários registados num projeto atribuido
+            listBoxProjetoAtribuido.DataSource = projeto.ProjetoAtribuido.ToList<ProjetoAtribuido>();
         }
 
         // Limpa todas as TextBoxs do formulário e tira o index selecionado nas ComboBoxs
@@ -85,7 +118,6 @@ namespace GestaoCamaraMunicipal
             textBoxEstadoProjeto.Clear();
             comboBoxTiposProjeto.SelectedIndex = -1;
             dateTimePickerProjeto.Value = DateTime.Now;
-            comboBoxProcesso.SelectedIndex = -1;
         }
 
         private void LimparFormDocumentos()
@@ -95,7 +127,7 @@ namespace GestaoCamaraMunicipal
             textBoxTitulo.Clear();
             comboBoxTipoDocumento.SelectedIndex = -1;
             dateTimePickerDocumento.Value = DateTime.Now;
-            comboBoxParecer.SelectedIndex = -1;
+            comboBoxParecer.SelectedIndex = -1;   
         }
 
         private void LimparFormFuncionarios()
@@ -155,6 +187,7 @@ namespace GestaoCamaraMunicipal
                         projeto.EstadoProjeto = textBoxEstadoProjeto.Text;
                         TipoProjeto tipoprojeto = (TipoProjeto)comboBoxTiposProjeto.SelectedItem;
                         projeto.TipoProjetoId = tipoprojeto.Id;
+                        projeto.DataAprovacao = dateTimePickerProjeto.Value;
 
                         // Guarda as alterações do objeto na Base de Dados
                         camaraMunicipal.SaveChanges();
@@ -193,9 +226,15 @@ namespace GestaoCamaraMunicipal
                 textBoxEstadoProjeto.Text = projeto.EstadoProjeto;
                 comboBoxTiposProjeto.Text = projeto.TipoProjeto.ToString();
                 dateTimePickerProjeto.Value = projeto.DataAprovacao;
-                comboBoxProcesso.Text = projeto.Processo.ToString();
 
-                LerDadosDocumentos();
+                LerDadosDocumentos(projeto);
+
+                // Atualiza a list box de funcionário atribuidos ao projeto
+                LerDadosFuncionariosAtribuidos(projeto);
+
+                //Carrega a combobox funcionários apenas com funcionários especialistas no tipo de projeto
+                //do projeto selecionado
+                LerDadosFuncionarios(projeto);
             }
         }
 
@@ -240,7 +279,9 @@ namespace GestaoCamaraMunicipal
                     camaraMunicipal.SaveChanges();
 
                     // Recarrega a ListBox e limpa o formulário
-                    LerDadosDocumentos();
+                    // Varíável que recebe o objeto Projeto selecionado na ListBox
+                    Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+                    LerDadosDocumentos(projeto);
                 }
                 else
                 {
@@ -276,17 +317,20 @@ namespace GestaoCamaraMunicipal
                 // Recebe o objeto selecionado (Projeto)
                 Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
 
-                // Recebe o objeto selecionado (Funcionario)
-                Funcionario funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
+                // Recebe o objeto selecionado (Especialista)
+                Especialista especialista = (Especialista)comboBoxFuncionario.SelectedItem;
 
                 // Criação do projeto atribuido na Base de Dados
-                camaraMunicipal.ProjetoAtribuidoSet.Add(new ProjetoAtribuido(dateTimePickerAtribuicao.Value, projeto, funcionario));
+                camaraMunicipal.ProjetoAtribuidoSet.Add(new ProjetoAtribuido(dateTimePickerAtribuicao.Value, projeto, especialista.Funcionario));
 
-                // Guarda as alterações na base de dados
+                 // Guarda as alterações na base de dados
                 camaraMunicipal.SaveChanges();
 
                 // Atualiza o formulário
-                LerDadosFuncionarios();
+                LerDadosFuncionarios(projeto);
+
+                // Atualiza a list box de funcionário atribuidos ao projeto
+                LerDadosFuncionariosAtribuidos(projeto);
             }
             else
             {
@@ -309,13 +353,76 @@ namespace GestaoCamaraMunicipal
                 // Guarda as alterações na base de dados
                 camaraMunicipal.SaveChanges();
 
+                // Recebe o objeto selecionado (Projeto)
+                Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+
                 // Atualiza o formulário
-                LerDadosFuncionarios();
+                LerDadosFuncionarios(projeto);
+
+                // Atualiza a list box de funcionário atribuidos ao projeto
+                LerDadosFuncionariosAtribuidos(projeto);
             }
             else
             {
                 // Mensagem de erro ao verificar que o utilizador não tem projeto atribuido selecionado
                 mensagem.AvisoSelecionarPrimeiro("projeto atribuído.");
+            }
+        }
+
+        private void comboBoxProcesso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBoxProcesso.SelectedIndex != -1)
+            {
+                LerDadosProjetos();
+            }
+        }
+
+        private void btRemover_Click(object sender, EventArgs e)
+        {
+            // Verificar que a list box tem um objeto selecionado
+            if(listBoxDocumentos.SelectedIndex != -1)
+            {
+                // Guardar num objeto o documento selecionado
+                Documento documento = (Documento)listBoxDocumentos.SelectedItem;
+                // Remover o documento da bd
+                camaraMunicipal.DocumentoSet.Remove(documento);
+                // guardar alterações na bd
+                camaraMunicipal.SaveChanges();
+                // Varíável que recebe o objeto Projeto selecionado na ListBox
+                Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+                // Atualiza a listbox documentos
+                LerDadosDocumentos(projeto);
+            }
+            else
+            {
+                // Caso contrário emitir mensagem de erro
+                mensagem.AvisoSelecionarPrimeiro("documento.");
+            }
+        }
+
+        private void btGuardarAlterações_Click(object sender, EventArgs e)
+        {
+            // Verificar que a list box tem um objeto selecionado
+            if (listBoxDocumentos.SelectedIndex != -1)
+            {
+                // Guardar num objeto o documento selecionado
+                Documento documento = (Documento)listBoxDocumentos.SelectedItem;
+                // Atualizar campos do documento
+                documento.DataEntrega = dateTimePickerDocumento.Value;
+                documento.Titulo = textBoxTitulo.Text;
+                documento.Parecer = (Parecer)comboBoxParecer.SelectedItem;
+                documento.TipoDocumento = (TipoDocumento)comboBoxTipoDocumento.SelectedItem;
+                // guardar alterações na bd
+                camaraMunicipal.SaveChanges();
+                // Varíável que recebe o objeto Projeto selecionado na ListBox
+                Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
+                // Atualiza a listbox documentos
+                LerDadosDocumentos(projeto);
+            }
+            else
+            {
+                // Caso contrário emitir mensagem de erro
+                mensagem.AvisoSelecionarPrimeiro("documento.");
             }
         }
     }

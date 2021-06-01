@@ -17,7 +17,7 @@ namespace GestaoCamaraMunicipal
 
         public override string ToString()
         {
-            return string.Format("{0} \t{1} - {2}", this.Data , this.Projeto, this.Funcionario);
+            return string.Format("{0} \t{1}", this.Funcionario, this.Data);
         }
     }
     
