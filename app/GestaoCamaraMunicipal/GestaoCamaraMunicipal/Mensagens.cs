@@ -19,18 +19,18 @@ namespace GestaoCamaraMunicipal
 
         public void ErroPreencherCampo(string objeto)
         {
-            MessageBox.Show("Campo " + objeto + " não está preenchido corretamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("O campo " + objeto + " não está preenchido corretamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         // Mensagem de erro por inserir um funcionário que já está adicionado.
         public void ObjetoDuplicado(string objeto)
         {
-            MessageBox.Show("Erro ao adicionadar " + objeto, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("já adicionou esse " + objeto, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void PreenchaCorretamente(string objeto)
         {
-            MessageBox.Show("Erro ao adicionadar " + objeto + ", Preencha corretamente os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Erro ao adicionadar um " + objeto + ", Preencha corretamente os campos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         // Mensagem de aviso para selecionar primeiro algo.
