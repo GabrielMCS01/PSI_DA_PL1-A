@@ -10,11 +10,11 @@ namespace GestaoCamaraMunicipal
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Mensagens mensagem = new Mensagens();
 
-        // Caso se meta os pareceres neste form 
         int indexProcesso = -1;
         int indexProjeto = -1;
         int indexDOC = -1;
         int indexFuncionarios = -1;
+        int lido = 0;
 
         public GestaoProjetos()
         {
@@ -27,8 +27,10 @@ namespace GestaoCamaraMunicipal
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             LerDadosProcessos();
+
             // Ler todos os tipos de documentos
             LerTiposDocumentos();
+            lido = 1;
         }
 
         private void LerTiposDocumentos()
@@ -44,7 +46,7 @@ namespace GestaoCamaraMunicipal
             comboBoxParecer.SelectedIndex = -1;
         }
 
-        public void MudarBotoesPareceres()
+        public void MudarBotoesProcessos()
         {
             // Caso não tenha nenhum item selecionado na ListBox
             if (indexProcesso == -1)
@@ -53,6 +55,11 @@ namespace GestaoCamaraMunicipal
                 btRegistarProjeto.Enabled = false;
                 btGuardarAlteracoesProjetos.Enabled = false;
                 btRemoverProjetos.Enabled = false;
+                btRegistarDocumento.Enabled = false;
+                btGuardarAlteraçõesDocumento.Enabled = false;
+                btRemoverDocumento.Enabled = false;
+                btnRegistarAtribuicao.Enabled = false;
+                btnRemoverAtribuicao.Enabled = false;
             }
             else
             {
@@ -65,16 +72,23 @@ namespace GestaoCamaraMunicipal
 
         public void MudarBotoesProjetos()
         {
-            if (listBoxProjetos.SelectedIndex == -1)
+            if (indexProjeto == -1)
             {
-                // Gere os botões para quando não existe um processo selecionado
+                // Gere os botões para quando não existe um projeto selecionado
                 btRegistarProjeto.Enabled = true;
                 btGuardarAlteracoesProjetos.Enabled = false;
                 btRemoverProjetos.Enabled = false;
+
+                // Desativa os botões da ListBox Documentos e Funcionários
+                btRegistarDocumento.Enabled = false;
+                btGuardarAlteraçõesDocumento.Enabled = false;
+                btRemoverDocumento.Enabled = false;
+                btnRegistarAtribuicao.Enabled = false;
+                btnRemoverAtribuicao.Enabled = false;
             }
             else
             {
-                // Gere os botões para quando existe um processo selecionado
+                // Gere os botões para quando existe um projeto selecionado
                 btRegistarProjeto.Enabled = false;
                 btGuardarAlteracoesProjetos.Enabled = true;
                 btRemoverProjetos.Enabled = true;
@@ -124,22 +138,17 @@ namespace GestaoCamaraMunicipal
         // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
         private void LerDadosProjetos()
         {
-            if (comboBoxProcesso.SelectedIndex != -1)
-            {
-                //Criar um objeto processo para guardar o processo selecionado na combobox processo
-                Processo processo = (Processo)comboBoxProcesso.SelectedItem;
-                // Ler dados dos projetos
-                listBoxProjetos.DataSource = processo.Projeto.ToList<Projeto>();
-                comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
-                listBoxDocumentos.DataSource = null;
-                indexDOC = -1;
-                listBoxProjetoAtribuido.DataSource = null;
-                indexFuncionarios = -1;
-            }
-            else
-            {
-                comboBoxFuncionario.DataSource = null;
-            }
+            // Criar um objeto processo para guardar o processo selecionado na combobox processo
+            Processo processo = (Processo)comboBoxProcesso.SelectedItem;
+
+            // Ler dados dos projetos
+            listBoxProjetos.DataSource = processo.Projeto.ToList<Projeto>();
+            listBoxProjetos.SelectedIndex = -1;
+            indexProjeto = -1;
+            MudarBotoesProjetos();
+
+            comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
+            
             LimparFormProjetos();
         }
 
@@ -150,31 +159,43 @@ namespace GestaoCamaraMunicipal
 
             // Limpar o index da combobox
             comboBoxProcesso.SelectedIndex = -1;
+            indexProcesso = -1;
+            MudarBotoesProcessos();
 
-            // Limpar listbox projetos e documentos
+            // Limpar listbox projetos
             listBoxProjetos.DataSource = null;
             indexProjeto = -1;
 
             // Limpar listbox dos funcionários com projeto atribuido
             listBoxProjetoAtribuido.DataSource = null;
+            indexFuncionarios = -1;
 
             // Limpar combobox dos funcionários
             comboBoxFuncionario.DataSource = null;
 
+            // Limpar listBox Documentos
+            listBoxDocumentos.DataSource = null;
+            indexDOC = -1;
         }
 
         private void LerDadosDocumentos(Projeto projeto)
         {
             // Apresentar lista de documentos do projeto
             listBoxDocumentos.DataSource = projeto.Documento.ToList<Documento>();
+            listBoxDocumentos.SelectedIndex = -1;
+            indexDOC = -1;
+            MudarBotoesDocumentos();
             LimparFormDocumentos();
         }
 
         private void LerDadosFuncionarios(Projeto projeto)
         {
-            // Ler funcionários registados
+            // Ler funcionários registados no projeto
             TipoProjeto tipoProjeto = projeto.TipoProjeto;
             comboBoxFuncionario.DataSource = tipoProjeto.Especialista.ToList<Especialista>();
+            listBoxProjetoAtribuido.SelectedIndex = -1;
+            indexFuncionarios = -1;
+            MudarBotoesFuncionarios();
             LimparFormFuncionarios();
         }
 
@@ -188,9 +209,6 @@ namespace GestaoCamaraMunicipal
         private void LimparFormProjetos()
         {
             // Limpar campos dos projetos
-            listBoxProjetos.SelectedIndex = -1;
-            indexProjeto = -1;
-            MudarBotoesProjetos();
             textBoxEstadoProjeto.Clear();
             comboBoxTiposProjeto.SelectedIndex = -1;
             dateTimePickerProjeto.Value = DateTime.Now;
@@ -199,8 +217,6 @@ namespace GestaoCamaraMunicipal
         private void LimparFormDocumentos()
         {
             // Limpar campos dos documentos
-            listBoxDocumentos.SelectedIndex = -1;
-            indexDOC = -1;
             textBoxTitulo.Clear();
             comboBoxTipoDocumento.SelectedIndex = -1;
             dateTimePickerDocumento.Value = DateTime.Now;
@@ -210,8 +226,6 @@ namespace GestaoCamaraMunicipal
         private void LimparFormFuncionarios()
         {
             // Limpar campos dos projetos atribuidos
-            listBoxProjetoAtribuido.SelectedIndex = -1;
-            indexFuncionarios = -1;
             comboBoxFuncionario.SelectedIndex = -1;
             dateTimePickerAtribuicao.Value = DateTime.Now;
         }
@@ -316,23 +330,31 @@ namespace GestaoCamaraMunicipal
                 LerDadosFuncionarios(projeto);
 
                 // Altera a seleção dos botões caso não tenha tido nenhum projeto selecionado anteriormente
-                MudarBotoesProjetos();
                 indexProjeto = listBoxProjetos.SelectedIndex;
+                MudarBotoesProjetos();
             }
             else if (listBoxProjetos.SelectedIndex != -1 && indexProjeto == listBoxProjetos.SelectedIndex)
             {
                 // Retira a seleção do projeto caso clique duas vezes no mesmo projeto
+                // Limpa os formulários
                 LimparFormDocumentos();
                 LimparFormFuncionarios();
                 LimparFormProjetos();
-                MudarBotoesProjetos();
-                comboBoxFuncionario.DataSource = null;
-            }
-            else
-            {
-                //Limpar as listbox's quando não está nenhum projeto selecionado
-                listBoxProjetoAtribuido.DataSource = null;
+
+                // Retira a seleção do projeto 
+                listBoxProjetos.SelectedIndex = -1;
+                indexProjeto = -1;
+
+                // Limpa a ListBox Documentos e Funcionários atribuidos
                 listBoxDocumentos.DataSource = null;
+                indexDOC = -1;
+                listBoxProjetoAtribuido.DataSource = null;
+                indexFuncionarios = -1;
+
+                // Desativa os botões de Documentos e funcionários atribuidos e ativa apenas o botão de registar Projeto
+                MudarBotoesProjetos();
+
+                //comboBoxTiposProjeto.DataSource = null;
                 comboBoxFuncionario.DataSource = null;
             }
         }
@@ -395,7 +417,7 @@ namespace GestaoCamaraMunicipal
 
         private void listBoxDocumentos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxDocumentos.SelectedIndex != -1)
+            if (listBoxDocumentos.SelectedIndex != -1 && indexDOC != listBoxDocumentos.SelectedIndex)
             {
                 // Recebe o documento selecionado na ListBox
                 Documento documento = (Documento)listBoxDocumentos.SelectedItem;
@@ -405,6 +427,10 @@ namespace GestaoCamaraMunicipal
                 comboBoxTipoDocumento.Text = documento.TipoDocumento.ToString();
                 dateTimePickerDocumento.Value = documento.DataEntrega;
                 comboBoxParecer.Text = documento.Parecer.ToString();
+            }
+            else if (listBoxDocumentos.SelectedIndex != -1 && indexDOC == listBoxDocumentos.SelectedIndex)
+            {
+                LimparFormDocumentos();
             }
         }
 
@@ -499,10 +525,30 @@ namespace GestaoCamaraMunicipal
 
         private void comboBoxProcesso_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxProcesso.SelectedIndex != -1)
+            if (comboBoxProcesso.SelectedIndex != -1 && lido == 1)
             {
+                indexProcesso = comboBoxProcesso.SelectedIndex;
+
+                // Limpa os formulários
+                LimparFormDocumentos();
+                LimparFormFuncionarios();
+                LimparFormProjetos();
+
+                // Retira a seleção do projeto 
+                indexProjeto = -1;
+
+                // Desativa os botões de Documentos e funcionários atribuidos e ativa apenas o botão de registar Projeto
+                MudarBotoesProcessos();
                 LerDadosProjetos();
-                MudarBotoesProjetos();
+                
+                // Limpa a ListBox Documentos e Funcionários atribuidos
+                listBoxDocumentos.DataSource = null;
+                indexDOC = -1;
+                listBoxProjetoAtribuido.DataSource = null;
+                indexFuncionarios = -1;
+
+                comboBoxTiposProjeto.DataSource = null;
+                comboBoxFuncionario.DataSource = null;
             }
         }
 
