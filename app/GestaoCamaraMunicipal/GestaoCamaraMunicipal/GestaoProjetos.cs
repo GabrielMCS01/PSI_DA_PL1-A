@@ -427,9 +427,15 @@ namespace GestaoCamaraMunicipal
                 comboBoxTipoDocumento.Text = documento.TipoDocumento.ToString();
                 dateTimePickerDocumento.Value = documento.DataEntrega;
                 comboBoxParecer.Text = documento.Parecer.ToString();
+
+                indexDOC = listBoxDocumentos.SelectedIndex;
+                MudarBotoesDocumentos();
             }
             else if (listBoxDocumentos.SelectedIndex != -1 && indexDOC == listBoxDocumentos.SelectedIndex)
             {
+                listBoxDocumentos.SelectedIndex = -1;
+                indexDOC = -1;
+                MudarBotoesDocumentos();
                 LimparFormDocumentos();
             }
         }
@@ -547,7 +553,7 @@ namespace GestaoCamaraMunicipal
                 listBoxProjetoAtribuido.DataSource = null;
                 indexFuncionarios = -1;
 
-                comboBoxTiposProjeto.DataSource = null;
+                // comboBoxTiposProjeto.DataSource = null;
                 comboBoxFuncionario.DataSource = null;
             }
         }
@@ -598,6 +604,22 @@ namespace GestaoCamaraMunicipal
             {
                 // Caso contrário emitir mensagem de erro
                 mensagem.AvisoSelecionarPrimeiro("documento.");
+            }
+        }
+
+        private void listBoxProjetoAtribuido_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxProjetoAtribuido.SelectedIndex != -1 && indexFuncionarios != listBoxProjetoAtribuido.SelectedIndex)
+            {
+                indexFuncionarios = listBoxProjetoAtribuido.SelectedIndex;
+                MudarBotoesFuncionarios();
+            }
+            else if (listBoxProjetoAtribuido.SelectedIndex != -1 && indexFuncionarios == listBoxProjetoAtribuido.SelectedIndex)
+            {
+                listBoxProjetoAtribuido.SelectedIndex = -1;
+                indexFuncionarios = -1;
+                MudarBotoesFuncionarios();
+                LimparFormFuncionarios();
             }
         }
     }
