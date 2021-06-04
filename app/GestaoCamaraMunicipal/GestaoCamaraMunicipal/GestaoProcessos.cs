@@ -210,5 +210,13 @@ namespace GestaoCamaraMunicipal
                 LimparDados();
             }
         }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("O Formulário de Gestão de Processos tem como principal objetivo" +
+                " a inserção de Processos para que mais tarde, na criação de um Projeto se possa atribuir um Processo. " +
+                " Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+
+        }
     }
 }

@@ -47,6 +47,7 @@ namespace GestaoCamaraMunicipal
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBoxPareceres = new System.Windows.Forms.ListBox();
+            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -57,7 +58,8 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.BackColor = System.Drawing.Color.DimGray;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenu});
+            this.toolStripMenu,
+            this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -77,7 +79,7 @@ namespace GestaoCamaraMunicipal
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
             this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Fechar";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
@@ -95,9 +97,9 @@ namespace GestaoCamaraMunicipal
             this.groupBox3.Controls.Add(this.textBoxTextoParecer);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Location = new System.Drawing.Point(16, 272);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(356, 310);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
@@ -109,7 +111,7 @@ namespace GestaoCamaraMunicipal
             this.comboBoxProjeto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxProjeto.FormattingEnabled = true;
             this.comboBoxProjeto.Location = new System.Drawing.Point(8, 143);
-            this.comboBoxProjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxProjeto.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxProjeto.Name = "comboBoxProjeto";
             this.comboBoxProjeto.Size = new System.Drawing.Size(333, 24);
             this.comboBoxProjeto.TabIndex = 18;
@@ -127,7 +129,7 @@ namespace GestaoCamaraMunicipal
             // dateTimePickerProjeto
             // 
             this.dateTimePickerProjeto.Location = new System.Drawing.Point(8, 89);
-            this.dateTimePickerProjeto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerProjeto.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerProjeto.MinDate = new System.DateTime(2021, 5, 7, 0, 0, 0, 0);
             this.dateTimePickerProjeto.Name = "dateTimePickerProjeto";
             this.dateTimePickerProjeto.Size = new System.Drawing.Size(333, 22);
@@ -147,7 +149,7 @@ namespace GestaoCamaraMunicipal
             // btnRemover
             // 
             this.btnRemover.Location = new System.Drawing.Point(243, 249);
-            this.btnRemover.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemover.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(100, 52);
             this.btnRemover.TabIndex = 13;
@@ -158,7 +160,7 @@ namespace GestaoCamaraMunicipal
             // btnGuardarAlteracoes
             // 
             this.btnGuardarAlteracoes.Location = new System.Drawing.Point(125, 249);
-            this.btnGuardarAlteracoes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardarAlteracoes.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardarAlteracoes.Name = "btnGuardarAlteracoes";
             this.btnGuardarAlteracoes.Size = new System.Drawing.Size(100, 52);
             this.btnGuardarAlteracoes.TabIndex = 12;
@@ -169,7 +171,7 @@ namespace GestaoCamaraMunicipal
             // btnRegistar
             // 
             this.btnRegistar.Location = new System.Drawing.Point(8, 249);
-            this.btnRegistar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistar.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistar.Name = "btnRegistar";
             this.btnRegistar.Size = new System.Drawing.Size(100, 52);
             this.btnRegistar.TabIndex = 11;
@@ -193,7 +195,7 @@ namespace GestaoCamaraMunicipal
             this.comboBoxFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxFuncionario.FormattingEnabled = true;
             this.comboBoxFuncionario.Location = new System.Drawing.Point(8, 203);
-            this.comboBoxFuncionario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxFuncionario.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxFuncionario.Name = "comboBoxFuncionario";
             this.comboBoxFuncionario.Size = new System.Drawing.Size(333, 24);
             this.comboBoxFuncionario.TabIndex = 9;
@@ -201,7 +203,7 @@ namespace GestaoCamaraMunicipal
             // textBoxTextoParecer
             // 
             this.textBoxTextoParecer.Location = new System.Drawing.Point(8, 41);
-            this.textBoxTextoParecer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTextoParecer.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTextoParecer.Name = "textBoxTextoParecer";
             this.textBoxTextoParecer.Size = new System.Drawing.Size(333, 22);
             this.textBoxTextoParecer.TabIndex = 8;
@@ -220,9 +222,9 @@ namespace GestaoCamaraMunicipal
             // 
             this.groupBox1.Controls.Add(this.listBoxPareceres);
             this.groupBox1.Location = new System.Drawing.Point(16, 33);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(356, 235);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
@@ -234,11 +236,18 @@ namespace GestaoCamaraMunicipal
             this.listBoxPareceres.FormattingEnabled = true;
             this.listBoxPareceres.ItemHeight = 16;
             this.listBoxPareceres.Location = new System.Drawing.Point(4, 19);
-            this.listBoxPareceres.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listBoxPareceres.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxPareceres.Name = "listBoxPareceres";
             this.listBoxPareceres.Size = new System.Drawing.Size(348, 212);
             this.listBoxPareceres.TabIndex = 3;
             this.listBoxPareceres.SelectedIndexChanged += new System.EventHandler(this.listBoxPareceres_SelectedIndexChanged);
+            // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            this.ajudaToolStripMenuItem.Click += new System.EventHandler(this.ajudaToolStripMenuItem_Click);
             // 
             // GestaoPareceres
             // 
@@ -284,5 +293,6 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox listBoxPareceres;
+        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
     }
 }

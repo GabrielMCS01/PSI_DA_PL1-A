@@ -246,5 +246,12 @@ namespace GestaoCamaraMunicipal
                 mensagem.Erro(ex);
             }
         }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("O Formulário de Gestão de Pareceres tem como principal objetivo" +
+                " a atribuição de pareceres a um dado projeto. Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+
+        }
     }
 }

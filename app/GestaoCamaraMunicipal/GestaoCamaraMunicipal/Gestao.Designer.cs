@@ -33,6 +33,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoDePromotoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -76,11 +77,12 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.BackColor = System.Drawing.Color.DimGray;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenu});
+            this.toolStripMenu,
+            this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(805, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(817, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -96,9 +98,16 @@ namespace GestaoCamaraMunicipal
             // 
             this.gestãoDePromotoresToolStripMenuItem.Name = "gestãoDePromotoresToolStripMenuItem";
             this.gestãoDePromotoresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gestãoDePromotoresToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.gestãoDePromotoresToolStripMenuItem.Text = "Fechar";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
+            // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            this.ajudaToolStripMenuItem.Click += new System.EventHandler(this.ajudaToolStripMenuItem_Click);
             // 
             // tabPage2
             // 
@@ -107,7 +116,7 @@ namespace GestaoCamaraMunicipal
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(797, 393);
+            this.tabPage2.Size = new System.Drawing.Size(809, 396);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Gestão de Tipos de Projeto";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -121,7 +130,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(791, 389);
+            this.groupBox2.Size = new System.Drawing.Size(803, 392);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tipos de Projetos";
@@ -314,7 +323,7 @@ namespace GestaoCamaraMunicipal
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(797, 393);
+            this.tabPage1.Size = new System.Drawing.Size(809, 396);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Gestão de Documentos";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -331,7 +340,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(791, 389);
+            this.groupBox1.Size = new System.Drawing.Size(803, 392);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Documentos";
@@ -396,14 +405,14 @@ namespace GestaoCamaraMunicipal
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(805, 422);
+            this.tabControl1.Size = new System.Drawing.Size(817, 425);
             this.tabControl1.TabIndex = 5;
             // 
             // Gestao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 450);
+            this.ClientSize = new System.Drawing.Size(817, 453);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -462,5 +471,6 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.TextBox textBoxDocumento;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
     }
 }

@@ -422,5 +422,12 @@ namespace GestaoCamaraMunicipal
                 MudarBotoesEspecialistas();
             }
         }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("O Formulário de Administração tem como principal objetivo" +
+                " a inserção de Tipos de Documentos, a criação de Tipos de Projetos e ainda a atribuição" +
+                " de especialistas a um dado tipo de projeto. Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+        }
     }
 }

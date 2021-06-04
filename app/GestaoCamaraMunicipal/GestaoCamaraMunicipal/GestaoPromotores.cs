@@ -302,5 +302,11 @@ namespace GestaoCamaraMunicipal
                 mensagem.Erro(ex);
             }
         }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("O Formulário de Gestão de Promotores tem como principal objetivo" +
+                " a inserção de Promotores. Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+        }
     }
 }

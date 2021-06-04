@@ -53,6 +53,7 @@ namespace GestaoCamaraMunicipal
             this.maskedTextBoxTelemovel = new System.Windows.Forms.MaskedTextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +63,8 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.BackColor = System.Drawing.Color.DimGray;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenu});
+            this.toolStripMenu,
+            this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -274,6 +276,13 @@ namespace GestaoCamaraMunicipal
             this.label1.TabIndex = 25;
             this.label1.Text = "+351";
             // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            this.ajudaToolStripMenuItem.Click += new System.EventHandler(this.ajudaToolStripMenuItem_Click);
+            // 
             // GestaoPromotores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -339,5 +348,6 @@ namespace GestaoCamaraMunicipal
         private System.Windows.Forms.MaskedTextBox maskedTextBoxTelemovel;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
     }
 }

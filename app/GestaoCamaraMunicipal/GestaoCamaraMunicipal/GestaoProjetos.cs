@@ -622,5 +622,13 @@ namespace GestaoCamaraMunicipal
                 LimparFormFuncionarios();
             }
         }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("O Formulário de Gestão de Projetos tem como principal objetivo" +
+                " a inserção de Projetos e dos seus respetivos componentes, sendo eles, o Processo, Documentos e Especialistas (Funcionários). " +
+                " Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+
+        }
     }
 }
