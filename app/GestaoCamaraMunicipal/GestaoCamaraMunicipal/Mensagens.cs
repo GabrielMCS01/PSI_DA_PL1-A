@@ -25,7 +25,7 @@ namespace GestaoCamaraMunicipal
         // Mensagem de erro por inserir um funcionário que já está adicionado.
         public void ObjetoDuplicado(string objeto)
         {
-            MessageBox.Show("já adicionou esse " + objeto, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Já adicionou esse " + objeto, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void PreenchaCorretamente(string objeto)
