@@ -508,7 +508,7 @@ namespace GestaoCamaraMunicipal
                     // Guarda as alterações na base de dados
                     camaraMunicipal.SaveChanges();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }

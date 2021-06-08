@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,12 +7,12 @@ namespace GestaoCamaraMunicipal
 {
     public partial class Gestao : Form
     {
-        Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Mensagens mensagem = new Mensagens();
         int index = -1;
         int indexTipo = -1;
         int indexEspecialista = -1;
+        bool lido = false;
 
         public Gestao()
         {
@@ -21,34 +20,20 @@ namespace GestaoCamaraMunicipal
             InitializeComponent();
         }
 
-        // Faz o carregamento da ComboBox com os dados possiveis para chave estrangeira
+        // Faz o carregamento das listBoxs e combos
         private void Gestao_Load(object sender, EventArgs e)
         {
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             lerDados();
+
+            // Iniciar os botões
             btnAdicionarDocumento.Enabled = true;
             btnRemoverDocumento.Enabled = false;
-            MudarBotoesTipos();
-        }
 
-        public void MudarBotoesTipos()
-        {
-            // Caso não tenha nenhum item selecionado na ListBox Tipos de Projetos
-            if (indexTipo == -1)
-            {
-                // Gere os butões conforme a necessidade
-                buttonAdicionar.Enabled = true;
-                buttonRemover.Enabled = false;
-                buttonAddFuncionario.Enabled = false;
-                buttonRemoverFuncionario.Enabled = false;
-            }
-            else
-            {
-                // Gere os butões conforme a necessidade
-                buttonAdicionar.Enabled = true;
-                buttonRemover.Enabled = true;
-                buttonAddFuncionario.Enabled = true;
-            }
+            // Acabou a leitura e deixa os indexs trocar de valor
+            lido = true;
+
+            MudarBotoesEspecialistas();
         }
 
         public void MudarBotoesEspecialistas()
@@ -59,19 +44,26 @@ namespace GestaoCamaraMunicipal
                 // Gere os butões conforme a necessidade
                 buttonAddFuncionario.Enabled = false;
                 buttonRemoverFuncionario.Enabled = false;
+                buttonAdicionar.Enabled = true;
+                buttonRemover.Enabled = false;
             }
             // Caso tenha um item selecionado na ListBox Especialistas e Tipos de Projetos
             else if (indexEspecialista != -1 && indexTipo != -1)
             {
                 // Gere os butões conforme a necessidade
-                buttonAddFuncionario.Enabled = false;
+                buttonAddFuncionario.Enabled = true;
                 buttonRemoverFuncionario.Enabled = true;
+                buttonAdicionar.Enabled = false;
+                buttonRemover.Enabled = true;
             }
+            // Caso tenha um item selecionado na ListBox Tipos de Projetos e nenhum na Especialistas
             else if (indexEspecialista == -1 && indexTipo != -1)
             {
                 // Gere os butões conforme a necessidade
                 buttonAddFuncionario.Enabled = true;
                 buttonRemoverFuncionario.Enabled = false;
+                buttonAdicionar.Enabled = false;
+                buttonRemover.Enabled = true;
             }
         }
 
@@ -98,6 +90,7 @@ namespace GestaoCamaraMunicipal
             listBoxDocumentos.DataSource = camaraMunicipal.TipoDocumentoSet.ToList<TipoDocumento>();
             listBoxTiposdeProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
             comboBoxFuncionario.DataSource = camaraMunicipal.FuncionarioSet.ToList<Funcionario>();
+            listBoxEspecialistas.DataSource = null;
 
             listBoxDocumentos.ClearSelected();
             listBoxEspecialistas.ClearSelected();
@@ -230,7 +223,7 @@ namespace GestaoCamaraMunicipal
             try
             {
                 // Se estiver algum Tipo de projeto selecionado faz
-                if (listBoxTiposdeProjeto.SelectedIndex != -1 && indexTipo != listBoxTiposdeProjeto.SelectedIndex)
+                if (listBoxTiposdeProjeto.SelectedIndex != -1 && indexTipo != listBoxTiposdeProjeto.SelectedIndex && lido == true)
                 {
                     // Varíável que recebe o objeto Tipo de projeto selecionado na ListBox
                     TipoProjeto tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
@@ -243,24 +236,26 @@ namespace GestaoCamaraMunicipal
                     // Carrega os especialistas do tipo de projeto selecionado para a listBox
                     listBoxEspecialistas.DataSource = tipoprojeto.Especialista.ToList<Especialista>();
                     listBoxEspecialistas.ClearSelected();
-
-                    // colocar o index selecionado na variável e trocar os butões caso necessário
                     indexEspecialista = -1;
+
+                    // Colocar o index selecionado na variável e trocar os butões caso necessário
                     indexTipo = listBoxTiposdeProjeto.SelectedIndex;
-                    MudarBotoesTipos();
-                }
-                else if (listBoxTiposdeProjeto.SelectedIndex != -1 && indexTipo == listBoxTiposdeProjeto.SelectedIndex)
-                {
-                    // Limpa o formulário
-                    LimparForm();
-                    listBoxEspecialistas.SelectedIndex = -1;
-                    listBoxEspecialistas.DataSource = null;
 
-                    // Tirar a seleção da listBox
-                    listBoxTiposdeProjeto.SelectedIndex = -1;
+                    MudarBotoesEspecialistas();
+                }
+                // Caso selecione o mesmo tipo de Projeto duas vezes ou clique na listBox e ja tenha feito a primeira leitura faz
+                else if (listBoxTiposdeProjeto.SelectedIndex != -1 && indexTipo == listBoxTiposdeProjeto.SelectedIndex && lido == true)
+                {
+                    // Limpa o formulário e a listBox Especialistas
+                    LimparForm();
+                    listBoxEspecialistas.DataSource = null;
                     indexEspecialista = -1;
+
+                    // Retirar a seleção da listBox Tipos de Projeto
+                    listBoxTiposdeProjeto.SelectedIndex = -1;
                     indexTipo = -1;
-                    MudarBotoesTipos();
+
+                    MudarBotoesEspecialistas();
                 }
             }
             catch (Exception ex)
@@ -286,11 +281,14 @@ namespace GestaoCamaraMunicipal
                     // Recarrega a ListBox e limpa o formulário
                     lerDados();
                     LimparForm();
+
+                    // Retira a seleção do Tipo de Projeto e Especialistas 
                     indexEspecialista = -1;
                     indexTipo = -1;
                     listBoxTiposdeProjeto.SelectedIndex = -1;
                     listBoxEspecialistas.SelectedIndex = -1;
-                    MudarBotoesTipos();
+
+                    MudarBotoesEspecialistas();
                 }
                 else
                 {
@@ -329,7 +327,7 @@ namespace GestaoCamaraMunicipal
                         camaraMunicipal.EspecialistaSet.Add(especialista);
                         camaraMunicipal.SaveChanges();
                     }
-                    catch (DbUpdateException ex)
+                    catch (DbUpdateException)
                     {
                         mensagem.ObjetoDuplicado("funcionário ao tipo de projeto, devido a este funcionário já estar adicionado a este");
                         camaraMunicipal.EspecialistaSet.Remove(especialista);
@@ -341,7 +339,7 @@ namespace GestaoCamaraMunicipal
                     // Recarrega as listBoxs
                     lerDados();
 
-                    // Seleciona o tipo de Projeto que estava selecionado anteriormente
+                    // Seleciona o Tipo de Projeto que estava selecionado anteriormente
                     listBoxTiposdeProjeto.SelectedIndex = posicao;
                 }
                 else
@@ -359,7 +357,7 @@ namespace GestaoCamaraMunicipal
         {
             try
             {
-                // Se estiver algum Tipo de projeto selecionado faz
+                // Se estiver algum Tipo de projeto e Especialista selecionado faz
                 if (listBoxTiposdeProjeto.SelectedIndex != -1 && listBoxEspecialistas.SelectedIndex != -1)
                 {
                     // Varíável que recebe o objeto Tipo de projeto selecionado na ListBox
@@ -369,8 +367,9 @@ namespace GestaoCamaraMunicipal
                     camaraMunicipal.EspecialistaSet.Remove(especialista);
                     camaraMunicipal.SaveChanges();
 
-                    // Recarrega a ListBox
+                    // Recarrega a ListBox com os especialistas daquele tipo de projeto
                     TipoProjeto tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
+
                     listBoxEspecialistas.DataSource = tipoprojeto.Especialista.ToList<Especialista>();
                     listBoxEspecialistas.ClearSelected();
                 }
@@ -395,12 +394,16 @@ namespace GestaoCamaraMunicipal
 
         private void listBoxDocumentos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxDocumentos.SelectedIndex != -1 && index != listBoxDocumentos.SelectedIndex)
+            // Se tiver algo selecionado na ListBox documentos, se não for o mesmo documento selecionado que o anterior
+            // e se já tiver feito a primeira leitura de dados, faz
+            if (listBoxDocumentos.SelectedIndex != -1 && index != listBoxDocumentos.SelectedIndex && lido == true)
             {
                 index = listBoxDocumentos.SelectedIndex;
                 MudarBotoesDOC();
             }
-            else if (listBoxDocumentos.SelectedIndex != -1 && index == listBoxDocumentos.SelectedIndex)
+            // Se tiver algo selecionado na ListBox documentos, se for o mesmo documento selecionado que o anterior
+            // e se já tiver feito a primeira leitura de dados, faz
+            else if (listBoxDocumentos.SelectedIndex != -1 && index == listBoxDocumentos.SelectedIndex && lido == true)
             {
                 listBoxDocumentos.SelectedIndex = -1;
                 index = -1;
@@ -410,12 +413,16 @@ namespace GestaoCamaraMunicipal
 
         private void listBoxEspecialistas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxEspecialistas.SelectedIndex != -1 && indexEspecialista != listBoxEspecialistas.SelectedIndex)
+            // Se tiver algo selecionado na ListBox especialistas, se não for o mesmo especialista selecionado que o anterior
+            // e se já tiver feito a primeira leitura de dados, faz
+            if (listBoxEspecialistas.SelectedIndex != -1 && indexEspecialista != listBoxEspecialistas.SelectedIndex && lido == true)
             {
                 indexEspecialista = listBoxEspecialistas.SelectedIndex;
                 MudarBotoesEspecialistas();
             }
-            else if (listBoxEspecialistas.SelectedIndex != -1 && indexEspecialista == listBoxEspecialistas.SelectedIndex)
+            // Se tiver algo selecionado na ListBox especialistas, se for o mesmo especialista selecionado que o anterior
+            // e se já tiver feito a primeira leitura de dados, faz
+            else if (listBoxEspecialistas.SelectedIndex != -1 && indexEspecialista == listBoxEspecialistas.SelectedIndex && lido == true)
             {
                 listBoxEspecialistas.SelectedIndex = -1;
                 indexEspecialista = -1;
