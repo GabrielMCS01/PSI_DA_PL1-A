@@ -6,7 +6,6 @@ namespace GestaoCamaraMunicipal
 {
     public partial class GestaoFuncionarios : Form
     {
-        Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Mensagens mensagem = new Mensagens();
         int index = -1;
@@ -76,10 +75,14 @@ namespace GestaoCamaraMunicipal
                 {
                     try
                     {
-                        // Adiciona o Funcionário e guarda as alterações na Base de Dados
+                        // Recebe os valores do formulário
                         string nomeFuncionario = textBoxNome.Text;
                         string extensaoFuncionario = textBoxExtensao.Text;
+
+                        // Faz um cálculo para selecionar o ID de Funcionário
                         int idFuncionario = CalculaNumero();
+
+                        // Adiciona o Funcionário e guarda as alterações na Base de Dados
                         camaraMunicipal.FuncionarioSet.Add(new Funcionario(idFuncionario, nomeFuncionario, extensaoFuncionario));
                         camaraMunicipal.SaveChanges();
 
@@ -103,16 +106,19 @@ namespace GestaoCamaraMunicipal
         }
 
         // Retorna o número do funcionário a adicionar
-        // baseado no número de funcionários existentes e incrementando 1
+        // Recebe o ID do último Funcionário e incrementa 1
         private int CalculaNumero() {
+            // Se existir algum funcionário faz
             if (listBoxFuncionarios.Items.Count > 0)
             {
+                // Recebe o Numero de Funcionários na ListBox
                 int num = listBoxFuncionarios.Items.Count;
                 listBoxFuncionarios.SelectedIndex = num - 1;
                 Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
 
                 return funcionario.Numero + 1;
             }
+            // Se não existir nenhum funcionário é atribuido o ID 1
             else
             {
                 return 1;
@@ -123,7 +129,7 @@ namespace GestaoCamaraMunicipal
         // Botão para Guardar as alterações feitas no Funcionário
         private void btguardarAlteracoes_Click(object sender, EventArgs e)
         {
-            Funcionario funcionario = new Funcionario();
+            Funcionario funcionario;
             try
             {
                 // Se estiver algum Funcionário selecionado faz
@@ -173,7 +179,7 @@ namespace GestaoCamaraMunicipal
         {
             try
             {
-                // Se estiver algum Funcionário selecionado faz
+                // Se estiver algum Funcionário selecionado e se este não for o mesmo que o anterior faz
                 if (listBoxFuncionarios.SelectedIndex != -1 && index != listBoxFuncionarios.SelectedIndex)
                 {
                     // Varíável que recebe o objeto Funcionário selecionado na ListBox
@@ -187,12 +193,15 @@ namespace GestaoCamaraMunicipal
                     index = listBoxFuncionarios.SelectedIndex;
                     MudarBotoes();
                 }
+                // Se estiver algum Funcionário selecionado e se este for o mesmo que o anterior faz
                 else if (listBoxFuncionarios.SelectedIndex != -1 && index == listBoxFuncionarios.SelectedIndex)
                 {
+                    // Retira a seleção na ListBox
                     listBoxFuncionarios.SelectedIndex = -1;
                     index = -1;
-                    MudarBotoes();
 
+                    // Limpa o formulário e altera os butões
+                    MudarBotoes();
                     LimparForm();
                 }
             }
@@ -219,7 +228,7 @@ namespace GestaoCamaraMunicipal
 
                     // Recarrega a ListBox e limpa o formulário
                     LerDados();
-                    LimparForm();
+                    MudarBotoes();
                 }
                 else
                 {
@@ -232,6 +241,7 @@ namespace GestaoCamaraMunicipal
             }
         }
 
+        // AJUDA
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("O Formulário de Gestão de Funcionários tem como principal objetivo a inserção" +

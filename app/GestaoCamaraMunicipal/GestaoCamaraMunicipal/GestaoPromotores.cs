@@ -8,7 +8,6 @@ namespace GestaoCamaraMunicipal
 {
     public partial class GestaoPromotores : Form
     {
-        Form1 formprincipal = new Form1();
         private GestaoCamaraMunicipalContainer camaraMunicipal;
         Mensagens mensagem = new Mensagens();
         int index = -1;
@@ -52,7 +51,7 @@ namespace GestaoCamaraMunicipal
             this.Close();
         }
 
-        // Coloca os dados na listBox provenientes da Base de Dados, tira a Seleção da ListBox e limpa as TextBoxs do formúlário
+        // Coloca os dados na listBox provenientes da Base de Dados, retira a Seleção da ListBox e limpa as TextBoxs do formulário
         private void LerDados()
         {
             listBoxPromotores.DataSource = camaraMunicipal.PromotorSet.ToList<Promotor>();
@@ -81,10 +80,12 @@ namespace GestaoCamaraMunicipal
                 // Cadeia de verificação de caracteres (Regular expression)
                 Regex rg = new Regex(@"^([\w.-]+)@([\w-]+)((.(\w){2,3})+)$");
 
+                // Se o email for válido retorna true
                 if (rg.IsMatch(Email))
                 {
                     return true;
                 }
+                // Se o email for inválido retorna false
                 else
                 {
                     return false;
@@ -94,6 +95,8 @@ namespace GestaoCamaraMunicipal
             {
                 mensagem.ErroPreencherCampo("Email");
             }
+
+            // Caso não faça o IF retorna false para dar erro na criação do promotor
             return false;
         }
 
@@ -109,7 +112,7 @@ namespace GestaoCamaraMunicipal
                     string Email = tbEmail.Text;
                     Promotor promotor;
 
-                    // Se o NIF tiver 9 carateres faz
+                    // Se a TextBox NIF e Telémovel tiver 9 carateres faz
                     if (maskedTextBoxNIF.Text.Length == 9 && maskedTextBoxTelemovel.Text.Length == 9)
                     {
                         // Recebe as variáveis do formulário
@@ -137,7 +140,7 @@ namespace GestaoCamaraMunicipal
                             // Se o mesmo NIF já existir na Base de Dados
                             catch (DbUpdateException)
                             {
-                                mensagem.ObjetoDuplicado("NIF ao promotor, devido a este NIF já estar registado na Base de Dados");
+                                mensagem.ObjetoDuplicado("NIF ao promotor, devido a este já estar registado na Base de Dados");
                                 camaraMunicipal.PromotorSet.Remove(promotor);
                             }
 
@@ -147,7 +150,7 @@ namespace GestaoCamaraMunicipal
                     }
                     else
                     {
-                        mensagem.PreenchaCorretamente("o promotor devido ao campo NIF ou Telemóvel não terem ambos 9 carateres");
+                        mensagem.PreenchaCorretamente("o Promotor devido ao campo NIF e Telemóvel não terem ambos 9 carateres");
                         return;
                     }
                 }
@@ -251,7 +254,7 @@ namespace GestaoCamaraMunicipal
                 }
                 else
                 {
-                    mensagem.AvisoSelecionarPrimeiro("promotor");
+                    mensagem.AvisoSelecionarPrimeiro("Promotor");
                 }
             }
             catch (Exception ex)
@@ -265,7 +268,7 @@ namespace GestaoCamaraMunicipal
         {
             try
             {
-                // Se estiver algum promotor selecionado e se o index for diferente
+                // Se estiver algum promotor selecionado e se este for diferente do anterior faz
                 if (listBoxPromotores.SelectedIndex != -1 && index != listBoxPromotores.SelectedIndex)
                 {
                     // Varíável que recebe o objeto Promotor selecionado na ListBox
@@ -287,12 +290,15 @@ namespace GestaoCamaraMunicipal
                     index = listBoxPromotores.SelectedIndex;
                     MudarBotoes();
                 }
+                // Se estiver algum promotor selecionado e se este for igual ao anterior faz
                 else if (listBoxPromotores.SelectedIndex != -1 && index == listBoxPromotores.SelectedIndex)
                 {
+                    // Retira a seleção da listBox promotores
                     listBoxPromotores.SelectedIndex = -1;
                     index = -1;
-                    MudarBotoes();
 
+                    // Muda os botões e limpa o formulário
+                    MudarBotoes();
                     LimparForm();
                 }
 
@@ -303,6 +309,7 @@ namespace GestaoCamaraMunicipal
             }
         }
 
+        // AJUDA
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("O Formulário de Gestão de Promotores tem como principal objetivo" +

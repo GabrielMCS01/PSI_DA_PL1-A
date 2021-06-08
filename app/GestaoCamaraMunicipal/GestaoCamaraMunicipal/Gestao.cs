@@ -430,6 +430,7 @@ namespace GestaoCamaraMunicipal
             }
         }
 
+        // AJUDA
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("O Formulário de Administração tem como principal objetivo" +
