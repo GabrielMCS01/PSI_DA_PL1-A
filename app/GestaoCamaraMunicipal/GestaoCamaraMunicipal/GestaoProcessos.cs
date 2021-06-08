@@ -7,17 +7,16 @@ namespace GestaoCamaraMunicipal
     public partial class GestaoProcessos : Form
     {
         private GestaoCamaraMunicipalContainer camaraMunicipal;
-        Form1 formprincipal = new Form1();
         Mensagens mensagem = new Mensagens();
         int index = -1;
 
         public GestaoProcessos()
         {
-            // Inicia os componentes do formulário e cria uma instância do container
+            // Inicia os componentes do formulário
             InitializeComponent();
         }
 
-        // Preenche a ComboBox com os valores possiveis e tira a seleção
+        // Preenche a listBox com os dados da Base de Dados e retira a seleção
         private void lerProcessos()
         {
             listBoxProcessos.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
@@ -45,6 +44,7 @@ namespace GestaoCamaraMunicipal
         // Chamas as funções que colocam os dados nas listBox provenientes da Base de Dados
         private void GestaoProcessos_Load(object sender, EventArgs e)
         {
+            // Cria uma instância do container (Ligação da Base de Dados)
             camaraMunicipal = new GestaoCamaraMunicipalContainer();
             lerProcessos();
             lerPromotor();
@@ -81,19 +81,15 @@ namespace GestaoCamaraMunicipal
         {
             try
             {
-                // Se todas as TextBoxs tiverem preenchidas Faz
+                // Se tiver algum Processo selecionado e a TextBox de estado de processo não estiver vazia faz
                 if (comboBoxPromotor.SelectedIndex != -1 & textBoxEstadoProcesso.Text != "")
                 {
-                    Processo processo = new Processo();
-                    Promotor promotor = new Promotor();
-                    EstadoProcesso estadoProcesso = new EstadoProcesso();
-
                     // Recebe o promotor selecionado na listBox
-                    promotor = (Promotor)comboBoxPromotor.SelectedItem;
+                    Promotor promotor = (Promotor)comboBoxPromotor.SelectedItem;
 
                     // Cria uma instância do Estado de Processo e do Processo
-                    estadoProcesso = new EstadoProcesso(textBoxEstadoProcesso.Text);
-                    processo = new Processo(dateTimePickerInicioProcesso.Value, promotor.NIF);
+                    EstadoProcesso estadoProcesso = new EstadoProcesso(textBoxEstadoProcesso.Text);
+                    Processo processo = new Processo(dateTimePickerInicioProcesso.Value, promotor.NIF);
 
                     // Atribui o estado de processo ao atributo de estado de processo do processo anterior
                     processo.EstadoProcesso = estadoProcesso;
@@ -102,8 +98,9 @@ namespace GestaoCamaraMunicipal
                     camaraMunicipal.ProcessoSet.Add(processo);
                     camaraMunicipal.SaveChanges();
 
-                    // Recarrega as ListBoxs e limpa o formulário
+                    // Recarrega as ListBoxs, limpa o formulário e altera os botões
                     lerProcessos();
+                    MudarBotoes();
                 }
                 else
                 {
@@ -122,15 +119,11 @@ namespace GestaoCamaraMunicipal
             // Se estiver algum Processo selecionado faz
             if (listBoxProcessos.SelectedIndex != -1)
             {
-                // Varíável que recebe o objeto Processo selecionado na ListBox
-                Processo processo = new Processo();
-                EstadoProcesso estadoProcesso = new EstadoProcesso();
-
                 // Recebe o processo selecionado na listBox
-                processo = (Processo)listBoxProcessos.SelectedItem;
+                Processo processo = (Processo)listBoxProcessos.SelectedItem;
 
                 // Atribui á variável estado de processo, o estado do processo do processo selecionado anteriormente 
-                estadoProcesso = processo.EstadoProcesso;
+                EstadoProcesso estadoProcesso = processo.EstadoProcesso;
 
                 // Remove o estado de processo do processo selecionado para poder-se remover o processo
                 camaraMunicipal.EstadoProcessoSet.Remove(estadoProcesso);
@@ -139,8 +132,9 @@ namespace GestaoCamaraMunicipal
                 camaraMunicipal.ProcessoSet.Remove(processo);
                 camaraMunicipal.SaveChanges();
 
-                // Recarrega a listBox processos e limpa o formulário
+                // Recarrega a listBox processos, limpa o formulário e altera os botões
                 lerProcessos();
+                MudarBotoes();
             }
             else
             {
@@ -151,22 +145,20 @@ namespace GestaoCamaraMunicipal
         // Botão para Guardar as alterações feitas no Funcionário
         private void btnAtualizarProcesso_Click(object sender, EventArgs e)
         {
+            // Se tiver algum Processo selecionado e a TextBox de estado de processo não estiver vazia faz
             if (listBoxProcessos.SelectedIndex != -1 && textBoxEstadoProcesso.Text != "")
             {
-                int selecionado = -1;
-
                 // Recebe o processo selecionado na listBox
-                Processo processo = new Processo();
-                processo = (Processo)listBoxProcessos.SelectedItem;
+                Processo processo = (Processo)listBoxProcessos.SelectedItem;
 
-                // Atualiza a descrição do estado de processo e guarda as alterações na base de dados
+                // Atualiza a descrição do estado de processo
                 processo.DataInicio = dateTimePickerInicioProcesso.Value;
                 processo.Promotor = (Promotor)comboBoxPromotor.SelectedItem;
                 processo.EstadoProcesso.DescricaoEstado = textBoxEstadoProcesso.Text;
 
-
+                // Guarda as alterações na base de dados e recebe o index da listBox que estava selecionado
                 camaraMunicipal.SaveChanges();
-                selecionado = listBoxProcessos.SelectedIndex;
+                int selecionado = listBoxProcessos.SelectedIndex;
 
                 // Recarrega a listBox processos e limpa o formulário
                 lerProcessos();
@@ -185,12 +177,11 @@ namespace GestaoCamaraMunicipal
 
         private void listBoxProcessos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Se estiver algum Processo selecionado faz
+            // Se estiver algum Processo selecionado e se este for diferente do anterior faz
             if (listBoxProcessos.SelectedIndex != -1 && index != listBoxProcessos.SelectedIndex)
             {
                 // Recebe o processo selecionado na ListBox
-                Processo processo = new Processo();
-                processo = (Processo)listBoxProcessos.SelectedItem;
+                Processo processo = (Processo)listBoxProcessos.SelectedItem;
 
                 // Atribui ao formulários os atributos do objeto selecionado para se poder fazer alterações
                 textBoxEstadoProcesso.Text = processo.EstadoProcesso.DescricaoEstado;
@@ -201,22 +192,25 @@ namespace GestaoCamaraMunicipal
                 index = listBoxProcessos.SelectedIndex;
                 MudarBotoes();
             }
+            // Se estiver algum Processo selecionado e se este for igual ao anterior faz
             else if (listBoxProcessos.SelectedIndex != -1 && index == listBoxProcessos.SelectedIndex)
             {
+                // Retira a seleção da ListBox
                 listBoxProcessos.SelectedIndex = -1;
                 index = -1;
-                MudarBotoes();
 
+                // Muda os Botões e limpa o formulário
+                MudarBotoes();
                 LimparDados();
             }
         }
 
+        // AJUDA
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("O Formulário de Gestão de Processos tem como principal objetivo" +
                 " a inserção de Processos para que mais tarde, na criação de um Projeto se possa atribuir um Processo. " +
                 " Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
-
         }
     }
 }
