@@ -103,6 +103,7 @@ namespace GestaoCamaraMunicipal
 
                     // Recarrega a ListBox e limpa o formulário
                     LerDados();
+                    MudarBotoes();
                 }
                 else
                 {
@@ -149,6 +150,7 @@ namespace GestaoCamaraMunicipal
 
                     // Recarrega a ListBox e limpa o formulário
                     LerDados();
+                    MudarBotoes();
                     LimparForm();
                 }
                 else

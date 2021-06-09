@@ -147,7 +147,7 @@ namespace GestaoCamaraMunicipal
             MudarBotoesProjetos();
 
             comboBoxTiposProjeto.DataSource = camaraMunicipal.TipoProjetoSet.ToList<TipoProjeto>();
-            
+
             LimparFormProjetos();
         }
 
@@ -313,7 +313,6 @@ namespace GestaoCamaraMunicipal
             {
                 try
                 {
-
                     // Recebe o projeto selecionado na ListBox
                     Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
 
@@ -339,10 +338,6 @@ namespace GestaoCamaraMunicipal
                 catch (Exception ex)
                 {
                     mensagem.Erro(ex);
-                }
-                finally
-                {
-                    
                 }
             }
             // Se estiver algum Projeto selecionado e se este for Igual ao anterior faz
@@ -382,24 +377,22 @@ namespace GestaoCamaraMunicipal
                     // Varíável que recebe o objeto Projeto selecionado na ListBox
                     Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
 
-                    if(projeto.Documento.Count == 0)
-                    {
-                        // Remove o Projeto e guarda as alterações na Base de dados
-                        camaraMunicipal.ProjetoSet.Remove(projeto);
-                        camaraMunicipal.SaveChanges();
+                    // Remove o Projeto e guarda as alterações na Base de dados
+                    camaraMunicipal.ProjetoSet.Remove(projeto);
+                    camaraMunicipal.SaveChanges();
 
-                        // Limpar a listBox documentos
-                        listBoxDocumentos.DataSource = null;
+                    // Limpar a listBox documentos
+                    listBoxDocumentos.DataSource = null;
 
-                        // Recarrega a ListBox e limpa o formulário
-                        LerDadosProjetos();
-                        LimparFormProjetos();
-                    }
-                    else
-                    {
-                        //mensagem.Erro();
-                    }
-                    
+                    // Recarrega a ListBox e limpa o formulário
+                    LerDadosProjetos();
+
+                    // Limpar Formulários
+                    LimparFormProjetos();
+                    LimparFormFuncionarios();
+                    LimparFormDocumentos();
+                    listBoxDocumentos.DataSource = null;
+                    listBoxProjetoAtribuido.DataSource = null;
                 }
                 else
                 {
@@ -481,12 +474,12 @@ namespace GestaoCamaraMunicipal
                 ProjetoAtribuido projetoselecionado;
                 bool duplicado = false;
 
-                for(int i = 0; i < listBoxProjetoAtribuido.Items.Count; i++)
+                for (int i = 0; i < listBoxProjetoAtribuido.Items.Count; i++)
                 {
                     listBoxProjetoAtribuido.SelectedIndex = i;
                     projetoselecionado = (ProjetoAtribuido)listBoxProjetoAtribuido.SelectedItem;
-                    
-                    if(projetoselecionado.FuncionarioNumero == projetoatribuido.Funcionario.Numero)
+
+                    if (projetoselecionado.FuncionarioNumero == projetoatribuido.Funcionario.Numero)
                     {
                         duplicado = true;
                         mensagem.ObjetoDuplicado("funcionário");
@@ -572,7 +565,7 @@ namespace GestaoCamaraMunicipal
                 // Desativa os botões de Documentos e funcionários atribuidos e ativa apenas o botão para registar um Projeto
                 MudarBotoesProcessos();
                 LerDadosProjetos();
-                
+
                 // Limpa a ListBox Documentos e Funcionários atribuidos
                 listBoxDocumentos.DataSource = null;
                 indexDOC = -1;
