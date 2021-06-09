@@ -334,7 +334,7 @@ namespace GestaoCamaraMunicipal
                     }
                     catch (DbUpdateException)
                     {
-                        mensagem.ObjetoDuplicado("funcionário ao tipo de projeto, devido a este funcionário já estar adicionado a este");
+                        mensagem.ObjetoDuplicado("Funcionário a este Tipo de Projeto");
                         camaraMunicipal.EspecialistaSet.Remove(especialista);
                     }
 
