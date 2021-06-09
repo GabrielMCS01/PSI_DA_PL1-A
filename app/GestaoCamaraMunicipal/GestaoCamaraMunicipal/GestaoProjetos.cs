@@ -241,7 +241,7 @@ namespace GestaoCamaraMunicipal
                     // Adiciona o Projeto e guarda as alterações na Base de Dados
                     TipoProjeto tipoprojeto = (TipoProjeto)comboBoxTiposProjeto.SelectedItem;
                     Processo processo = (Processo)comboBoxProcesso.SelectedItem;
-                    camaraMunicipal.ProjetoSet.Add(new Projeto(textBoxEstadoProjeto.Text, tipoprojeto.Id, dateTimePickerProjeto.Value, processo.Id));
+                    camaraMunicipal.ProjetoSet.Add(new Projeto(textBoxEstadoProjeto.Text, tipoprojeto, dateTimePickerProjeto.Value, processo));
                     camaraMunicipal.SaveChanges();
 
                     // Recarrega a ListBox e limpa o formulário
@@ -316,7 +316,7 @@ namespace GestaoCamaraMunicipal
 
                 // Atribui os valores do projeto ás textBoxs para se poder fazer alterações ou visualizar
                 textBoxEstadoProjeto.Text = projeto.EstadoProjeto;
-                comboBoxTiposProjeto.Text = projeto.TipoProjeto.ToString();
+                comboBoxTiposProjeto.SelectedItem = projeto.TipoProjeto;
                 dateTimePickerProjeto.Value = projeto.DataAprovacao;
 
                 // Carrega na ListBox os documentos do projeto selecionado
@@ -424,9 +424,9 @@ namespace GestaoCamaraMunicipal
 
                 // Atribui os valores do documento ás textBoxs para se poder fazer alterações ou visualizar
                 textBoxTitulo.Text = documento.Titulo;
-                comboBoxTipoDocumento.Text = documento.TipoDocumento.ToString();
+                comboBoxTipoDocumento.SelectedItem = documento.TipoDocumento;
                 dateTimePickerDocumento.Value = documento.DataEntrega;
-                comboBoxParecer.Text = documento.Parecer.ToString();
+                comboBoxParecer.SelectedItem = documento.Parecer;
 
                 indexDOC = listBoxDocumentos.SelectedIndex;
                 MudarBotoesDocumentos();

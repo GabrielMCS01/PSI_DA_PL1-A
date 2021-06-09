@@ -5,16 +5,16 @@ namespace GestaoCamaraMunicipal
 {
     public partial class Projeto
     {
-        public Projeto(string estadoProjeto, int tipoProjeto, DateTime DataAprovacao, int processo)
+        public Projeto(string estadoProjeto, TipoProjeto tipoProjeto, DateTime DataAprovacao, Processo processo)
         {
             this.Documento = new HashSet<Documento>();
             this.Parecer = new HashSet<Parecer>();
             this.ProjetoAtribuido = new HashSet<ProjetoAtribuido>();
             this.EstadoProjeto = estadoProjeto;
             this.DataAprovacao = DataAprovacao;
-            this.TipoProjetoId = tipoProjeto;
+            this.TipoProjeto = tipoProjeto;
             this.DataEntrada = DateTime.Now;
-            this.ProcessoId = processo;
+            this.Processo = processo;
         }
 
         public override string ToString()
