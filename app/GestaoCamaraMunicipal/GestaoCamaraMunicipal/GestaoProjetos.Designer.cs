@@ -59,6 +59,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gestãoDePromotoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.listBoxProjetoAtribuido = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -73,7 +74,6 @@ namespace GestaoCamaraMunicipal
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.comboBoxProcesso = new System.Windows.Forms.ComboBox();
-            this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -95,7 +95,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxProjetos.Location = new System.Drawing.Point(4, 19);
             this.listBoxProjetos.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxProjetos.Name = "listBoxProjetos";
-            this.listBoxProjetos.Size = new System.Drawing.Size(348, 212);
+            this.listBoxProjetos.Size = new System.Drawing.Size(647, 212);
             this.listBoxProjetos.TabIndex = 3;
             this.listBoxProjetos.SelectedIndexChanged += new System.EventHandler(this.listBoxProjetos_SelectedIndexChanged);
             // 
@@ -106,7 +106,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(356, 235);
+            this.groupBox1.Size = new System.Drawing.Size(655, 235);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Projetos";
@@ -128,7 +128,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(353, 302);
+            this.groupBox2.Size = new System.Drawing.Size(552, 302);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Documento";
@@ -141,7 +141,7 @@ namespace GestaoCamaraMunicipal
             this.comboBoxParecer.Location = new System.Drawing.Point(8, 186);
             this.comboBoxParecer.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxParecer.Name = "comboBoxParecer";
-            this.comboBoxParecer.Size = new System.Drawing.Size(333, 24);
+            this.comboBoxParecer.Size = new System.Drawing.Size(536, 24);
             this.comboBoxParecer.TabIndex = 20;
             // 
             // label8
@@ -162,12 +162,12 @@ namespace GestaoCamaraMunicipal
             this.comboBoxTipoDocumento.Location = new System.Drawing.Point(8, 89);
             this.comboBoxTipoDocumento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxTipoDocumento.Name = "comboBoxTipoDocumento";
-            this.comboBoxTipoDocumento.Size = new System.Drawing.Size(333, 24);
+            this.comboBoxTipoDocumento.Size = new System.Drawing.Size(536, 24);
             this.comboBoxTipoDocumento.TabIndex = 9;
             // 
             // btRemoverDocumento
             // 
-            this.btRemoverDocumento.Location = new System.Drawing.Point(243, 242);
+            this.btRemoverDocumento.Location = new System.Drawing.Point(435, 242);
             this.btRemoverDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.btRemoverDocumento.Name = "btRemoverDocumento";
             this.btRemoverDocumento.Size = new System.Drawing.Size(100, 52);
@@ -178,7 +178,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btGuardarAlteraçõesDocumento
             // 
-            this.btGuardarAlteraçõesDocumento.Location = new System.Drawing.Point(125, 242);
+            this.btGuardarAlteraçõesDocumento.Location = new System.Drawing.Point(228, 242);
             this.btGuardarAlteraçõesDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.btGuardarAlteraçõesDocumento.Name = "btGuardarAlteraçõesDocumento";
             this.btGuardarAlteraçõesDocumento.Size = new System.Drawing.Size(100, 52);
@@ -189,7 +189,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btRegistarDocumento
             // 
-            this.btRegistarDocumento.Location = new System.Drawing.Point(8, 242);
+            this.btRegistarDocumento.Location = new System.Drawing.Point(20, 242);
             this.btRegistarDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.btRegistarDocumento.Name = "btRegistarDocumento";
             this.btRegistarDocumento.Size = new System.Drawing.Size(100, 52);
@@ -214,7 +214,7 @@ namespace GestaoCamaraMunicipal
             this.dateTimePickerDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerDocumento.MinDate = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
             this.dateTimePickerDocumento.Name = "dateTimePickerDocumento";
-            this.dateTimePickerDocumento.Size = new System.Drawing.Size(333, 22);
+            this.dateTimePickerDocumento.Size = new System.Drawing.Size(536, 22);
             this.dateTimePickerDocumento.TabIndex = 3;
             this.dateTimePickerDocumento.Value = new System.DateTime(2021, 5, 10, 17, 40, 15, 0);
             // 
@@ -223,7 +223,7 @@ namespace GestaoCamaraMunicipal
             this.textBoxTitulo.Location = new System.Drawing.Point(8, 41);
             this.textBoxTitulo.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxTitulo.Name = "textBoxTitulo";
-            this.textBoxTitulo.Size = new System.Drawing.Size(333, 22);
+            this.textBoxTitulo.Size = new System.Drawing.Size(536, 22);
             this.textBoxTitulo.TabIndex = 2;
             // 
             // label2
@@ -271,7 +271,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(356, 281);
+            this.groupBox3.Size = new System.Drawing.Size(655, 281);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Projeto";
@@ -282,7 +282,7 @@ namespace GestaoCamaraMunicipal
             this.dateTimePickerProjeto.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerProjeto.MinDate = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
             this.dateTimePickerProjeto.Name = "dateTimePickerProjeto";
-            this.dateTimePickerProjeto.Size = new System.Drawing.Size(333, 22);
+            this.dateTimePickerProjeto.Size = new System.Drawing.Size(635, 22);
             this.dateTimePickerProjeto.TabIndex = 15;
             this.dateTimePickerProjeto.Value = new System.DateTime(2021, 5, 10, 17, 40, 35, 0);
             // 
@@ -298,7 +298,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btRemoverProjetos
             // 
-            this.btRemoverProjetos.Location = new System.Drawing.Point(248, 213);
+            this.btRemoverProjetos.Location = new System.Drawing.Point(535, 213);
             this.btRemoverProjetos.Margin = new System.Windows.Forms.Padding(4);
             this.btRemoverProjetos.Name = "btRemoverProjetos";
             this.btRemoverProjetos.Size = new System.Drawing.Size(100, 52);
@@ -309,7 +309,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btGuardarAlteracoesProjetos
             // 
-            this.btGuardarAlteracoesProjetos.Location = new System.Drawing.Point(131, 213);
+            this.btGuardarAlteracoesProjetos.Location = new System.Drawing.Point(278, 213);
             this.btGuardarAlteracoesProjetos.Margin = new System.Windows.Forms.Padding(4);
             this.btGuardarAlteracoesProjetos.Name = "btGuardarAlteracoesProjetos";
             this.btGuardarAlteracoesProjetos.Size = new System.Drawing.Size(100, 52);
@@ -320,7 +320,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btRegistarProjeto
             // 
-            this.btRegistarProjeto.Location = new System.Drawing.Point(13, 213);
+            this.btRegistarProjeto.Location = new System.Drawing.Point(17, 213);
             this.btRegistarProjeto.Margin = new System.Windows.Forms.Padding(4);
             this.btRegistarProjeto.Name = "btRegistarProjeto";
             this.btRegistarProjeto.Size = new System.Drawing.Size(100, 52);
@@ -347,7 +347,7 @@ namespace GestaoCamaraMunicipal
             this.comboBoxTiposProjeto.Location = new System.Drawing.Point(12, 89);
             this.comboBoxTiposProjeto.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTiposProjeto.Name = "comboBoxTiposProjeto";
-            this.comboBoxTiposProjeto.Size = new System.Drawing.Size(333, 24);
+            this.comboBoxTiposProjeto.Size = new System.Drawing.Size(635, 24);
             this.comboBoxTiposProjeto.TabIndex = 9;
             // 
             // textBoxEstadoProjeto
@@ -355,7 +355,7 @@ namespace GestaoCamaraMunicipal
             this.textBoxEstadoProjeto.Location = new System.Drawing.Point(12, 41);
             this.textBoxEstadoProjeto.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxEstadoProjeto.Name = "textBoxEstadoProjeto";
-            this.textBoxEstadoProjeto.Size = new System.Drawing.Size(333, 22);
+            this.textBoxEstadoProjeto.Size = new System.Drawing.Size(635, 22);
             this.textBoxEstadoProjeto.TabIndex = 8;
             // 
             // groupBox4
@@ -365,7 +365,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(355, 234);
+            this.groupBox4.Size = new System.Drawing.Size(557, 234);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             // 
@@ -377,7 +377,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxDocumentos.Location = new System.Drawing.Point(4, 19);
             this.listBoxDocumentos.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxDocumentos.Name = "listBoxDocumentos";
-            this.listBoxDocumentos.Size = new System.Drawing.Size(347, 211);
+            this.listBoxDocumentos.Size = new System.Drawing.Size(549, 211);
             this.listBoxDocumentos.TabIndex = 0;
             this.listBoxDocumentos.SelectedIndexChanged += new System.EventHandler(this.listBoxDocumentos_SelectedIndexChanged);
             // 
@@ -391,7 +391,7 @@ namespace GestaoCamaraMunicipal
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(779, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1269, 28);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -411,6 +411,13 @@ namespace GestaoCamaraMunicipal
             this.gestãoDePromotoresToolStripMenuItem.Text = "Fechar";
             this.gestãoDePromotoresToolStripMenuItem.Click += new System.EventHandler(this.gestãoDePromotoresToolStripMenuItem_Click);
             // 
+            // ajudaToolStripMenuItem
+            // 
+            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
+            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.ajudaToolStripMenuItem.Text = "Ajuda";
+            this.ajudaToolStripMenuItem.Click += new System.EventHandler(this.ajudaToolStripMenuItem_Click);
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.listBoxProjetoAtribuido);
@@ -418,7 +425,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox5.Size = new System.Drawing.Size(355, 234);
+            this.groupBox5.Size = new System.Drawing.Size(557, 234);
             this.groupBox5.TabIndex = 11;
             this.groupBox5.TabStop = false;
             // 
@@ -430,7 +437,7 @@ namespace GestaoCamaraMunicipal
             this.listBoxProjetoAtribuido.Location = new System.Drawing.Point(4, 19);
             this.listBoxProjetoAtribuido.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxProjetoAtribuido.Name = "listBoxProjetoAtribuido";
-            this.listBoxProjetoAtribuido.Size = new System.Drawing.Size(347, 211);
+            this.listBoxProjetoAtribuido.Size = new System.Drawing.Size(549, 211);
             this.listBoxProjetoAtribuido.TabIndex = 0;
             this.listBoxProjetoAtribuido.SelectedIndexChanged += new System.EventHandler(this.listBoxProjetoAtribuido_SelectedIndexChanged);
             // 
@@ -446,7 +453,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(349, 302);
+            this.groupBox6.Size = new System.Drawing.Size(550, 302);
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Atribuição de Funcionários ao Projeto";
@@ -456,15 +463,15 @@ namespace GestaoCamaraMunicipal
             this.comboBoxFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFuncionario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBoxFuncionario.FormattingEnabled = true;
-            this.comboBoxFuncionario.Location = new System.Drawing.Point(12, 38);
+            this.comboBoxFuncionario.Location = new System.Drawing.Point(12, 43);
             this.comboBoxFuncionario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxFuncionario.Name = "comboBoxFuncionario";
-            this.comboBoxFuncionario.Size = new System.Drawing.Size(333, 24);
+            this.comboBoxFuncionario.Size = new System.Drawing.Size(531, 24);
             this.comboBoxFuncionario.TabIndex = 9;
             // 
             // btnRemoverAtribuicao
             // 
-            this.btnRemoverAtribuicao.Location = new System.Drawing.Point(195, 242);
+            this.btnRemoverAtribuicao.Location = new System.Drawing.Point(362, 243);
             this.btnRemoverAtribuicao.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoverAtribuicao.Name = "btnRemoverAtribuicao";
             this.btnRemoverAtribuicao.Size = new System.Drawing.Size(100, 52);
@@ -475,7 +482,7 @@ namespace GestaoCamaraMunicipal
             // 
             // btnRegistarAtribuicao
             // 
-            this.btnRegistarAtribuicao.Location = new System.Drawing.Point(65, 242);
+            this.btnRegistarAtribuicao.Location = new System.Drawing.Point(104, 242);
             this.btnRegistarAtribuicao.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegistarAtribuicao.Name = "btnRegistarAtribuicao";
             this.btnRegistarAtribuicao.Size = new System.Drawing.Size(100, 52);
@@ -487,7 +494,7 @@ namespace GestaoCamaraMunicipal
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 18);
+            this.label10.Location = new System.Drawing.Point(8, 24);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(86, 17);
@@ -496,18 +503,18 @@ namespace GestaoCamaraMunicipal
             // 
             // dateTimePickerAtribuicao
             // 
-            this.dateTimePickerAtribuicao.Location = new System.Drawing.Point(12, 87);
+            this.dateTimePickerAtribuicao.Location = new System.Drawing.Point(11, 94);
             this.dateTimePickerAtribuicao.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerAtribuicao.MinDate = new System.DateTime(2021, 5, 10, 0, 0, 0, 0);
             this.dateTimePickerAtribuicao.Name = "dateTimePickerAtribuicao";
-            this.dateTimePickerAtribuicao.Size = new System.Drawing.Size(333, 22);
+            this.dateTimePickerAtribuicao.Size = new System.Drawing.Size(530, 22);
             this.dateTimePickerAtribuicao.TabIndex = 3;
             this.dateTimePickerAtribuicao.Value = new System.DateTime(2021, 5, 10, 17, 40, 15, 0);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 66);
+            this.label11.Location = new System.Drawing.Point(8, 73);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(129, 17);
@@ -518,11 +525,11 @@ namespace GestaoCamaraMunicipal
             // 
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage4);
-            this.tabControl.Location = new System.Drawing.Point(395, 63);
+            this.tabControl.Location = new System.Drawing.Point(684, 60);
             this.tabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(369, 582);
+            this.tabControl.Size = new System.Drawing.Size(573, 582);
             this.tabControl.TabIndex = 13;
             // 
             // tabPage3
@@ -532,7 +539,7 @@ namespace GestaoCamaraMunicipal
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(361, 553);
+            this.tabPage3.Size = new System.Drawing.Size(565, 553);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Documentos";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -544,7 +551,7 @@ namespace GestaoCamaraMunicipal
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(361, 553);
+            this.tabPage4.Size = new System.Drawing.Size(565, 553);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Funcionários Atribuídos";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -556,7 +563,7 @@ namespace GestaoCamaraMunicipal
             this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox7.Size = new System.Drawing.Size(356, 66);
+            this.groupBox7.Size = new System.Drawing.Size(655, 66);
             this.groupBox7.TabIndex = 14;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Processos";
@@ -569,22 +576,15 @@ namespace GestaoCamaraMunicipal
             this.comboBoxProcesso.Location = new System.Drawing.Point(4, 31);
             this.comboBoxProcesso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxProcesso.Name = "comboBoxProcesso";
-            this.comboBoxProcesso.Size = new System.Drawing.Size(348, 24);
+            this.comboBoxProcesso.Size = new System.Drawing.Size(644, 24);
             this.comboBoxProcesso.TabIndex = 0;
             this.comboBoxProcesso.SelectedIndexChanged += new System.EventHandler(this.comboBoxProcesso_SelectedIndexChanged);
-            // 
-            // ajudaToolStripMenuItem
-            // 
-            this.ajudaToolStripMenuItem.Name = "ajudaToolStripMenuItem";
-            this.ajudaToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
-            this.ajudaToolStripMenuItem.Text = "Ajuda";
-            this.ajudaToolStripMenuItem.Click += new System.EventHandler(this.ajudaToolStripMenuItem_Click);
             // 
             // GestaoProjetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 654);
+            this.ClientSize = new System.Drawing.Size(1269, 654);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
