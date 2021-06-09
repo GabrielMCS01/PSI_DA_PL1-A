@@ -62,7 +62,7 @@ namespace GestaoCamaraMunicipal
                 // Gere os butões conforme a necessidade
                 buttonAddFuncionario.Enabled = true;
                 buttonRemoverFuncionario.Enabled = false;
-                buttonAdicionar.Enabled = false;
+                buttonAdicionar.Enabled = true;
                 buttonRemover.Enabled = true;
             }
         }
@@ -93,9 +93,14 @@ namespace GestaoCamaraMunicipal
             listBoxEspecialistas.DataSource = null;
 
             listBoxDocumentos.ClearSelected();
+            index = -1;
             listBoxEspecialistas.ClearSelected();
+            indexEspecialista = -1;
             listBoxTiposdeProjeto.ClearSelected();
+            indexTipo = -1;
+
             LimparForm();
+            MudarBotoesDOC();
         }
 
         private void LimparForm()

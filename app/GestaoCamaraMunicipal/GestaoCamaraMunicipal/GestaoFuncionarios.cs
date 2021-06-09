@@ -88,6 +88,7 @@ namespace GestaoCamaraMunicipal
 
                         // Recarrega a ListBox e limpa o formulário
                         LerDados();
+                        MudarBotoes();
                     }
                     catch (Exception ex)
                     {
