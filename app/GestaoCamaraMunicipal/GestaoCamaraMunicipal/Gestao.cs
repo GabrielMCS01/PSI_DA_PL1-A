@@ -191,7 +191,7 @@ namespace GestaoCamaraMunicipal
                             // Recebe o objeto selecionado e Adiciona o tipo de Projeto
                             TipoProjeto tipoprojeto = new TipoProjeto();
                             tipoprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
-                            camaraMunicipal.TipoProjetoSet.Add(new TipoProjeto(textBoxDesignacao.Text, Convert.ToInt32(numericUpDownDiasAprovacao.Value), tipoprojeto.Id));
+                            camaraMunicipal.TipoProjetoSet.Add(new TipoProjeto(textBoxDesignacao.Text, Convert.ToInt32(numericUpDownDiasAprovacao.Value), tipoprojeto));
                         }
                         else
                         {
@@ -320,11 +320,7 @@ namespace GestaoCamaraMunicipal
                     Funcionario funcionario = (Funcionario)comboBoxFuncionario.SelectedItem;
 
                     // Cria um novo especialista
-                    Especialista especialista = new Especialista();
-
-                    // Atribui o ID de cada objeto selecionado anteriormente aos devidos atributos do especialista
-                    especialista.TipoProjetoId = tipoprojeto.Id;
-                    especialista.FuncionarioNumero1 = funcionario.Numero;
+                    Especialista especialista = new Especialista(funcionario, tipoprojeto);
 
                     // Adiciona o Especialista e guarda as alterações na Base de Dados
                     try
