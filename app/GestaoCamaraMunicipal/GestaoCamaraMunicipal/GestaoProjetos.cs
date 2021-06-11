@@ -663,9 +663,19 @@ namespace GestaoCamaraMunicipal
         // AJUDA
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("O Formulário de Gestão de Projetos tem como principal objetivo" +
-                " a inserção de Projetos e dos seus respetivos componentes, sendo eles, o Processo, Documentos e Especialistas (Funcionários). " +
-                " Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+            MessageBox.Show("O Formulário de Gestão de Projetos tem como principal" +
+                " objetivo a inserção de Projetos e dos seus respetivos" +
+                " componentes, sendo eles, o Processo, Documentos e Especialistas " +
+                "(Funcionários). Para esse efeito existem validações de dados que " +
+                "devem ser respeitadas. Deste modo, todos os dados são validados e" +
+                " verificados, devendo estes estarem corretos. Ao adicionar um" +
+                " Projeto, quando o mesmo for criado, serão guardados os seus " +
+                "dados na base de dados e mostrados na respetiva lista disponível" +
+                " no formulário, o mesmo acontece para os respetivos funcionários " +
+                "e documentos de um dado projeto. A criação de projetos é um ponto" +
+                " muito importante deste projeto para que, mais tarde, se possa associar " +
+                "ao projeto um processo, documentos e funcionários que tenham a" +
+                " especialidade do projeto criado ou selecionado.", "Ajuda DPM");
         }
     }
 }

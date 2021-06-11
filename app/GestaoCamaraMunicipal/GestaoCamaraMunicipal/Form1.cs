@@ -89,5 +89,15 @@ namespace GestaoCamaraMunicipal
         {
 
         }
+
+        private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("O formulário de Menu, permite a navegação " +
+                "entre os variados formulários do projeto. O Menu permite " +
+                "ainda a deslocação entre vários formulários com atalhos " +
+                "facilitando a otimizando o tempo útil do utilizador. Deste modo, " +
+                "o Menu está bastante simples para facilitar a sua funcionalidade " +
+                "e a sua clareza.", "Ajuda DPM");
+        }
     }
 }

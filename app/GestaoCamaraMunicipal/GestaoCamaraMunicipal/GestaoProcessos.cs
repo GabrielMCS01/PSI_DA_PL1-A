@@ -208,9 +208,17 @@ namespace GestaoCamaraMunicipal
         // AJUDA
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("O Formulário de Gestão de Processos tem como principal objetivo" +
-                " a inserção de Processos para que mais tarde, na criação de um Projeto se possa atribuir um Processo. " +
-                " Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+            MessageBox.Show("O Formulário de Gestão de Processos tem como principal " +
+                "objetivo a inserção de Processos para que mais tarde, na criação" +
+                " de um Projeto se possa atribuir um Processo. Para esse efeito " +
+                "existem validações de dados que devem ser respeitadas. Deste modo, " +
+                "todos os dados são validados e verificados, devendo estes estarem " +
+                "corretos. Ao adicionar um Processo, quando o mesmo for criado, " +
+                "serão guardados os seus dados na base de dados e mostrados na " +
+                "respetiva lista disponível no formulário. A criação de processos " +
+                "é um ponto muito importante deste projeto para que, mais tarde, " +
+                "quando se criar um projeto, poder-se associar ao projeto um processo. " +
+                "Ao processo está também associado um promotor.", "Ajuda DPM");
         }
     }
 }

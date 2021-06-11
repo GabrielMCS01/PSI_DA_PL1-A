@@ -245,8 +245,14 @@ namespace GestaoCamaraMunicipal
         // AJUDA
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("O Formulário de Gestão de Funcionários tem como principal objetivo a inserção" +
-                " de novos Funcionários. Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+            MessageBox.Show("O Formulário de Gestão de Funcionários tem " +
+                "como principal objetivo a inserção de novos Funcionários. " +
+                "Para esse efeito existem validações de dados que devem ser " +
+                "respeitadas. Deste modo, todos os dados são validados e " +
+                "verificados, devendo estes estarem corretos. Ao adicionar " +
+                "um funcionário, quando o mesmo for criado, serão guardados " +
+                "os seus dados na base de dados e" +
+                " mostrados na respetiva lista disponível no formulário.", "Ajuda DPM");
         }
     }
 }

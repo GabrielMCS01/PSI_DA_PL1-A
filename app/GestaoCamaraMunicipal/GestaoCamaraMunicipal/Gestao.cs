@@ -441,9 +441,15 @@ namespace GestaoCamaraMunicipal
         // AJUDA
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("O Formulário de Administração tem como principal objetivo" +
-                " a inserção de Tipos de Documentos, a criação de Tipos de Projetos e ainda a atribuição" +
-                " de especialistas a um dado tipo de projeto. Para esse efeito existem validações de dados que devem ser respeitadas.", "Ajuda DPM");
+            MessageBox.Show("O Formulário de Administração tem como principal " +
+                "objetivo a inserção de Tipos de Documentos, a criação de" +
+                " Tipos de Projetos e ainda a atribuição de especialistas " +
+                "a um dado tipo de projeto. Para esse efeito existem validações " +
+                "de dados que devem ser respeitadas. Deste modo, todos os dados " +
+                "são validados e verificados, devendo estes estarem corretos." +
+                " Ao criar, por exemplo, um tipo de projeto, quando o mesmo for " +
+                "criado, serão guardados os seus dados na base de dados e " +
+                "mostrados na respetiva lista.", "Ajuda DPM");
         }
     }
 }
