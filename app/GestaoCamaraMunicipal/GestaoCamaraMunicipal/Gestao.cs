@@ -279,21 +279,28 @@ namespace GestaoCamaraMunicipal
                     // Varíável que recebe o objeto Tipo de projeto selecionado na ListBox
                     TipoProjeto tiposprojeto = (TipoProjeto)listBoxTiposdeProjeto.SelectedItem;
 
-                    // Remove o Tipo de projetos e guarda as alterações na Base de dados
-                    camaraMunicipal.TipoProjetoSet.Remove(tiposprojeto);
-                    camaraMunicipal.SaveChanges();
+                    if (tiposprojeto.Projeto.Count == 0)
+                    {
+                        // Remove o Tipo de projetos e guarda as alterações na Base de dados
+                        camaraMunicipal.TipoProjetoSet.Remove(tiposprojeto);
+                        camaraMunicipal.SaveChanges();
 
-                    // Recarrega a ListBox e limpa o formulário
-                    lerDados();
-                    LimparForm();
+                        // Recarrega a ListBox e limpa o formulário
+                        lerDados();
+                        LimparForm();
 
-                    // Retira a seleção do Tipo de Projeto e Especialistas 
-                    indexEspecialista = -1;
-                    indexTipo = -1;
-                    listBoxTiposdeProjeto.SelectedIndex = -1;
-                    listBoxEspecialistas.SelectedIndex = -1;
+                        // Retira a seleção do Tipo de Projeto e Especialistas 
+                        indexEspecialista = -1;
+                        indexTipo = -1;
+                        listBoxTiposdeProjeto.SelectedIndex = -1;
+                        listBoxEspecialistas.SelectedIndex = -1;
 
-                    MudarBotoesEspecialistas();
+                        MudarBotoesEspecialistas();
+                    }
+                    else
+                    {
+                        mensagem.AvisoEliminarPrimeiro("os projetos associados a este processo.");
+                    }
                 }
                 else
                 {

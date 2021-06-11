@@ -398,7 +398,7 @@ namespace GestaoCamaraMunicipal
                     }
                     else
                     {
-                        mensagem.AvisoEliminarPrimeiro("os pareceres associados a este projeto");
+                        mensagem.AvisoEliminarPrimeiro("os pareceres associados a este projeto.");
                     }
                 }
                 else
