@@ -277,7 +277,7 @@ namespace GestaoCamaraMunicipal
                         // Atribui ao objeto anterior as alterações executadas anteriormente no formulário
                         projeto.EstadoProjeto = textBoxEstadoProjeto.Text;
                         TipoProjeto tipoprojeto = (TipoProjeto)comboBoxTiposProjeto.SelectedItem;
-                        projeto.TipoProjetoId = tipoprojeto.Id;
+                        projeto.TipoProjeto = tipoprojeto;
                         projeto.DataAprovacao = dateTimePickerProjeto.Value;
 
                         // Guarda as alterações do objeto na Base de Dados
@@ -377,22 +377,29 @@ namespace GestaoCamaraMunicipal
                     // Varíável que recebe o objeto Projeto selecionado na ListBox
                     Projeto projeto = (Projeto)listBoxProjetos.SelectedItem;
 
-                    // Remove o Projeto e guarda as alterações na Base de dados
-                    camaraMunicipal.ProjetoSet.Remove(projeto);
-                    camaraMunicipal.SaveChanges();
+                    if (projeto.Parecer.Count == 0)
+                    {
+                        // Remove o Projeto e guarda as alterações na Base de dados
+                        camaraMunicipal.ProjetoSet.Remove(projeto);
+                        camaraMunicipal.SaveChanges();
 
-                    // Limpar a listBox documentos
-                    listBoxDocumentos.DataSource = null;
+                        // Limpar a listBox documentos
+                        listBoxDocumentos.DataSource = null;
 
-                    // Recarrega a ListBox e limpa o formulário
-                    LerDadosProjetos();
+                        // Recarrega a ListBox e limpa o formulário
+                        LerDadosProjetos();
 
-                    // Limpar Formulários
-                    LimparFormProjetos();
-                    LimparFormFuncionarios();
-                    LimparFormDocumentos();
-                    listBoxDocumentos.DataSource = null;
-                    listBoxProjetoAtribuido.DataSource = null;
+                        // Limpar Formulários
+                        LimparFormProjetos();
+                        LimparFormFuncionarios();
+                        LimparFormDocumentos();
+                        listBoxDocumentos.DataSource = null;
+                        listBoxProjetoAtribuido.DataSource = null;
+                    }
+                    else
+                    {
+                        mensagem.AvisoEliminarPrimeiro("os pareceres associados a este projeto");
+                    }
                 }
                 else
                 {

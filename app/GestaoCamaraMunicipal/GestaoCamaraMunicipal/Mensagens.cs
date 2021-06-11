@@ -50,5 +50,11 @@ namespace GestaoCamaraMunicipal
         {
             return MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
+
+        // Mensagem de aviso para eliminar primeiro algo.
+        public void AvisoEliminarPrimeiro(string objetoVisado)
+        {
+            MessageBox.Show("Eliminar primeiro " + objetoVisado, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }
