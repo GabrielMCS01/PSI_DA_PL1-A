@@ -4,13 +4,13 @@ namespace GestaoCamaraMunicipal
 {
     public partial class TipoProjeto
     {
-        public TipoProjeto(string designacao, int nDias, int TipoProjetoDependente)
+        public TipoProjeto(string designacao, int nDias, TipoProjeto TipoProjetoDependente)
         {
             this.Projeto = new HashSet<Projeto>();
             this.Especialista = new HashSet<Especialista>();
             this.NrDiasAprovacao = nDias;
             this.Designacao = designacao;
-            this.TipoProjetoId = TipoProjetoDependente;
+            this.TipoProjeto2 = TipoProjetoDependente;
         }
 
         public TipoProjeto(string designacao, int nDias)
