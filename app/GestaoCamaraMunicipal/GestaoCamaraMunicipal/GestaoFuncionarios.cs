@@ -224,12 +224,19 @@ namespace GestaoCamaraMunicipal
                     Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
 
                     // Remove o Funcionário e guarda as alterações na Base de dados
-                    camaraMunicipal.FuncionarioSet.Remove(funcionario);
-                    camaraMunicipal.SaveChanges();
+                    if (funcionario.ProjetoAtribuido.Count == 0)
+                    {
+                        camaraMunicipal.FuncionarioSet.Remove(funcionario);
+                        camaraMunicipal.SaveChanges();
 
-                    // Recarrega a ListBox e limpa o formulário
-                    LerDados();
-                    MudarBotoes();
+                        // Recarrega a ListBox e limpa o formulário
+                        LerDados();
+                        MudarBotoes();
+                    }
+                    else
+                    {
+                        mensagem.AvisoEliminarPrimeiro("os projetos atribuidos a este funcionário.");
+                    }
                 }
                 else
                 {

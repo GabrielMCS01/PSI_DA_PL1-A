@@ -125,16 +125,24 @@ namespace GestaoCamaraMunicipal
                 // Atribui á variável estado de processo, o estado do processo do processo selecionado anteriormente 
                 EstadoProcesso estadoProcesso = processo.EstadoProcesso;
 
-                // Remove o estado de processo do processo selecionado para poder-se remover o processo
-                camaraMunicipal.EstadoProcessoSet.Remove(estadoProcesso);
+                // Verificar se existem projetos atribuidos a este processo
+                if (processo.Projeto.Count == 0)
+                {
+                    // Remove o estado de processo do processo selecionado para poder-se remover o processo
+                    camaraMunicipal.EstadoProcessoSet.Remove(estadoProcesso);
 
-                // Remove o processo selecionado anteriormente e guarda as alterações
-                camaraMunicipal.ProcessoSet.Remove(processo);
-                camaraMunicipal.SaveChanges();
+                    // Remove o processo selecionado anteriormente e guarda as alterações
+                    camaraMunicipal.ProcessoSet.Remove(processo);
+                    camaraMunicipal.SaveChanges();
 
-                // Recarrega a listBox processos, limpa o formulário e altera os botões
-                lerProcessos();
-                MudarBotoes();
+                    // Recarrega a listBox processos, limpa o formulário e altera os botões
+                    lerProcessos();
+                    MudarBotoes();
+                }
+                else
+                {
+                    mensagem.AvisoEliminarPrimeiro("os projetos atribuidos a este processo.");
+                }
             }
             else
             {

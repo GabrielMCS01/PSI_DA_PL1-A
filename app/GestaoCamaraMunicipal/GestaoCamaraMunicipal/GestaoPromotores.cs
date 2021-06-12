@@ -246,13 +246,20 @@ namespace GestaoCamaraMunicipal
                     promotor = (Promotor)listBoxPromotores.SelectedItem;
 
                     // Remove o Promotor e guarda as alterações na Base de dados
-                    camaraMunicipal.PromotorSet.Remove(promotor);
-                    camaraMunicipal.SaveChanges();
+                    if (promotor.Processo.Count == 0)
+                    {
+                        camaraMunicipal.PromotorSet.Remove(promotor);
+                        camaraMunicipal.SaveChanges();
 
-                    // Recarrega a ListBox e limpa o formulário
-                    LerDados();
-                    MudarBotoes();
-                    LimparForm();
+                        // Recarrega a ListBox e limpa o formulário
+                        LerDados();
+                        MudarBotoes();
+                        LimparForm();
+                    }
+                    else
+                    {
+                        mensagem.AvisoEliminarPrimeiro("os processos atribuidos a este promotor.");
+                    }
                 }
                 else
                 {
