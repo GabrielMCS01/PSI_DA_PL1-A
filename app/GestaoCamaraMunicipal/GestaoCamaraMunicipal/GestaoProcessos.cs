@@ -20,7 +20,7 @@ namespace GestaoCamaraMunicipal
         private void lerProcessos()
         {
             listBoxProcessos.DataSource = camaraMunicipal.ProcessoSet.ToList<Processo>();
-            listBoxProcessos.SelectedIndex = -1;
+            listBoxProcessos.ClearSelected();
             index = -1;
             LimparDados();
         }
