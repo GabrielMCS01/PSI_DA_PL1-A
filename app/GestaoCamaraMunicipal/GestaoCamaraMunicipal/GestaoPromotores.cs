@@ -91,7 +91,7 @@ namespace GestaoCamaraMunicipal
                     return false;
                 }
             }
-            catch (ArgumentException)
+            catch (Exception)
             {
                 mensagem.ErroPreencherCampo("Email");
             }
@@ -180,42 +180,58 @@ namespace GestaoCamaraMunicipal
                     // Se todas as TextBoxs tiverem preenchidas Faz
                     if (maskedTextBoxNIF.Text != "" & txtBoxNome.Text != "" & txtBoxMorada.Text != "" & maskedTextBoxTelemovel.Text != "" & tbEmail.Text != "" & txtBoxCodAcesso.Text != "" & txtBoxPassword.Text != "")
                     {
-                        // Variável para receber o index selecionado na ListBox promotores
-                        int posicao = listBoxPromotores.SelectedIndex;
-
-                        // Varíável que recebe o objeto Promotor selecionado na ListBox
-                        promotor = (Promotor)listBoxPromotores.SelectedItem;
-
-                        // Atribui ao objeto anterior as alterações executadas anteriormente no formulário
-                        promotor.NIF = Int32.Parse(maskedTextBoxNIF.Text);
-                        promotor.Nome = txtBoxNome.Text;
-                        promotor.Morada = txtBoxMorada.Text;
-                        promotor.Telemovel = maskedTextBoxTelemovel.Text;
-                        promotor.Email = Email;
-                        promotor.CodigoAcesso = txtBoxCodAcesso.Text;
-                        promotor.Senha = txtBoxPassword.Text;
-
-                        // Verifica se o Email está válido
-                        bool EmailValidacao = VerificarEmail(Email);
-
-                        if (EmailValidacao == true)
+                        if (maskedTextBoxNIF.Text.Length == 9 && maskedTextBoxTelemovel.Text.Length == 9)
                         {
-                            try
-                            {
-                                // Guarda as alterações do objeto na Base de Dados
-                                camaraMunicipal.SaveChanges();
+                            // Variável para receber o index selecionado na ListBox promotores
+                            int posicao = listBoxPromotores.SelectedIndex;
 
-                                // Recarrega a ListBox e limpa o formulário
-                                LerDados();
+                            // Varíável que recebe o objeto Promotor selecionado na ListBox
+                            promotor = (Promotor)listBoxPromotores.SelectedItem;
 
-                                // Seleciona o index utilizado anteriormente
-                                listBoxPromotores.SelectedIndex = posicao;
-                                mensagem.Sucesso();
-                            }
-                            catch (DbUpdateException)
+                            // Verifica se o Email está válido
+                            bool EmailValidacao = VerificarEmail(Email);
+
+                            if (EmailValidacao == true)
                             {
-                                mensagem.ObjetoDuplicado("Campo NIF, devido a este já estar registado na Base de Dados");
+                                try
+                                {
+                                    // Atribui ao objeto anterior as alterações executadas anteriormente no formulário
+                                    promotor.NIF = Int32.Parse(maskedTextBoxNIF.Text);
+                                    promotor.Nome = txtBoxNome.Text;
+                                    promotor.Morada = txtBoxMorada.Text;
+                                    promotor.Telemovel = maskedTextBoxTelemovel.Text;
+                                    promotor.Email = Email;
+                                    promotor.CodigoAcesso = txtBoxCodAcesso.Text;
+                                    promotor.Senha = txtBoxPassword.Text;
+
+                                    // Guarda as alterações do objeto na Base de Dados
+                                    camaraMunicipal.SaveChanges();
+
+                                    // Recarrega a ListBox e limpa o formulário
+                                    LerDados();
+
+                                    // Seleciona o index utilizado anteriormente
+                                    listBoxPromotores.SelectedIndex = posicao;
+                                    mensagem.Sucesso();
+                                }
+                                catch (DbUpdateException)
+                                {
+                                    mensagem.ObjetoDuplicado("Campo NIF, devido a este já estar registado na Base de Dados");
+                                }
+                                catch (Exception)
+                                {
+                                    MessageBox.Show("Ocorreu um erro a atualizar o Promotor\n\n", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
+                            else
+                            {
+                                mensagem.ErroPreencherCampo("Email");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro ao alterar o Promotor devido ao Telemóvel não ter 9 carateres", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                     }
                     else

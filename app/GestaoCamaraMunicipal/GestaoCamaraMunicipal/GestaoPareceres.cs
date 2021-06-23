@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -158,9 +159,13 @@ namespace GestaoCamaraMunicipal
                     mensagem.AvisoSelecionarPrimeiro("Pareceres");
                 }
             }
-            catch (Exception ex)
+            catch (DbUpdateException)
             {
-                mensagem.Erro(ex);
+                mensagem.AvisoEliminarPrimeiro("os Documentos associados ao Projeto do Parecer selecionado");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocorreu um erro a apagar o Parecer\n\n", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

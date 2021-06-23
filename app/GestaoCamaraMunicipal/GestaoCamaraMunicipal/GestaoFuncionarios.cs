@@ -224,7 +224,7 @@ namespace GestaoCamaraMunicipal
                     Funcionario funcionario = (Funcionario)listBoxFuncionarios.SelectedItem;
 
                     // Remove o Funcionário e guarda as alterações na Base de dados
-                    if (funcionario.ProjetoAtribuido.Count == 0)
+                    if (funcionario.ProjetoAtribuido.Count == 0 && funcionario.Especialista.Count == 0)
                     {
                         camaraMunicipal.FuncionarioSet.Remove(funcionario);
                         camaraMunicipal.SaveChanges();
@@ -235,7 +235,7 @@ namespace GestaoCamaraMunicipal
                     }
                     else
                     {
-                        mensagem.AvisoEliminarPrimeiro("os projetos atribuidos a este funcionário.");
+                        mensagem.AvisoEliminarPrimeiro("os projetos atribuidos e os tipos de projeto que este funcionário é especialista no formulário de administração.");
                     }
                 }
                 else
